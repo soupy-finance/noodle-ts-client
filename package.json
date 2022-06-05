@@ -13,7 +13,9 @@
     "@cosmjs/launchpad": "^0.27.1",
     "@cosmjs/proto-signing": "^0.28.4",
     "@cosmjs/stargate": "^0.28.4",
-    "@cosmjs/tendermint-rpc": "^0.28.4"
+    "@cosmjs/tendermint-rpc": "^0.28.4",
+    "buffer": "^6.0.3",
+    "core-js": "^3.22.8"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^22.0.0",
