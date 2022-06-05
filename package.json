@@ -14,5 +14,10 @@
     "@cosmjs/proto-signing": "^0.28.4",
     "@cosmjs/stargate": "^0.28.4",
     "@cosmjs/tendermint-rpc": "^0.28.4"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^22.0.0",
+    "@rollup/plugin-dynamic-import-vars": "^1.4.3",
+    "@rollup/plugin-node-resolve": "^13.3.0"
   }
 }
