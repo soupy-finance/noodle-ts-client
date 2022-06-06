@@ -48,7 +48,7 @@ exports.MsgSubmitProposal = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgSubmitProposal);
+        const message = { ...baseMsgSubmitProposal };
         message.initial_deposit = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -70,7 +70,7 @@ exports.MsgSubmitProposal = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgSubmitProposal);
+        const message = { ...baseMsgSubmitProposal };
         message.initial_deposit = [];
         if (object.content !== undefined && object.content !== null) {
             message.content = any_1.Any.fromJSON(object.content);
@@ -106,7 +106,7 @@ exports.MsgSubmitProposal = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgSubmitProposal);
+        const message = { ...baseMsgSubmitProposal };
         message.initial_deposit = [];
         if (object.content !== undefined && object.content !== null) {
             message.content = any_1.Any.fromPartial(object.content);
@@ -140,7 +140,9 @@ exports.MsgSubmitProposalResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgSubmitProposalResponse);
+        const message = {
+            ...baseMsgSubmitProposalResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -155,7 +157,9 @@ exports.MsgSubmitProposalResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgSubmitProposalResponse);
+        const message = {
+            ...baseMsgSubmitProposalResponse,
+        };
         if (object.proposal_id !== undefined && object.proposal_id !== null) {
             message.proposal_id = Number(object.proposal_id);
         }
@@ -171,7 +175,9 @@ exports.MsgSubmitProposalResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgSubmitProposalResponse);
+        const message = {
+            ...baseMsgSubmitProposalResponse,
+        };
         if (object.proposal_id !== undefined && object.proposal_id !== null) {
             message.proposal_id = object.proposal_id;
         }
@@ -198,7 +204,7 @@ exports.MsgVote = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgVote);
+        const message = { ...baseMsgVote };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -219,7 +225,7 @@ exports.MsgVote = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgVote);
+        const message = { ...baseMsgVote };
         if (object.proposal_id !== undefined && object.proposal_id !== null) {
             message.proposal_id = Number(object.proposal_id);
         }
@@ -250,7 +256,7 @@ exports.MsgVote = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgVote);
+        const message = { ...baseMsgVote };
         if (object.proposal_id !== undefined && object.proposal_id !== null) {
             message.proposal_id = object.proposal_id;
         }
@@ -280,7 +286,7 @@ exports.MsgVoteResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgVoteResponse);
+        const message = { ...baseMsgVoteResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -292,7 +298,7 @@ exports.MsgVoteResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseMsgVoteResponse);
+        const message = { ...baseMsgVoteResponse };
         return message;
     },
     toJSON(_) {
@@ -300,7 +306,7 @@ exports.MsgVoteResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseMsgVoteResponse);
+        const message = { ...baseMsgVoteResponse };
         return message;
     },
 };
@@ -321,7 +327,7 @@ exports.MsgVoteWeighted = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgVoteWeighted);
+        const message = { ...baseMsgVoteWeighted };
         message.options = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -343,7 +349,7 @@ exports.MsgVoteWeighted = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgVoteWeighted);
+        const message = { ...baseMsgVoteWeighted };
         message.options = [];
         if (object.proposal_id !== undefined && object.proposal_id !== null) {
             message.proposal_id = Number(object.proposal_id);
@@ -378,7 +384,7 @@ exports.MsgVoteWeighted = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgVoteWeighted);
+        const message = { ...baseMsgVoteWeighted };
         message.options = [];
         if (object.proposal_id !== undefined && object.proposal_id !== null) {
             message.proposal_id = object.proposal_id;
@@ -408,7 +414,9 @@ exports.MsgVoteWeightedResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgVoteWeightedResponse);
+        const message = {
+            ...baseMsgVoteWeightedResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -420,7 +428,9 @@ exports.MsgVoteWeightedResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseMsgVoteWeightedResponse);
+        const message = {
+            ...baseMsgVoteWeightedResponse,
+        };
         return message;
     },
     toJSON(_) {
@@ -428,7 +438,9 @@ exports.MsgVoteWeightedResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseMsgVoteWeightedResponse);
+        const message = {
+            ...baseMsgVoteWeightedResponse,
+        };
         return message;
     },
 };
@@ -449,7 +461,7 @@ exports.MsgDeposit = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgDeposit);
+        const message = { ...baseMsgDeposit };
         message.amount = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -471,7 +483,7 @@ exports.MsgDeposit = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgDeposit);
+        const message = { ...baseMsgDeposit };
         message.amount = [];
         if (object.proposal_id !== undefined && object.proposal_id !== null) {
             message.proposal_id = Number(object.proposal_id);
@@ -506,7 +518,7 @@ exports.MsgDeposit = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgDeposit);
+        const message = { ...baseMsgDeposit };
         message.amount = [];
         if (object.proposal_id !== undefined && object.proposal_id !== null) {
             message.proposal_id = object.proposal_id;
@@ -536,7 +548,7 @@ exports.MsgDepositResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgDepositResponse);
+        const message = { ...baseMsgDepositResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -548,7 +560,7 @@ exports.MsgDepositResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseMsgDepositResponse);
+        const message = { ...baseMsgDepositResponse };
         return message;
     },
     toJSON(_) {
@@ -556,7 +568,7 @@ exports.MsgDepositResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseMsgDepositResponse);
+        const message = { ...baseMsgDepositResponse };
         return message;
     },
 };

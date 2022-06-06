@@ -22,7 +22,7 @@ exports.BasicAllowance = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseBasicAllowance);
+        const message = { ...baseBasicAllowance };
         message.spend_limit = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -41,7 +41,7 @@ exports.BasicAllowance = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseBasicAllowance);
+        const message = { ...baseBasicAllowance };
         message.spend_limit = [];
         if (object.spend_limit !== undefined && object.spend_limit !== null) {
             for (const e of object.spend_limit) {
@@ -72,7 +72,7 @@ exports.BasicAllowance = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseBasicAllowance);
+        const message = { ...baseBasicAllowance };
         message.spend_limit = [];
         if (object.spend_limit !== undefined && object.spend_limit !== null) {
             for (const e of object.spend_limit) {
@@ -111,7 +111,7 @@ exports.PeriodicAllowance = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, basePeriodicAllowance);
+        const message = { ...basePeriodicAllowance };
         message.period_spend_limit = [];
         message.period_can_spend = [];
         while (reader.pos < end) {
@@ -140,7 +140,7 @@ exports.PeriodicAllowance = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, basePeriodicAllowance);
+        const message = { ...basePeriodicAllowance };
         message.period_spend_limit = [];
         message.period_can_spend = [];
         if (object.basic !== undefined && object.basic !== null) {
@@ -205,7 +205,7 @@ exports.PeriodicAllowance = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, basePeriodicAllowance);
+        const message = { ...basePeriodicAllowance };
         message.period_spend_limit = [];
         message.period_can_spend = [];
         if (object.basic !== undefined && object.basic !== null) {
@@ -255,7 +255,7 @@ exports.AllowedMsgAllowance = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseAllowedMsgAllowance);
+        const message = { ...baseAllowedMsgAllowance };
         message.allowed_messages = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -274,7 +274,7 @@ exports.AllowedMsgAllowance = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseAllowedMsgAllowance);
+        const message = { ...baseAllowedMsgAllowance };
         message.allowed_messages = [];
         if (object.allowance !== undefined && object.allowance !== null) {
             message.allowance = any_1.Any.fromJSON(object.allowance);
@@ -305,7 +305,7 @@ exports.AllowedMsgAllowance = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseAllowedMsgAllowance);
+        const message = { ...baseAllowedMsgAllowance };
         message.allowed_messages = [];
         if (object.allowance !== undefined && object.allowance !== null) {
             message.allowance = any_1.Any.fromPartial(object.allowance);
@@ -339,7 +339,7 @@ exports.Grant = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGrant);
+        const message = { ...baseGrant };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -360,7 +360,7 @@ exports.Grant = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseGrant);
+        const message = { ...baseGrant };
         if (object.granter !== undefined && object.granter !== null) {
             message.granter = String(object.granter);
         }
@@ -392,7 +392,7 @@ exports.Grant = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseGrant);
+        const message = { ...baseGrant };
         if (object.granter !== undefined && object.granter !== null) {
             message.granter = object.granter;
         }

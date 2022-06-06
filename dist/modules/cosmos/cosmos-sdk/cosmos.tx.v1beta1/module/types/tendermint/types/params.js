@@ -49,7 +49,7 @@ exports.ConsensusParams = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseConsensusParams);
+        const message = { ...baseConsensusParams };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -73,7 +73,7 @@ exports.ConsensusParams = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseConsensusParams);
+        const message = { ...baseConsensusParams };
         if (object.block !== undefined && object.block !== null) {
             message.block = exports.BlockParams.fromJSON(object.block);
         }
@@ -121,7 +121,7 @@ exports.ConsensusParams = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseConsensusParams);
+        const message = { ...baseConsensusParams };
         if (object.block !== undefined && object.block !== null) {
             message.block = exports.BlockParams.fromPartial(object.block);
         }
@@ -166,7 +166,7 @@ exports.BlockParams = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseBlockParams);
+        const message = { ...baseBlockParams };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -187,7 +187,7 @@ exports.BlockParams = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseBlockParams);
+        const message = { ...baseBlockParams };
         if (object.max_bytes !== undefined && object.max_bytes !== null) {
             message.max_bytes = Number(object.max_bytes);
         }
@@ -217,7 +217,7 @@ exports.BlockParams = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseBlockParams);
+        const message = { ...baseBlockParams };
         if (object.max_bytes !== undefined && object.max_bytes !== null) {
             message.max_bytes = object.max_bytes;
         }
@@ -256,7 +256,7 @@ exports.EvidenceParams = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseEvidenceParams);
+        const message = { ...baseEvidenceParams };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -277,7 +277,7 @@ exports.EvidenceParams = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseEvidenceParams);
+        const message = { ...baseEvidenceParams };
         if (object.max_age_num_blocks !== undefined &&
             object.max_age_num_blocks !== null) {
             message.max_age_num_blocks = Number(object.max_age_num_blocks);
@@ -312,7 +312,7 @@ exports.EvidenceParams = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseEvidenceParams);
+        const message = { ...baseEvidenceParams };
         if (object.max_age_num_blocks !== undefined &&
             object.max_age_num_blocks !== null) {
             message.max_age_num_blocks = object.max_age_num_blocks;
@@ -347,7 +347,7 @@ exports.ValidatorParams = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseValidatorParams);
+        const message = { ...baseValidatorParams };
         message.pub_key_types = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -363,7 +363,7 @@ exports.ValidatorParams = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseValidatorParams);
+        const message = { ...baseValidatorParams };
         message.pub_key_types = [];
         if (object.pub_key_types !== undefined && object.pub_key_types !== null) {
             for (const e of object.pub_key_types) {
@@ -383,7 +383,7 @@ exports.ValidatorParams = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseValidatorParams);
+        const message = { ...baseValidatorParams };
         message.pub_key_types = [];
         if (object.pub_key_types !== undefined && object.pub_key_types !== null) {
             for (const e of object.pub_key_types) {
@@ -404,7 +404,7 @@ exports.VersionParams = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseVersionParams);
+        const message = { ...baseVersionParams };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -419,7 +419,7 @@ exports.VersionParams = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseVersionParams);
+        const message = { ...baseVersionParams };
         if (object.app_version !== undefined && object.app_version !== null) {
             message.app_version = Number(object.app_version);
         }
@@ -435,7 +435,7 @@ exports.VersionParams = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseVersionParams);
+        const message = { ...baseVersionParams };
         if (object.app_version !== undefined && object.app_version !== null) {
             message.app_version = object.app_version;
         }
@@ -459,7 +459,7 @@ exports.HashedParams = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseHashedParams);
+        const message = { ...baseHashedParams };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -477,7 +477,7 @@ exports.HashedParams = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseHashedParams);
+        const message = { ...baseHashedParams };
         if (object.block_max_bytes !== undefined &&
             object.block_max_bytes !== null) {
             message.block_max_bytes = Number(object.block_max_bytes);
@@ -502,7 +502,7 @@ exports.HashedParams = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseHashedParams);
+        const message = { ...baseHashedParams };
         if (object.block_max_bytes !== undefined &&
             object.block_max_bytes !== null) {
             message.block_max_bytes = object.block_max_bytes;

@@ -20,7 +20,7 @@ exports.QueryAllowanceRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryAllowanceRequest);
+        const message = { ...baseQueryAllowanceRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -38,7 +38,7 @@ exports.QueryAllowanceRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryAllowanceRequest);
+        const message = { ...baseQueryAllowanceRequest };
         if (object.granter !== undefined && object.granter !== null) {
             message.granter = String(object.granter);
         }
@@ -60,7 +60,7 @@ exports.QueryAllowanceRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryAllowanceRequest);
+        const message = { ...baseQueryAllowanceRequest };
         if (object.granter !== undefined && object.granter !== null) {
             message.granter = object.granter;
         }
@@ -87,7 +87,7 @@ exports.QueryAllowanceResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryAllowanceResponse);
+        const message = { ...baseQueryAllowanceResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -102,7 +102,7 @@ exports.QueryAllowanceResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryAllowanceResponse);
+        const message = { ...baseQueryAllowanceResponse };
         if (object.allowance !== undefined && object.allowance !== null) {
             message.allowance = feegrant_1.Grant.fromJSON(object.allowance);
         }
@@ -120,7 +120,7 @@ exports.QueryAllowanceResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryAllowanceResponse);
+        const message = { ...baseQueryAllowanceResponse };
         if (object.allowance !== undefined && object.allowance !== null) {
             message.allowance = feegrant_1.Grant.fromPartial(object.allowance);
         }
@@ -144,7 +144,7 @@ exports.QueryAllowancesRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryAllowancesRequest);
+        const message = { ...baseQueryAllowancesRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -162,7 +162,7 @@ exports.QueryAllowancesRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryAllowancesRequest);
+        const message = { ...baseQueryAllowancesRequest };
         if (object.grantee !== undefined && object.grantee !== null) {
             message.grantee = String(object.grantee);
         }
@@ -187,7 +187,7 @@ exports.QueryAllowancesRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryAllowancesRequest);
+        const message = { ...baseQueryAllowancesRequest };
         if (object.grantee !== undefined && object.grantee !== null) {
             message.grantee = object.grantee;
         }
@@ -217,7 +217,9 @@ exports.QueryAllowancesResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryAllowancesResponse);
+        const message = {
+            ...baseQueryAllowancesResponse,
+        };
         message.allowances = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -236,7 +238,9 @@ exports.QueryAllowancesResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryAllowancesResponse);
+        const message = {
+            ...baseQueryAllowancesResponse,
+        };
         message.allowances = [];
         if (object.allowances !== undefined && object.allowances !== null) {
             for (const e of object.allowances) {
@@ -266,7 +270,9 @@ exports.QueryAllowancesResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryAllowancesResponse);
+        const message = {
+            ...baseQueryAllowancesResponse,
+        };
         message.allowances = [];
         if (object.allowances !== undefined && object.allowances !== null) {
             for (const e of object.allowances) {

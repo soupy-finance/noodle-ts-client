@@ -16,7 +16,7 @@ exports.SendAuthorization = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseSendAuthorization);
+        const message = { ...baseSendAuthorization };
         message.spend_limit = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -32,7 +32,7 @@ exports.SendAuthorization = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseSendAuthorization);
+        const message = { ...baseSendAuthorization };
         message.spend_limit = [];
         if (object.spend_limit !== undefined && object.spend_limit !== null) {
             for (const e of object.spend_limit) {
@@ -52,7 +52,7 @@ exports.SendAuthorization = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseSendAuthorization);
+        const message = { ...baseSendAuthorization };
         message.spend_limit = [];
         if (object.spend_limit !== undefined && object.spend_limit !== null) {
             for (const e of object.spend_limit) {

@@ -58,7 +58,7 @@ exports.MsgConnectionOpenInit = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgConnectionOpenInit);
+        const message = { ...baseMsgConnectionOpenInit };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -85,7 +85,7 @@ exports.MsgConnectionOpenInit = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgConnectionOpenInit);
+        const message = { ...baseMsgConnectionOpenInit };
         if (object.client_id !== undefined && object.client_id !== null) {
             message.client_id = String(object.client_id);
         }
@@ -135,7 +135,7 @@ exports.MsgConnectionOpenInit = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgConnectionOpenInit);
+        const message = { ...baseMsgConnectionOpenInit };
         if (object.client_id !== undefined && object.client_id !== null) {
             message.client_id = object.client_id;
         }
@@ -177,7 +177,9 @@ exports.MsgConnectionOpenInitResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgConnectionOpenInitResponse);
+        const message = {
+            ...baseMsgConnectionOpenInitResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -189,7 +191,9 @@ exports.MsgConnectionOpenInitResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseMsgConnectionOpenInitResponse);
+        const message = {
+            ...baseMsgConnectionOpenInitResponse,
+        };
         return message;
     },
     toJSON(_) {
@@ -197,7 +201,9 @@ exports.MsgConnectionOpenInitResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseMsgConnectionOpenInitResponse);
+        const message = {
+            ...baseMsgConnectionOpenInitResponse,
+        };
         return message;
     },
 };
@@ -250,7 +256,7 @@ exports.MsgConnectionOpenTry = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgConnectionOpenTry);
+        const message = { ...baseMsgConnectionOpenTry };
         message.counterparty_versions = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -299,7 +305,7 @@ exports.MsgConnectionOpenTry = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgConnectionOpenTry);
+        const message = { ...baseMsgConnectionOpenTry };
         message.counterparty_versions = [];
         if (object.client_id !== undefined && object.client_id !== null) {
             message.client_id = String(object.client_id);
@@ -412,7 +418,7 @@ exports.MsgConnectionOpenTry = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgConnectionOpenTry);
+        const message = { ...baseMsgConnectionOpenTry };
         message.counterparty_versions = [];
         if (object.client_id !== undefined && object.client_id !== null) {
             message.client_id = object.client_id;
@@ -500,7 +506,9 @@ exports.MsgConnectionOpenTryResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgConnectionOpenTryResponse);
+        const message = {
+            ...baseMsgConnectionOpenTryResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -512,7 +520,9 @@ exports.MsgConnectionOpenTryResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseMsgConnectionOpenTryResponse);
+        const message = {
+            ...baseMsgConnectionOpenTryResponse,
+        };
         return message;
     },
     toJSON(_) {
@@ -520,7 +530,9 @@ exports.MsgConnectionOpenTryResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseMsgConnectionOpenTryResponse);
+        const message = {
+            ...baseMsgConnectionOpenTryResponse,
+        };
         return message;
     },
 };
@@ -566,7 +578,7 @@ exports.MsgConnectionOpenAck = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgConnectionOpenAck);
+        const message = { ...baseMsgConnectionOpenAck };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -608,7 +620,7 @@ exports.MsgConnectionOpenAck = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgConnectionOpenAck);
+        const message = { ...baseMsgConnectionOpenAck };
         if (object.connection_id !== undefined && object.connection_id !== null) {
             message.connection_id = String(object.connection_id);
         }
@@ -701,7 +713,7 @@ exports.MsgConnectionOpenAck = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgConnectionOpenAck);
+        const message = { ...baseMsgConnectionOpenAck };
         if (object.connection_id !== undefined && object.connection_id !== null) {
             message.connection_id = object.connection_id;
         }
@@ -776,7 +788,9 @@ exports.MsgConnectionOpenAckResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgConnectionOpenAckResponse);
+        const message = {
+            ...baseMsgConnectionOpenAckResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -788,7 +802,9 @@ exports.MsgConnectionOpenAckResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseMsgConnectionOpenAckResponse);
+        const message = {
+            ...baseMsgConnectionOpenAckResponse,
+        };
         return message;
     },
     toJSON(_) {
@@ -796,7 +812,9 @@ exports.MsgConnectionOpenAckResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseMsgConnectionOpenAckResponse);
+        const message = {
+            ...baseMsgConnectionOpenAckResponse,
+        };
         return message;
     },
 };
@@ -820,7 +838,9 @@ exports.MsgConnectionOpenConfirm = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgConnectionOpenConfirm);
+        const message = {
+            ...baseMsgConnectionOpenConfirm,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -844,7 +864,9 @@ exports.MsgConnectionOpenConfirm = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgConnectionOpenConfirm);
+        const message = {
+            ...baseMsgConnectionOpenConfirm,
+        };
         if (object.connection_id !== undefined && object.connection_id !== null) {
             message.connection_id = String(object.connection_id);
         }
@@ -882,7 +904,9 @@ exports.MsgConnectionOpenConfirm = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgConnectionOpenConfirm);
+        const message = {
+            ...baseMsgConnectionOpenConfirm,
+        };
         if (object.connection_id !== undefined && object.connection_id !== null) {
             message.connection_id = object.connection_id;
         }
@@ -918,7 +942,9 @@ exports.MsgConnectionOpenConfirmResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgConnectionOpenConfirmResponse);
+        const message = {
+            ...baseMsgConnectionOpenConfirmResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -930,7 +956,9 @@ exports.MsgConnectionOpenConfirmResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseMsgConnectionOpenConfirmResponse);
+        const message = {
+            ...baseMsgConnectionOpenConfirmResponse,
+        };
         return message;
     },
     toJSON(_) {
@@ -938,7 +966,9 @@ exports.MsgConnectionOpenConfirmResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseMsgConnectionOpenConfirmResponse);
+        const message = {
+            ...baseMsgConnectionOpenConfirmResponse,
+        };
         return message;
     },
 };

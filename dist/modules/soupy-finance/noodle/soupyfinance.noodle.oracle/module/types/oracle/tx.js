@@ -18,7 +18,7 @@ exports.MsgUpdatePrices = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgUpdatePrices);
+        const message = { ...baseMsgUpdatePrices };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -36,7 +36,7 @@ exports.MsgUpdatePrices = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgUpdatePrices);
+        const message = { ...baseMsgUpdatePrices };
         if (object.creator !== undefined && object.creator !== null) {
             message.creator = String(object.creator);
         }
@@ -58,7 +58,7 @@ exports.MsgUpdatePrices = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgUpdatePrices);
+        const message = { ...baseMsgUpdatePrices };
         if (object.creator !== undefined && object.creator !== null) {
             message.creator = object.creator;
         }
@@ -82,7 +82,9 @@ exports.MsgUpdatePricesResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgUpdatePricesResponse);
+        const message = {
+            ...baseMsgUpdatePricesResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -94,7 +96,9 @@ exports.MsgUpdatePricesResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseMsgUpdatePricesResponse);
+        const message = {
+            ...baseMsgUpdatePricesResponse,
+        };
         return message;
     },
     toJSON(_) {
@@ -102,7 +106,9 @@ exports.MsgUpdatePricesResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseMsgUpdatePricesResponse);
+        const message = {
+            ...baseMsgUpdatePricesResponse,
+        };
         return message;
     },
 };

@@ -47,7 +47,7 @@ exports.DelegatorWithdrawInfo = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseDelegatorWithdrawInfo);
+        const message = { ...baseDelegatorWithdrawInfo };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -65,7 +65,7 @@ exports.DelegatorWithdrawInfo = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseDelegatorWithdrawInfo);
+        const message = { ...baseDelegatorWithdrawInfo };
         if (object.delegator_address !== undefined &&
             object.delegator_address !== null) {
             message.delegator_address = String(object.delegator_address);
@@ -91,7 +91,7 @@ exports.DelegatorWithdrawInfo = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseDelegatorWithdrawInfo);
+        const message = { ...baseDelegatorWithdrawInfo };
         if (object.delegator_address !== undefined &&
             object.delegator_address !== null) {
             message.delegator_address = object.delegator_address;
@@ -123,7 +123,9 @@ exports.ValidatorOutstandingRewardsRecord = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseValidatorOutstandingRewardsRecord);
+        const message = {
+            ...baseValidatorOutstandingRewardsRecord,
+        };
         message.outstanding_rewards = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -142,7 +144,9 @@ exports.ValidatorOutstandingRewardsRecord = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseValidatorOutstandingRewardsRecord);
+        const message = {
+            ...baseValidatorOutstandingRewardsRecord,
+        };
         message.outstanding_rewards = [];
         if (object.validator_address !== undefined &&
             object.validator_address !== null) {
@@ -172,7 +176,9 @@ exports.ValidatorOutstandingRewardsRecord = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseValidatorOutstandingRewardsRecord);
+        const message = {
+            ...baseValidatorOutstandingRewardsRecord,
+        };
         message.outstanding_rewards = [];
         if (object.validator_address !== undefined &&
             object.validator_address !== null) {
@@ -206,7 +212,9 @@ exports.ValidatorAccumulatedCommissionRecord = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseValidatorAccumulatedCommissionRecord);
+        const message = {
+            ...baseValidatorAccumulatedCommissionRecord,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -224,7 +232,9 @@ exports.ValidatorAccumulatedCommissionRecord = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseValidatorAccumulatedCommissionRecord);
+        const message = {
+            ...baseValidatorAccumulatedCommissionRecord,
+        };
         if (object.validator_address !== undefined &&
             object.validator_address !== null) {
             message.validator_address = String(object.validator_address);
@@ -251,7 +261,9 @@ exports.ValidatorAccumulatedCommissionRecord = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseValidatorAccumulatedCommissionRecord);
+        const message = {
+            ...baseValidatorAccumulatedCommissionRecord,
+        };
         if (object.validator_address !== undefined &&
             object.validator_address !== null) {
             message.validator_address = object.validator_address;
@@ -288,7 +300,9 @@ exports.ValidatorHistoricalRewardsRecord = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseValidatorHistoricalRewardsRecord);
+        const message = {
+            ...baseValidatorHistoricalRewardsRecord,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -309,7 +323,9 @@ exports.ValidatorHistoricalRewardsRecord = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseValidatorHistoricalRewardsRecord);
+        const message = {
+            ...baseValidatorHistoricalRewardsRecord,
+        };
         if (object.validator_address !== undefined &&
             object.validator_address !== null) {
             message.validator_address = String(object.validator_address);
@@ -343,7 +359,9 @@ exports.ValidatorHistoricalRewardsRecord = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseValidatorHistoricalRewardsRecord);
+        const message = {
+            ...baseValidatorHistoricalRewardsRecord,
+        };
         if (object.validator_address !== undefined &&
             object.validator_address !== null) {
             message.validator_address = object.validator_address;
@@ -380,7 +398,9 @@ exports.ValidatorCurrentRewardsRecord = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseValidatorCurrentRewardsRecord);
+        const message = {
+            ...baseValidatorCurrentRewardsRecord,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -398,7 +418,9 @@ exports.ValidatorCurrentRewardsRecord = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseValidatorCurrentRewardsRecord);
+        const message = {
+            ...baseValidatorCurrentRewardsRecord,
+        };
         if (object.validator_address !== undefined &&
             object.validator_address !== null) {
             message.validator_address = String(object.validator_address);
@@ -425,7 +447,9 @@ exports.ValidatorCurrentRewardsRecord = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseValidatorCurrentRewardsRecord);
+        const message = {
+            ...baseValidatorCurrentRewardsRecord,
+        };
         if (object.validator_address !== undefined &&
             object.validator_address !== null) {
             message.validator_address = object.validator_address;
@@ -462,7 +486,9 @@ exports.DelegatorStartingInfoRecord = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseDelegatorStartingInfoRecord);
+        const message = {
+            ...baseDelegatorStartingInfoRecord,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -483,7 +509,9 @@ exports.DelegatorStartingInfoRecord = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseDelegatorStartingInfoRecord);
+        const message = {
+            ...baseDelegatorStartingInfoRecord,
+        };
         if (object.delegator_address !== undefined &&
             object.delegator_address !== null) {
             message.delegator_address = String(object.delegator_address);
@@ -519,7 +547,9 @@ exports.DelegatorStartingInfoRecord = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseDelegatorStartingInfoRecord);
+        const message = {
+            ...baseDelegatorStartingInfoRecord,
+        };
         if (object.delegator_address !== undefined &&
             object.delegator_address !== null) {
             message.delegator_address = object.delegator_address;
@@ -567,7 +597,9 @@ exports.ValidatorSlashEventRecord = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseValidatorSlashEventRecord);
+        const message = {
+            ...baseValidatorSlashEventRecord,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -591,7 +623,9 @@ exports.ValidatorSlashEventRecord = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseValidatorSlashEventRecord);
+        const message = {
+            ...baseValidatorSlashEventRecord,
+        };
         if (object.validator_address !== undefined &&
             object.validator_address !== null) {
             message.validator_address = String(object.validator_address);
@@ -633,7 +667,9 @@ exports.ValidatorSlashEventRecord = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseValidatorSlashEventRecord);
+        const message = {
+            ...baseValidatorSlashEventRecord,
+        };
         if (object.validator_address !== undefined &&
             object.validator_address !== null) {
             message.validator_address = object.validator_address;
@@ -701,7 +737,7 @@ exports.GenesisState = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         message.delegator_withdraw_infos = [];
         message.outstanding_rewards = [];
         message.validator_accumulated_commissions = [];
@@ -750,7 +786,7 @@ exports.GenesisState = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         message.delegator_withdraw_infos = [];
         message.outstanding_rewards = [];
         message.validator_accumulated_commissions = [];
@@ -876,7 +912,7 @@ exports.GenesisState = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         message.delegator_withdraw_infos = [];
         message.outstanding_rewards = [];
         message.validator_accumulated_commissions = [];

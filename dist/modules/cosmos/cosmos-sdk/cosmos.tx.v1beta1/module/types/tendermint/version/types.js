@@ -42,7 +42,7 @@ exports.App = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseApp);
+        const message = { ...baseApp };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -60,7 +60,7 @@ exports.App = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseApp);
+        const message = { ...baseApp };
         if (object.protocol !== undefined && object.protocol !== null) {
             message.protocol = Number(object.protocol);
         }
@@ -82,7 +82,7 @@ exports.App = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseApp);
+        const message = { ...baseApp };
         if (object.protocol !== undefined && object.protocol !== null) {
             message.protocol = object.protocol;
         }
@@ -112,7 +112,7 @@ exports.Consensus = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseConsensus);
+        const message = { ...baseConsensus };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -130,7 +130,7 @@ exports.Consensus = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseConsensus);
+        const message = { ...baseConsensus };
         if (object.block !== undefined && object.block !== null) {
             message.block = Number(object.block);
         }
@@ -152,7 +152,7 @@ exports.Consensus = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseConsensus);
+        const message = { ...baseConsensus };
         if (object.block !== undefined && object.block !== null) {
             message.block = object.block;
         }

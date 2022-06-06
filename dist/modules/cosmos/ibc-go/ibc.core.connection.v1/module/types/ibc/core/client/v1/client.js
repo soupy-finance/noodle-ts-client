@@ -44,7 +44,7 @@ exports.IdentifiedClientState = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseIdentifiedClientState);
+        const message = { ...baseIdentifiedClientState };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -62,7 +62,7 @@ exports.IdentifiedClientState = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseIdentifiedClientState);
+        const message = { ...baseIdentifiedClientState };
         if (object.client_id !== undefined && object.client_id !== null) {
             message.client_id = String(object.client_id);
         }
@@ -87,7 +87,7 @@ exports.IdentifiedClientState = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseIdentifiedClientState);
+        const message = { ...baseIdentifiedClientState };
         if (object.client_id !== undefined && object.client_id !== null) {
             message.client_id = object.client_id;
         }
@@ -117,7 +117,9 @@ exports.ConsensusStateWithHeight = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseConsensusStateWithHeight);
+        const message = {
+            ...baseConsensusStateWithHeight,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -135,7 +137,9 @@ exports.ConsensusStateWithHeight = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseConsensusStateWithHeight);
+        const message = {
+            ...baseConsensusStateWithHeight,
+        };
         if (object.height !== undefined && object.height !== null) {
             message.height = exports.Height.fromJSON(object.height);
         }
@@ -162,7 +166,9 @@ exports.ConsensusStateWithHeight = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseConsensusStateWithHeight);
+        const message = {
+            ...baseConsensusStateWithHeight,
+        };
         if (object.height !== undefined && object.height !== null) {
             message.height = exports.Height.fromPartial(object.height);
         }
@@ -193,7 +199,7 @@ exports.ClientConsensusStates = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseClientConsensusStates);
+        const message = { ...baseClientConsensusStates };
         message.consensus_states = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -212,7 +218,7 @@ exports.ClientConsensusStates = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseClientConsensusStates);
+        const message = { ...baseClientConsensusStates };
         message.consensus_states = [];
         if (object.client_id !== undefined && object.client_id !== null) {
             message.client_id = String(object.client_id);
@@ -240,7 +246,7 @@ exports.ClientConsensusStates = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseClientConsensusStates);
+        const message = { ...baseClientConsensusStates };
         message.consensus_states = [];
         if (object.client_id !== undefined && object.client_id !== null) {
             message.client_id = object.client_id;
@@ -282,7 +288,7 @@ exports.ClientUpdateProposal = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseClientUpdateProposal);
+        const message = { ...baseClientUpdateProposal };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -306,7 +312,7 @@ exports.ClientUpdateProposal = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseClientUpdateProposal);
+        const message = { ...baseClientUpdateProposal };
         if (object.title !== undefined && object.title !== null) {
             message.title = String(object.title);
         }
@@ -347,7 +353,7 @@ exports.ClientUpdateProposal = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseClientUpdateProposal);
+        const message = { ...baseClientUpdateProposal };
         if (object.title !== undefined && object.title !== null) {
             message.title = object.title;
         }
@@ -397,7 +403,7 @@ exports.UpgradeProposal = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseUpgradeProposal);
+        const message = { ...baseUpgradeProposal };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -421,7 +427,7 @@ exports.UpgradeProposal = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseUpgradeProposal);
+        const message = { ...baseUpgradeProposal };
         if (object.title !== undefined && object.title !== null) {
             message.title = String(object.title);
         }
@@ -463,7 +469,7 @@ exports.UpgradeProposal = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseUpgradeProposal);
+        const message = { ...baseUpgradeProposal };
         if (object.title !== undefined && object.title !== null) {
             message.title = object.title;
         }
@@ -506,7 +512,7 @@ exports.Height = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseHeight);
+        const message = { ...baseHeight };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -524,7 +530,7 @@ exports.Height = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseHeight);
+        const message = { ...baseHeight };
         if (object.revision_number !== undefined &&
             object.revision_number !== null) {
             message.revision_number = Number(object.revision_number);
@@ -550,7 +556,7 @@ exports.Height = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseHeight);
+        const message = { ...baseHeight };
         if (object.revision_number !== undefined &&
             object.revision_number !== null) {
             message.revision_number = object.revision_number;
@@ -579,7 +585,7 @@ exports.Params = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseParams);
+        const message = { ...baseParams };
         message.allowed_clients = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -595,7 +601,7 @@ exports.Params = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseParams);
+        const message = { ...baseParams };
         message.allowed_clients = [];
         if (object.allowed_clients !== undefined &&
             object.allowed_clients !== null) {
@@ -616,7 +622,7 @@ exports.Params = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseParams);
+        const message = { ...baseParams };
         message.allowed_clients = [];
         if (object.allowed_clients !== undefined &&
             object.allowed_clients !== null) {

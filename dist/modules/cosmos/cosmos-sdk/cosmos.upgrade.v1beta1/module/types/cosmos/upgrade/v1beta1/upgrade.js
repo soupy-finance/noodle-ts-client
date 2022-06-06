@@ -53,7 +53,7 @@ exports.Plan = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, basePlan);
+        const message = { ...basePlan };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -80,7 +80,7 @@ exports.Plan = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, basePlan);
+        const message = { ...basePlan };
         if (object.name !== undefined && object.name !== null) {
             message.name = String(object.name);
         }
@@ -129,7 +129,7 @@ exports.Plan = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, basePlan);
+        const message = { ...basePlan };
         if (object.name !== undefined && object.name !== null) {
             message.name = object.name;
         }
@@ -181,7 +181,9 @@ exports.SoftwareUpgradeProposal = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseSoftwareUpgradeProposal);
+        const message = {
+            ...baseSoftwareUpgradeProposal,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -202,7 +204,9 @@ exports.SoftwareUpgradeProposal = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseSoftwareUpgradeProposal);
+        const message = {
+            ...baseSoftwareUpgradeProposal,
+        };
         if (object.title !== undefined && object.title !== null) {
             message.title = String(object.title);
         }
@@ -233,7 +237,9 @@ exports.SoftwareUpgradeProposal = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseSoftwareUpgradeProposal);
+        const message = {
+            ...baseSoftwareUpgradeProposal,
+        };
         if (object.title !== undefined && object.title !== null) {
             message.title = object.title;
         }
@@ -272,7 +278,9 @@ exports.CancelSoftwareUpgradeProposal = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseCancelSoftwareUpgradeProposal);
+        const message = {
+            ...baseCancelSoftwareUpgradeProposal,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -290,7 +298,9 @@ exports.CancelSoftwareUpgradeProposal = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseCancelSoftwareUpgradeProposal);
+        const message = {
+            ...baseCancelSoftwareUpgradeProposal,
+        };
         if (object.title !== undefined && object.title !== null) {
             message.title = String(object.title);
         }
@@ -313,7 +323,9 @@ exports.CancelSoftwareUpgradeProposal = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseCancelSoftwareUpgradeProposal);
+        const message = {
+            ...baseCancelSoftwareUpgradeProposal,
+        };
         if (object.title !== undefined && object.title !== null) {
             message.title = object.title;
         }
@@ -343,7 +355,7 @@ exports.ModuleVersion = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseModuleVersion);
+        const message = { ...baseModuleVersion };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -361,7 +373,7 @@ exports.ModuleVersion = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseModuleVersion);
+        const message = { ...baseModuleVersion };
         if (object.name !== undefined && object.name !== null) {
             message.name = String(object.name);
         }
@@ -383,7 +395,7 @@ exports.ModuleVersion = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseModuleVersion);
+        const message = { ...baseModuleVersion };
         if (object.name !== undefined && object.name !== null) {
             message.name = object.name;
         }

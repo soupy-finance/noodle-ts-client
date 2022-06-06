@@ -16,7 +16,7 @@ exports.MerkleRoot = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMerkleRoot);
+        const message = { ...baseMerkleRoot };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -31,7 +31,7 @@ exports.MerkleRoot = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMerkleRoot);
+        const message = { ...baseMerkleRoot };
         if (object.hash !== undefined && object.hash !== null) {
             message.hash = bytesFromBase64(object.hash);
         }
@@ -44,7 +44,7 @@ exports.MerkleRoot = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMerkleRoot);
+        const message = { ...baseMerkleRoot };
         if (object.hash !== undefined && object.hash !== null) {
             message.hash = object.hash;
         }
@@ -65,7 +65,7 @@ exports.MerklePrefix = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMerklePrefix);
+        const message = { ...baseMerklePrefix };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -80,7 +80,7 @@ exports.MerklePrefix = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMerklePrefix);
+        const message = { ...baseMerklePrefix };
         if (object.key_prefix !== undefined && object.key_prefix !== null) {
             message.key_prefix = bytesFromBase64(object.key_prefix);
         }
@@ -93,7 +93,7 @@ exports.MerklePrefix = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMerklePrefix);
+        const message = { ...baseMerklePrefix };
         if (object.key_prefix !== undefined && object.key_prefix !== null) {
             message.key_prefix = object.key_prefix;
         }
@@ -114,7 +114,7 @@ exports.MerklePath = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMerklePath);
+        const message = { ...baseMerklePath };
         message.key_path = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -130,7 +130,7 @@ exports.MerklePath = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMerklePath);
+        const message = { ...baseMerklePath };
         message.key_path = [];
         if (object.key_path !== undefined && object.key_path !== null) {
             for (const e of object.key_path) {
@@ -150,7 +150,7 @@ exports.MerklePath = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMerklePath);
+        const message = { ...baseMerklePath };
         message.key_path = [];
         if (object.key_path !== undefined && object.key_path !== null) {
             for (const e of object.key_path) {
@@ -171,7 +171,7 @@ exports.MerkleProof = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMerkleProof);
+        const message = { ...baseMerkleProof };
         message.proofs = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -187,7 +187,7 @@ exports.MerkleProof = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMerkleProof);
+        const message = { ...baseMerkleProof };
         message.proofs = [];
         if (object.proofs !== undefined && object.proofs !== null) {
             for (const e of object.proofs) {
@@ -207,7 +207,7 @@ exports.MerkleProof = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMerkleProof);
+        const message = { ...baseMerkleProof };
         message.proofs = [];
         if (object.proofs !== undefined && object.proofs !== null) {
             for (const e of object.proofs) {

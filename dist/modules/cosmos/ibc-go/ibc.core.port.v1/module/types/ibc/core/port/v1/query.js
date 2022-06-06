@@ -33,7 +33,7 @@ exports.QueryAppVersionRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryAppVersionRequest);
+        const message = { ...baseQueryAppVersionRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -60,7 +60,7 @@ exports.QueryAppVersionRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryAppVersionRequest);
+        const message = { ...baseQueryAppVersionRequest };
         if (object.port_id !== undefined && object.port_id !== null) {
             message.port_id = String(object.port_id);
         }
@@ -110,7 +110,7 @@ exports.QueryAppVersionRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryAppVersionRequest);
+        const message = { ...baseQueryAppVersionRequest };
         if (object.port_id !== undefined && object.port_id !== null) {
             message.port_id = object.port_id;
         }
@@ -159,7 +159,9 @@ exports.QueryAppVersionResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryAppVersionResponse);
+        const message = {
+            ...baseQueryAppVersionResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -177,7 +179,9 @@ exports.QueryAppVersionResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryAppVersionResponse);
+        const message = {
+            ...baseQueryAppVersionResponse,
+        };
         if (object.port_id !== undefined && object.port_id !== null) {
             message.port_id = String(object.port_id);
         }
@@ -199,7 +203,9 @@ exports.QueryAppVersionResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryAppVersionResponse);
+        const message = {
+            ...baseQueryAppVersionResponse,
+        };
         if (object.port_id !== undefined && object.port_id !== null) {
             message.port_id = object.port_id;
         }

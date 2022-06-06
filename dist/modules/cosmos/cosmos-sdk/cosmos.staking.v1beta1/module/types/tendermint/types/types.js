@@ -138,7 +138,7 @@ exports.PartSetHeader = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, basePartSetHeader);
+        const message = { ...basePartSetHeader };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -156,7 +156,7 @@ exports.PartSetHeader = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, basePartSetHeader);
+        const message = { ...basePartSetHeader };
         if (object.total !== undefined && object.total !== null) {
             message.total = Number(object.total);
         }
@@ -176,7 +176,7 @@ exports.PartSetHeader = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, basePartSetHeader);
+        const message = { ...basePartSetHeader };
         if (object.total !== undefined && object.total !== null) {
             message.total = object.total;
         }
@@ -209,7 +209,7 @@ exports.Part = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, basePart);
+        const message = { ...basePart };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -230,7 +230,7 @@ exports.Part = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, basePart);
+        const message = { ...basePart };
         if (object.index !== undefined && object.index !== null) {
             message.index = Number(object.index);
         }
@@ -258,7 +258,7 @@ exports.Part = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, basePart);
+        const message = { ...basePart };
         if (object.index !== undefined && object.index !== null) {
             message.index = object.index;
         }
@@ -294,7 +294,7 @@ exports.BlockID = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseBlockID);
+        const message = { ...baseBlockID };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -312,7 +312,7 @@ exports.BlockID = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseBlockID);
+        const message = { ...baseBlockID };
         if (object.hash !== undefined && object.hash !== null) {
             message.hash = bytesFromBase64(object.hash);
         }
@@ -336,7 +336,7 @@ exports.BlockID = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseBlockID);
+        const message = { ...baseBlockID };
         if (object.hash !== undefined && object.hash !== null) {
             message.hash = object.hash;
         }
@@ -403,7 +403,7 @@ exports.Header = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseHeader);
+        const message = { ...baseHeader };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -457,7 +457,7 @@ exports.Header = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseHeader);
+        const message = { ...baseHeader };
         if (object.version !== undefined && object.version !== null) {
             message.version = types_1.Consensus.fromJSON(object.version);
         }
@@ -572,7 +572,7 @@ exports.Header = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseHeader);
+        const message = { ...baseHeader };
         if (object.version !== undefined && object.version !== null) {
             message.version = types_1.Consensus.fromPartial(object.version);
         }
@@ -676,7 +676,7 @@ exports.Data = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseData);
+        const message = { ...baseData };
         message.txs = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -692,7 +692,7 @@ exports.Data = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseData);
+        const message = { ...baseData };
         message.txs = [];
         if (object.txs !== undefined && object.txs !== null) {
             for (const e of object.txs) {
@@ -712,7 +712,7 @@ exports.Data = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseData);
+        const message = { ...baseData };
         message.txs = [];
         if (object.txs !== undefined && object.txs !== null) {
             for (const e of object.txs) {
@@ -754,7 +754,7 @@ exports.Vote = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseVote);
+        const message = { ...baseVote };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -790,7 +790,7 @@ exports.Vote = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseVote);
+        const message = { ...baseVote };
         if (object.type !== undefined && object.type !== null) {
             message.type = signedMsgTypeFromJSON(object.type);
         }
@@ -863,7 +863,7 @@ exports.Vote = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseVote);
+        const message = { ...baseVote };
         if (object.type !== undefined && object.type !== null) {
             message.type = object.type;
         }
@@ -937,7 +937,7 @@ exports.Commit = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseCommit);
+        const message = { ...baseCommit };
         message.signatures = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -962,7 +962,7 @@ exports.Commit = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseCommit);
+        const message = { ...baseCommit };
         message.signatures = [];
         if (object.height !== undefined && object.height !== null) {
             message.height = Number(object.height);
@@ -1006,7 +1006,7 @@ exports.Commit = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseCommit);
+        const message = { ...baseCommit };
         message.signatures = [];
         if (object.height !== undefined && object.height !== null) {
             message.height = object.height;
@@ -1054,7 +1054,7 @@ exports.CommitSig = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseCommitSig);
+        const message = { ...baseCommitSig };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -1078,7 +1078,7 @@ exports.CommitSig = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseCommitSig);
+        const message = { ...baseCommitSig };
         if (object.block_id_flag !== undefined && object.block_id_flag !== null) {
             message.block_id_flag = blockIDFlagFromJSON(object.block_id_flag);
         }
@@ -1118,7 +1118,7 @@ exports.CommitSig = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseCommitSig);
+        const message = { ...baseCommitSig };
         if (object.block_id_flag !== undefined && object.block_id_flag !== null) {
             message.block_id_flag = object.block_id_flag;
         }
@@ -1176,7 +1176,7 @@ exports.Proposal = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseProposal);
+        const message = { ...baseProposal };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -1209,7 +1209,7 @@ exports.Proposal = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseProposal);
+        const message = { ...baseProposal };
         if (object.type !== undefined && object.type !== null) {
             message.type = signedMsgTypeFromJSON(object.type);
         }
@@ -1272,7 +1272,7 @@ exports.Proposal = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseProposal);
+        const message = { ...baseProposal };
         if (object.type !== undefined && object.type !== null) {
             message.type = object.type;
         }
@@ -1332,7 +1332,7 @@ exports.SignedHeader = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseSignedHeader);
+        const message = { ...baseSignedHeader };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -1350,7 +1350,7 @@ exports.SignedHeader = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseSignedHeader);
+        const message = { ...baseSignedHeader };
         if (object.header !== undefined && object.header !== null) {
             message.header = exports.Header.fromJSON(object.header);
         }
@@ -1374,7 +1374,7 @@ exports.SignedHeader = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseSignedHeader);
+        const message = { ...baseSignedHeader };
         if (object.header !== undefined && object.header !== null) {
             message.header = exports.Header.fromPartial(object.header);
         }
@@ -1404,7 +1404,7 @@ exports.LightBlock = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseLightBlock);
+        const message = { ...baseLightBlock };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -1422,7 +1422,7 @@ exports.LightBlock = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseLightBlock);
+        const message = { ...baseLightBlock };
         if (object.signed_header !== undefined && object.signed_header !== null) {
             message.signed_header = exports.SignedHeader.fromJSON(object.signed_header);
         }
@@ -1450,7 +1450,7 @@ exports.LightBlock = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseLightBlock);
+        const message = { ...baseLightBlock };
         if (object.signed_header !== undefined && object.signed_header !== null) {
             message.signed_header = exports.SignedHeader.fromPartial(object.signed_header);
         }
@@ -1486,7 +1486,7 @@ exports.BlockMeta = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseBlockMeta);
+        const message = { ...baseBlockMeta };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -1510,7 +1510,7 @@ exports.BlockMeta = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseBlockMeta);
+        const message = { ...baseBlockMeta };
         if (object.block_id !== undefined && object.block_id !== null) {
             message.block_id = exports.BlockID.fromJSON(object.block_id);
         }
@@ -1550,7 +1550,7 @@ exports.BlockMeta = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseBlockMeta);
+        const message = { ...baseBlockMeta };
         if (object.block_id !== undefined && object.block_id !== null) {
             message.block_id = exports.BlockID.fromPartial(object.block_id);
         }
@@ -1595,7 +1595,7 @@ exports.TxProof = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseTxProof);
+        const message = { ...baseTxProof };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -1616,7 +1616,7 @@ exports.TxProof = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseTxProof);
+        const message = { ...baseTxProof };
         if (object.root_hash !== undefined && object.root_hash !== null) {
             message.root_hash = bytesFromBase64(object.root_hash);
         }
@@ -1642,7 +1642,7 @@ exports.TxProof = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseTxProof);
+        const message = { ...baseTxProof };
         if (object.root_hash !== undefined && object.root_hash !== null) {
             message.root_hash = object.root_hash;
         }

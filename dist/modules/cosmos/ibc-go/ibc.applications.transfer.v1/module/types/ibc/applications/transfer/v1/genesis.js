@@ -22,7 +22,7 @@ exports.GenesisState = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         message.denom_traces = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -44,7 +44,7 @@ exports.GenesisState = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         message.denom_traces = [];
         if (object.port_id !== undefined && object.port_id !== null) {
             message.port_id = String(object.port_id);
@@ -79,7 +79,7 @@ exports.GenesisState = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         message.denom_traces = [];
         if (object.port_id !== undefined && object.port_id !== null) {
             message.port_id = object.port_id;

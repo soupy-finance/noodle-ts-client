@@ -48,7 +48,7 @@ exports.PageRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, basePageRequest);
+        const message = { ...basePageRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -72,7 +72,7 @@ exports.PageRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, basePageRequest);
+        const message = { ...basePageRequest };
         if (object.key !== undefined && object.key !== null) {
             message.key = bytesFromBase64(object.key);
         }
@@ -107,7 +107,7 @@ exports.PageRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, basePageRequest);
+        const message = { ...basePageRequest };
         if (object.key !== undefined && object.key !== null) {
             message.key = object.key;
         }
@@ -149,7 +149,7 @@ exports.PageResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, basePageResponse);
+        const message = { ...basePageResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -167,7 +167,7 @@ exports.PageResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, basePageResponse);
+        const message = { ...basePageResponse };
         if (object.next_key !== undefined && object.next_key !== null) {
             message.next_key = bytesFromBase64(object.next_key);
         }
@@ -187,7 +187,7 @@ exports.PageResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, basePageResponse);
+        const message = { ...basePageResponse };
         if (object.next_key !== undefined && object.next_key !== null) {
             message.next_key = object.next_key;
         }

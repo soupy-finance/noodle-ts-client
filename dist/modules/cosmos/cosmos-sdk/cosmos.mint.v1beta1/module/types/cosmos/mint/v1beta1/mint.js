@@ -42,7 +42,7 @@ exports.Minter = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMinter);
+        const message = { ...baseMinter };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -60,7 +60,7 @@ exports.Minter = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMinter);
+        const message = { ...baseMinter };
         if (object.inflation !== undefined && object.inflation !== null) {
             message.inflation = String(object.inflation);
         }
@@ -84,7 +84,7 @@ exports.Minter = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMinter);
+        const message = { ...baseMinter };
         if (object.inflation !== undefined && object.inflation !== null) {
             message.inflation = object.inflation;
         }
@@ -134,7 +134,7 @@ exports.Params = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseParams);
+        const message = { ...baseParams };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -164,7 +164,7 @@ exports.Params = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseParams);
+        const message = { ...baseParams };
         if (object.mint_denom !== undefined && object.mint_denom !== null) {
             message.mint_denom = String(object.mint_denom);
         }
@@ -221,7 +221,7 @@ exports.Params = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseParams);
+        const message = { ...baseParams };
         if (object.mint_denom !== undefined && object.mint_denom !== null) {
             message.mint_denom = object.mint_denom;
         }

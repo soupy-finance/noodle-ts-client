@@ -18,7 +18,7 @@ exports.Any = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseAny);
+        const message = { ...baseAny };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -36,7 +36,7 @@ exports.Any = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseAny);
+        const message = { ...baseAny };
         if (object.type_url !== undefined && object.type_url !== null) {
             message.type_url = String(object.type_url);
         }
@@ -56,7 +56,7 @@ exports.Any = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseAny);
+        const message = { ...baseAny };
         if (object.type_url !== undefined && object.type_url !== null) {
             message.type_url = object.type_url;
         }

@@ -62,7 +62,7 @@ exports.ValidatorSigningInfo = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseValidatorSigningInfo);
+        const message = { ...baseValidatorSigningInfo };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -92,7 +92,7 @@ exports.ValidatorSigningInfo = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseValidatorSigningInfo);
+        const message = { ...baseValidatorSigningInfo };
         if (object.address !== undefined && object.address !== null) {
             message.address = String(object.address);
         }
@@ -150,7 +150,7 @@ exports.ValidatorSigningInfo = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseValidatorSigningInfo);
+        const message = { ...baseValidatorSigningInfo };
         if (object.address !== undefined && object.address !== null) {
             message.address = object.address;
         }
@@ -214,7 +214,7 @@ exports.Params = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseParams);
+        const message = { ...baseParams };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -241,7 +241,7 @@ exports.Params = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseParams);
+        const message = { ...baseParams };
         if (object.signed_blocks_window !== undefined &&
             object.signed_blocks_window !== null) {
             message.signed_blocks_window = Number(object.signed_blocks_window);
@@ -293,7 +293,7 @@ exports.Params = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseParams);
+        const message = { ...baseParams };
         if (object.signed_blocks_window !== undefined &&
             object.signed_blocks_window !== null) {
             message.signed_blocks_window = object.signed_blocks_window;

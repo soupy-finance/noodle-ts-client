@@ -25,7 +25,7 @@ exports.MsgVerifyInvariant = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgVerifyInvariant);
+        const message = { ...baseMsgVerifyInvariant };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -46,7 +46,7 @@ exports.MsgVerifyInvariant = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgVerifyInvariant);
+        const message = { ...baseMsgVerifyInvariant };
         if (object.sender !== undefined && object.sender !== null) {
             message.sender = String(object.sender);
         }
@@ -79,7 +79,7 @@ exports.MsgVerifyInvariant = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgVerifyInvariant);
+        const message = { ...baseMsgVerifyInvariant };
         if (object.sender !== undefined && object.sender !== null) {
             message.sender = object.sender;
         }
@@ -111,7 +111,9 @@ exports.MsgVerifyInvariantResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgVerifyInvariantResponse);
+        const message = {
+            ...baseMsgVerifyInvariantResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -123,7 +125,9 @@ exports.MsgVerifyInvariantResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseMsgVerifyInvariantResponse);
+        const message = {
+            ...baseMsgVerifyInvariantResponse,
+        };
         return message;
     },
     toJSON(_) {
@@ -131,7 +135,9 @@ exports.MsgVerifyInvariantResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseMsgVerifyInvariantResponse);
+        const message = {
+            ...baseMsgVerifyInvariantResponse,
+        };
         return message;
     },
 };

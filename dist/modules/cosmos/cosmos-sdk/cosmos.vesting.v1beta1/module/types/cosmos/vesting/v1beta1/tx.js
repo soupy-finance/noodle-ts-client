@@ -57,7 +57,9 @@ exports.MsgCreateVestingAccount = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgCreateVestingAccount);
+        const message = {
+            ...baseMsgCreateVestingAccount,
+        };
         message.amount = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -85,7 +87,9 @@ exports.MsgCreateVestingAccount = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgCreateVestingAccount);
+        const message = {
+            ...baseMsgCreateVestingAccount,
+        };
         message.amount = [];
         if (object.from_address !== undefined && object.from_address !== null) {
             message.from_address = String(object.from_address);
@@ -134,7 +138,9 @@ exports.MsgCreateVestingAccount = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgCreateVestingAccount);
+        const message = {
+            ...baseMsgCreateVestingAccount,
+        };
         message.amount = [];
         if (object.from_address !== undefined && object.from_address !== null) {
             message.from_address = object.from_address;
@@ -176,7 +182,9 @@ exports.MsgCreateVestingAccountResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgCreateVestingAccountResponse);
+        const message = {
+            ...baseMsgCreateVestingAccountResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -188,7 +196,9 @@ exports.MsgCreateVestingAccountResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseMsgCreateVestingAccountResponse);
+        const message = {
+            ...baseMsgCreateVestingAccountResponse,
+        };
         return message;
     },
     toJSON(_) {
@@ -196,7 +206,9 @@ exports.MsgCreateVestingAccountResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseMsgCreateVestingAccountResponse);
+        const message = {
+            ...baseMsgCreateVestingAccountResponse,
+        };
         return message;
     },
 };

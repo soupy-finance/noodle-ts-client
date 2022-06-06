@@ -19,7 +19,7 @@ exports.Params = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseParams);
+        const message = { ...baseParams };
         message.send_enabled = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -38,7 +38,7 @@ exports.Params = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseParams);
+        const message = { ...baseParams };
         message.send_enabled = [];
         if (object.send_enabled !== undefined && object.send_enabled !== null) {
             for (const e of object.send_enabled) {
@@ -67,7 +67,7 @@ exports.Params = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseParams);
+        const message = { ...baseParams };
         message.send_enabled = [];
         if (object.send_enabled !== undefined && object.send_enabled !== null) {
             for (const e of object.send_enabled) {
@@ -98,7 +98,7 @@ exports.SendEnabled = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseSendEnabled);
+        const message = { ...baseSendEnabled };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -116,7 +116,7 @@ exports.SendEnabled = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseSendEnabled);
+        const message = { ...baseSendEnabled };
         if (object.denom !== undefined && object.denom !== null) {
             message.denom = String(object.denom);
         }
@@ -138,7 +138,7 @@ exports.SendEnabled = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseSendEnabled);
+        const message = { ...baseSendEnabled };
         if (object.denom !== undefined && object.denom !== null) {
             message.denom = object.denom;
         }
@@ -168,7 +168,7 @@ exports.Input = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseInput);
+        const message = { ...baseInput };
         message.coins = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -187,7 +187,7 @@ exports.Input = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseInput);
+        const message = { ...baseInput };
         message.coins = [];
         if (object.address !== undefined && object.address !== null) {
             message.address = String(object.address);
@@ -214,7 +214,7 @@ exports.Input = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseInput);
+        const message = { ...baseInput };
         message.coins = [];
         if (object.address !== undefined && object.address !== null) {
             message.address = object.address;
@@ -244,7 +244,7 @@ exports.Output = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseOutput);
+        const message = { ...baseOutput };
         message.coins = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -263,7 +263,7 @@ exports.Output = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseOutput);
+        const message = { ...baseOutput };
         message.coins = [];
         if (object.address !== undefined && object.address !== null) {
             message.address = String(object.address);
@@ -290,7 +290,7 @@ exports.Output = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseOutput);
+        const message = { ...baseOutput };
         message.coins = [];
         if (object.address !== undefined && object.address !== null) {
             message.address = object.address;
@@ -317,7 +317,7 @@ exports.Supply = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseSupply);
+        const message = { ...baseSupply };
         message.total = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -333,7 +333,7 @@ exports.Supply = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseSupply);
+        const message = { ...baseSupply };
         message.total = [];
         if (object.total !== undefined && object.total !== null) {
             for (const e of object.total) {
@@ -353,7 +353,7 @@ exports.Supply = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseSupply);
+        const message = { ...baseSupply };
         message.total = [];
         if (object.total !== undefined && object.total !== null) {
             for (const e of object.total) {
@@ -380,7 +380,7 @@ exports.DenomUnit = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseDenomUnit);
+        const message = { ...baseDenomUnit };
         message.aliases = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -402,7 +402,7 @@ exports.DenomUnit = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseDenomUnit);
+        const message = { ...baseDenomUnit };
         message.aliases = [];
         if (object.denom !== undefined && object.denom !== null) {
             message.denom = String(object.denom);
@@ -436,7 +436,7 @@ exports.DenomUnit = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseDenomUnit);
+        const message = { ...baseDenomUnit };
         message.aliases = [];
         if (object.denom !== undefined && object.denom !== null) {
             message.denom = object.denom;
@@ -490,7 +490,7 @@ exports.Metadata = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMetadata);
+        const message = { ...baseMetadata };
         message.denom_units = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -521,7 +521,7 @@ exports.Metadata = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMetadata);
+        const message = { ...baseMetadata };
         message.denom_units = [];
         if (object.description !== undefined && object.description !== null) {
             message.description = String(object.description);
@@ -577,7 +577,7 @@ exports.Metadata = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMetadata);
+        const message = { ...baseMetadata };
         message.denom_units = [];
         if (object.description !== undefined && object.description !== null) {
             message.description = object.description;

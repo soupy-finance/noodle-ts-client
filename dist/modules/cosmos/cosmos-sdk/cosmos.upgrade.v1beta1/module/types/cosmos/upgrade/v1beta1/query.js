@@ -37,7 +37,9 @@ exports.QueryCurrentPlanRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryCurrentPlanRequest);
+        const message = {
+            ...baseQueryCurrentPlanRequest,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -49,7 +51,9 @@ exports.QueryCurrentPlanRequest = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseQueryCurrentPlanRequest);
+        const message = {
+            ...baseQueryCurrentPlanRequest,
+        };
         return message;
     },
     toJSON(_) {
@@ -57,7 +61,9 @@ exports.QueryCurrentPlanRequest = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseQueryCurrentPlanRequest);
+        const message = {
+            ...baseQueryCurrentPlanRequest,
+        };
         return message;
     },
 };
@@ -72,7 +78,9 @@ exports.QueryCurrentPlanResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryCurrentPlanResponse);
+        const message = {
+            ...baseQueryCurrentPlanResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -87,7 +95,9 @@ exports.QueryCurrentPlanResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryCurrentPlanResponse);
+        const message = {
+            ...baseQueryCurrentPlanResponse,
+        };
         if (object.plan !== undefined && object.plan !== null) {
             message.plan = upgrade_1.Plan.fromJSON(object.plan);
         }
@@ -103,7 +113,9 @@ exports.QueryCurrentPlanResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryCurrentPlanResponse);
+        const message = {
+            ...baseQueryCurrentPlanResponse,
+        };
         if (object.plan !== undefined && object.plan !== null) {
             message.plan = upgrade_1.Plan.fromPartial(object.plan);
         }
@@ -124,7 +136,9 @@ exports.QueryAppliedPlanRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryAppliedPlanRequest);
+        const message = {
+            ...baseQueryAppliedPlanRequest,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -139,7 +153,9 @@ exports.QueryAppliedPlanRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryAppliedPlanRequest);
+        const message = {
+            ...baseQueryAppliedPlanRequest,
+        };
         if (object.name !== undefined && object.name !== null) {
             message.name = String(object.name);
         }
@@ -154,7 +170,9 @@ exports.QueryAppliedPlanRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryAppliedPlanRequest);
+        const message = {
+            ...baseQueryAppliedPlanRequest,
+        };
         if (object.name !== undefined && object.name !== null) {
             message.name = object.name;
         }
@@ -175,7 +193,9 @@ exports.QueryAppliedPlanResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryAppliedPlanResponse);
+        const message = {
+            ...baseQueryAppliedPlanResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -190,7 +210,9 @@ exports.QueryAppliedPlanResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryAppliedPlanResponse);
+        const message = {
+            ...baseQueryAppliedPlanResponse,
+        };
         if (object.height !== undefined && object.height !== null) {
             message.height = Number(object.height);
         }
@@ -205,7 +227,9 @@ exports.QueryAppliedPlanResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryAppliedPlanResponse);
+        const message = {
+            ...baseQueryAppliedPlanResponse,
+        };
         if (object.height !== undefined && object.height !== null) {
             message.height = object.height;
         }
@@ -226,7 +250,9 @@ exports.QueryUpgradedConsensusStateRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryUpgradedConsensusStateRequest);
+        const message = {
+            ...baseQueryUpgradedConsensusStateRequest,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -241,7 +267,9 @@ exports.QueryUpgradedConsensusStateRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryUpgradedConsensusStateRequest);
+        const message = {
+            ...baseQueryUpgradedConsensusStateRequest,
+        };
         if (object.last_height !== undefined && object.last_height !== null) {
             message.last_height = Number(object.last_height);
         }
@@ -257,7 +285,9 @@ exports.QueryUpgradedConsensusStateRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryUpgradedConsensusStateRequest);
+        const message = {
+            ...baseQueryUpgradedConsensusStateRequest,
+        };
         if (object.last_height !== undefined && object.last_height !== null) {
             message.last_height = object.last_height;
         }
@@ -278,7 +308,9 @@ exports.QueryUpgradedConsensusStateResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryUpgradedConsensusStateResponse);
+        const message = {
+            ...baseQueryUpgradedConsensusStateResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -293,7 +325,9 @@ exports.QueryUpgradedConsensusStateResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryUpgradedConsensusStateResponse);
+        const message = {
+            ...baseQueryUpgradedConsensusStateResponse,
+        };
         if (object.upgraded_consensus_state !== undefined &&
             object.upgraded_consensus_state !== null) {
             message.upgraded_consensus_state = bytesFromBase64(object.upgraded_consensus_state);
@@ -309,7 +343,9 @@ exports.QueryUpgradedConsensusStateResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryUpgradedConsensusStateResponse);
+        const message = {
+            ...baseQueryUpgradedConsensusStateResponse,
+        };
         if (object.upgraded_consensus_state !== undefined &&
             object.upgraded_consensus_state !== null) {
             message.upgraded_consensus_state = object.upgraded_consensus_state;
@@ -331,7 +367,9 @@ exports.QueryModuleVersionsRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryModuleVersionsRequest);
+        const message = {
+            ...baseQueryModuleVersionsRequest,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -346,7 +384,9 @@ exports.QueryModuleVersionsRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryModuleVersionsRequest);
+        const message = {
+            ...baseQueryModuleVersionsRequest,
+        };
         if (object.module_name !== undefined && object.module_name !== null) {
             message.module_name = String(object.module_name);
         }
@@ -362,7 +402,9 @@ exports.QueryModuleVersionsRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryModuleVersionsRequest);
+        const message = {
+            ...baseQueryModuleVersionsRequest,
+        };
         if (object.module_name !== undefined && object.module_name !== null) {
             message.module_name = object.module_name;
         }
@@ -383,7 +425,9 @@ exports.QueryModuleVersionsResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryModuleVersionsResponse);
+        const message = {
+            ...baseQueryModuleVersionsResponse,
+        };
         message.module_versions = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -399,7 +443,9 @@ exports.QueryModuleVersionsResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryModuleVersionsResponse);
+        const message = {
+            ...baseQueryModuleVersionsResponse,
+        };
         message.module_versions = [];
         if (object.module_versions !== undefined &&
             object.module_versions !== null) {
@@ -420,7 +466,9 @@ exports.QueryModuleVersionsResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryModuleVersionsResponse);
+        const message = {
+            ...baseQueryModuleVersionsResponse,
+        };
         message.module_versions = [];
         if (object.module_versions !== undefined &&
             object.module_versions !== null) {

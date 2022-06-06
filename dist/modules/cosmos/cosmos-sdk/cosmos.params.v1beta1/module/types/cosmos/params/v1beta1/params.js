@@ -21,7 +21,9 @@ exports.ParameterChangeProposal = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseParameterChangeProposal);
+        const message = {
+            ...baseParameterChangeProposal,
+        };
         message.changes = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -43,7 +45,9 @@ exports.ParameterChangeProposal = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseParameterChangeProposal);
+        const message = {
+            ...baseParameterChangeProposal,
+        };
         message.changes = [];
         if (object.title !== undefined && object.title !== null) {
             message.title = String(object.title);
@@ -78,7 +82,9 @@ exports.ParameterChangeProposal = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseParameterChangeProposal);
+        const message = {
+            ...baseParameterChangeProposal,
+        };
         message.changes = [];
         if (object.title !== undefined && object.title !== null) {
             message.title = object.title;
@@ -117,7 +123,7 @@ exports.ParamChange = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseParamChange);
+        const message = { ...baseParamChange };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -138,7 +144,7 @@ exports.ParamChange = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseParamChange);
+        const message = { ...baseParamChange };
         if (object.subspace !== undefined && object.subspace !== null) {
             message.subspace = String(object.subspace);
         }
@@ -167,7 +173,7 @@ exports.ParamChange = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseParamChange);
+        const message = { ...baseParamChange };
         if (object.subspace !== undefined && object.subspace !== null) {
             message.subspace = object.subspace;
         }

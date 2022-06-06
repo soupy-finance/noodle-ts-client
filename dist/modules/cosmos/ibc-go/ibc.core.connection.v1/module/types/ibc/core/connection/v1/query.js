@@ -43,7 +43,7 @@ exports.QueryConnectionRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryConnectionRequest);
+        const message = { ...baseQueryConnectionRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -58,7 +58,7 @@ exports.QueryConnectionRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryConnectionRequest);
+        const message = { ...baseQueryConnectionRequest };
         if (object.connection_id !== undefined && object.connection_id !== null) {
             message.connection_id = String(object.connection_id);
         }
@@ -74,7 +74,7 @@ exports.QueryConnectionRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryConnectionRequest);
+        const message = { ...baseQueryConnectionRequest };
         if (object.connection_id !== undefined && object.connection_id !== null) {
             message.connection_id = object.connection_id;
         }
@@ -101,7 +101,9 @@ exports.QueryConnectionResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryConnectionResponse);
+        const message = {
+            ...baseQueryConnectionResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -122,7 +124,9 @@ exports.QueryConnectionResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryConnectionResponse);
+        const message = {
+            ...baseQueryConnectionResponse,
+        };
         if (object.connection !== undefined && object.connection !== null) {
             message.connection = connection_1.ConnectionEnd.fromJSON(object.connection);
         }
@@ -155,7 +159,9 @@ exports.QueryConnectionResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryConnectionResponse);
+        const message = {
+            ...baseQueryConnectionResponse,
+        };
         if (object.connection !== undefined && object.connection !== null) {
             message.connection = connection_1.ConnectionEnd.fromPartial(object.connection);
         }
@@ -188,7 +194,9 @@ exports.QueryConnectionsRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryConnectionsRequest);
+        const message = {
+            ...baseQueryConnectionsRequest,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -203,7 +211,9 @@ exports.QueryConnectionsRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryConnectionsRequest);
+        const message = {
+            ...baseQueryConnectionsRequest,
+        };
         if (object.pagination !== undefined && object.pagination !== null) {
             message.pagination = pagination_1.PageRequest.fromJSON(object.pagination);
         }
@@ -221,7 +231,9 @@ exports.QueryConnectionsRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryConnectionsRequest);
+        const message = {
+            ...baseQueryConnectionsRequest,
+        };
         if (object.pagination !== undefined && object.pagination !== null) {
             message.pagination = pagination_1.PageRequest.fromPartial(object.pagination);
         }
@@ -248,7 +260,9 @@ exports.QueryConnectionsResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryConnectionsResponse);
+        const message = {
+            ...baseQueryConnectionsResponse,
+        };
         message.connections = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -270,7 +284,9 @@ exports.QueryConnectionsResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryConnectionsResponse);
+        const message = {
+            ...baseQueryConnectionsResponse,
+        };
         message.connections = [];
         if (object.connections !== undefined && object.connections !== null) {
             for (const e of object.connections) {
@@ -308,7 +324,9 @@ exports.QueryConnectionsResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryConnectionsResponse);
+        const message = {
+            ...baseQueryConnectionsResponse,
+        };
         message.connections = [];
         if (object.connections !== undefined && object.connections !== null) {
             for (const e of object.connections) {
@@ -341,7 +359,9 @@ exports.QueryClientConnectionsRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryClientConnectionsRequest);
+        const message = {
+            ...baseQueryClientConnectionsRequest,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -356,7 +376,9 @@ exports.QueryClientConnectionsRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryClientConnectionsRequest);
+        const message = {
+            ...baseQueryClientConnectionsRequest,
+        };
         if (object.client_id !== undefined && object.client_id !== null) {
             message.client_id = String(object.client_id);
         }
@@ -371,7 +393,9 @@ exports.QueryClientConnectionsRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryClientConnectionsRequest);
+        const message = {
+            ...baseQueryClientConnectionsRequest,
+        };
         if (object.client_id !== undefined && object.client_id !== null) {
             message.client_id = object.client_id;
         }
@@ -398,7 +422,9 @@ exports.QueryClientConnectionsResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryClientConnectionsResponse);
+        const message = {
+            ...baseQueryClientConnectionsResponse,
+        };
         message.connection_paths = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -420,7 +446,9 @@ exports.QueryClientConnectionsResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryClientConnectionsResponse);
+        const message = {
+            ...baseQueryClientConnectionsResponse,
+        };
         message.connection_paths = [];
         if (object.connection_paths !== undefined &&
             object.connection_paths !== null) {
@@ -456,7 +484,9 @@ exports.QueryClientConnectionsResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryClientConnectionsResponse);
+        const message = {
+            ...baseQueryClientConnectionsResponse,
+        };
         message.connection_paths = [];
         if (object.connection_paths !== undefined &&
             object.connection_paths !== null) {
@@ -490,7 +520,9 @@ exports.QueryConnectionClientStateRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryConnectionClientStateRequest);
+        const message = {
+            ...baseQueryConnectionClientStateRequest,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -505,7 +537,9 @@ exports.QueryConnectionClientStateRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryConnectionClientStateRequest);
+        const message = {
+            ...baseQueryConnectionClientStateRequest,
+        };
         if (object.connection_id !== undefined && object.connection_id !== null) {
             message.connection_id = String(object.connection_id);
         }
@@ -521,7 +555,9 @@ exports.QueryConnectionClientStateRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryConnectionClientStateRequest);
+        const message = {
+            ...baseQueryConnectionClientStateRequest,
+        };
         if (object.connection_id !== undefined && object.connection_id !== null) {
             message.connection_id = object.connection_id;
         }
@@ -548,7 +584,9 @@ exports.QueryConnectionClientStateResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryConnectionClientStateResponse);
+        const message = {
+            ...baseQueryConnectionClientStateResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -569,7 +607,9 @@ exports.QueryConnectionClientStateResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryConnectionClientStateResponse);
+        const message = {
+            ...baseQueryConnectionClientStateResponse,
+        };
         if (object.identified_client_state !== undefined &&
             object.identified_client_state !== null) {
             message.identified_client_state = client_1.IdentifiedClientState.fromJSON(object.identified_client_state);
@@ -603,7 +643,9 @@ exports.QueryConnectionClientStateResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryConnectionClientStateResponse);
+        const message = {
+            ...baseQueryConnectionClientStateResponse,
+        };
         if (object.identified_client_state !== undefined &&
             object.identified_client_state !== null) {
             message.identified_client_state = client_1.IdentifiedClientState.fromPartial(object.identified_client_state);
@@ -647,7 +689,9 @@ exports.QueryConnectionConsensusStateRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryConnectionConsensusStateRequest);
+        const message = {
+            ...baseQueryConnectionConsensusStateRequest,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -668,7 +712,9 @@ exports.QueryConnectionConsensusStateRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryConnectionConsensusStateRequest);
+        const message = {
+            ...baseQueryConnectionConsensusStateRequest,
+        };
         if (object.connection_id !== undefined && object.connection_id !== null) {
             message.connection_id = String(object.connection_id);
         }
@@ -702,7 +748,9 @@ exports.QueryConnectionConsensusStateRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryConnectionConsensusStateRequest);
+        const message = {
+            ...baseQueryConnectionConsensusStateRequest,
+        };
         if (object.connection_id !== undefined && object.connection_id !== null) {
             message.connection_id = object.connection_id;
         }
@@ -746,7 +794,9 @@ exports.QueryConnectionConsensusStateResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryConnectionConsensusStateResponse);
+        const message = {
+            ...baseQueryConnectionConsensusStateResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -770,7 +820,9 @@ exports.QueryConnectionConsensusStateResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryConnectionConsensusStateResponse);
+        const message = {
+            ...baseQueryConnectionConsensusStateResponse,
+        };
         if (object.consensus_state !== undefined &&
             object.consensus_state !== null) {
             message.consensus_state = any_1.Any.fromJSON(object.consensus_state);
@@ -811,7 +863,9 @@ exports.QueryConnectionConsensusStateResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryConnectionConsensusStateResponse);
+        const message = {
+            ...baseQueryConnectionConsensusStateResponse,
+        };
         if (object.consensus_state !== undefined &&
             object.consensus_state !== null) {
             message.consensus_state = any_1.Any.fromPartial(object.consensus_state);

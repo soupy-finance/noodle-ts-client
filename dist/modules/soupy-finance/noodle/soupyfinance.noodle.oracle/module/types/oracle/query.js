@@ -13,7 +13,7 @@ exports.QueryParamsRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryParamsRequest);
+        const message = { ...baseQueryParamsRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -25,7 +25,7 @@ exports.QueryParamsRequest = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseQueryParamsRequest);
+        const message = { ...baseQueryParamsRequest };
         return message;
     },
     toJSON(_) {
@@ -33,7 +33,7 @@ exports.QueryParamsRequest = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseQueryParamsRequest);
+        const message = { ...baseQueryParamsRequest };
         return message;
     },
 };
@@ -48,7 +48,7 @@ exports.QueryParamsResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryParamsResponse);
+        const message = { ...baseQueryParamsResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -63,7 +63,7 @@ exports.QueryParamsResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryParamsResponse);
+        const message = { ...baseQueryParamsResponse };
         if (object.params !== undefined && object.params !== null) {
             message.params = params_1.Params.fromJSON(object.params);
         }
@@ -79,7 +79,7 @@ exports.QueryParamsResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryParamsResponse);
+        const message = { ...baseQueryParamsResponse };
         if (object.params !== undefined && object.params !== null) {
             message.params = params_1.Params.fromPartial(object.params);
         }
@@ -100,7 +100,7 @@ exports.QueryPricesRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryPricesRequest);
+        const message = { ...baseQueryPricesRequest };
         message.assets = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -116,7 +116,7 @@ exports.QueryPricesRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryPricesRequest);
+        const message = { ...baseQueryPricesRequest };
         message.assets = [];
         if (object.assets !== undefined && object.assets !== null) {
             for (const e of object.assets) {
@@ -136,7 +136,7 @@ exports.QueryPricesRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryPricesRequest);
+        const message = { ...baseQueryPricesRequest };
         message.assets = [];
         if (object.assets !== undefined && object.assets !== null) {
             for (const e of object.assets) {
@@ -157,7 +157,7 @@ exports.QueryPricesResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryPricesResponse);
+        const message = { ...baseQueryPricesResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -172,7 +172,7 @@ exports.QueryPricesResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryPricesResponse);
+        const message = { ...baseQueryPricesResponse };
         if (object.data !== undefined && object.data !== null) {
             message.data = String(object.data);
         }
@@ -187,7 +187,7 @@ exports.QueryPricesResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryPricesResponse);
+        const message = { ...baseQueryPricesResponse };
         if (object.data !== undefined && object.data !== null) {
             message.data = object.data;
         }

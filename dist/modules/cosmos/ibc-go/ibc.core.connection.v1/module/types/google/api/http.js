@@ -18,7 +18,7 @@ exports.Http = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseHttp);
+        const message = { ...baseHttp };
         message.rules = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -37,7 +37,7 @@ exports.Http = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseHttp);
+        const message = { ...baseHttp };
         message.rules = [];
         if (object.rules !== undefined && object.rules !== null) {
             for (const e of object.rules) {
@@ -67,7 +67,7 @@ exports.Http = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseHttp);
+        const message = { ...baseHttp };
         message.rules = [];
         if (object.rules !== undefined && object.rules !== null) {
             for (const e of object.rules) {
@@ -123,7 +123,7 @@ exports.HttpRule = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseHttpRule);
+        const message = { ...baseHttpRule };
         message.additional_bindings = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -166,7 +166,7 @@ exports.HttpRule = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseHttpRule);
+        const message = { ...baseHttpRule };
         message.additional_bindings = [];
         if (object.selector !== undefined && object.selector !== null) {
             message.selector = String(object.selector);
@@ -254,7 +254,7 @@ exports.HttpRule = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseHttpRule);
+        const message = { ...baseHttpRule };
         message.additional_bindings = [];
         if (object.selector !== undefined && object.selector !== null) {
             message.selector = object.selector;
@@ -333,7 +333,7 @@ exports.CustomHttpPattern = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseCustomHttpPattern);
+        const message = { ...baseCustomHttpPattern };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -351,7 +351,7 @@ exports.CustomHttpPattern = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseCustomHttpPattern);
+        const message = { ...baseCustomHttpPattern };
         if (object.kind !== undefined && object.kind !== null) {
             message.kind = String(object.kind);
         }
@@ -373,7 +373,7 @@ exports.CustomHttpPattern = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseCustomHttpPattern);
+        const message = { ...baseCustomHttpPattern };
         if (object.kind !== undefined && object.kind !== null) {
             message.kind = object.kind;
         }

@@ -18,7 +18,7 @@ exports.QueryAccountsRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryAccountsRequest);
+        const message = { ...baseQueryAccountsRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -33,7 +33,7 @@ exports.QueryAccountsRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryAccountsRequest);
+        const message = { ...baseQueryAccountsRequest };
         if (object.pagination !== undefined && object.pagination !== null) {
             message.pagination = pagination_1.PageRequest.fromJSON(object.pagination);
         }
@@ -51,7 +51,7 @@ exports.QueryAccountsRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryAccountsRequest);
+        const message = { ...baseQueryAccountsRequest };
         if (object.pagination !== undefined && object.pagination !== null) {
             message.pagination = pagination_1.PageRequest.fromPartial(object.pagination);
         }
@@ -75,7 +75,7 @@ exports.QueryAccountsResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryAccountsResponse);
+        const message = { ...baseQueryAccountsResponse };
         message.accounts = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -94,7 +94,7 @@ exports.QueryAccountsResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryAccountsResponse);
+        const message = { ...baseQueryAccountsResponse };
         message.accounts = [];
         if (object.accounts !== undefined && object.accounts !== null) {
             for (const e of object.accounts) {
@@ -124,7 +124,7 @@ exports.QueryAccountsResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryAccountsResponse);
+        const message = { ...baseQueryAccountsResponse };
         message.accounts = [];
         if (object.accounts !== undefined && object.accounts !== null) {
             for (const e of object.accounts) {
@@ -151,7 +151,7 @@ exports.QueryAccountRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryAccountRequest);
+        const message = { ...baseQueryAccountRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -166,7 +166,7 @@ exports.QueryAccountRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryAccountRequest);
+        const message = { ...baseQueryAccountRequest };
         if (object.address !== undefined && object.address !== null) {
             message.address = String(object.address);
         }
@@ -181,7 +181,7 @@ exports.QueryAccountRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryAccountRequest);
+        const message = { ...baseQueryAccountRequest };
         if (object.address !== undefined && object.address !== null) {
             message.address = object.address;
         }
@@ -202,7 +202,7 @@ exports.QueryAccountResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryAccountResponse);
+        const message = { ...baseQueryAccountResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -217,7 +217,7 @@ exports.QueryAccountResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryAccountResponse);
+        const message = { ...baseQueryAccountResponse };
         if (object.account !== undefined && object.account !== null) {
             message.account = any_1.Any.fromJSON(object.account);
         }
@@ -233,7 +233,7 @@ exports.QueryAccountResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryAccountResponse);
+        const message = { ...baseQueryAccountResponse };
         if (object.account !== undefined && object.account !== null) {
             message.account = any_1.Any.fromPartial(object.account);
         }
@@ -251,7 +251,7 @@ exports.QueryParamsRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryParamsRequest);
+        const message = { ...baseQueryParamsRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -263,7 +263,7 @@ exports.QueryParamsRequest = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseQueryParamsRequest);
+        const message = { ...baseQueryParamsRequest };
         return message;
     },
     toJSON(_) {
@@ -271,7 +271,7 @@ exports.QueryParamsRequest = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseQueryParamsRequest);
+        const message = { ...baseQueryParamsRequest };
         return message;
     },
 };
@@ -286,7 +286,7 @@ exports.QueryParamsResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryParamsResponse);
+        const message = { ...baseQueryParamsResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -301,7 +301,7 @@ exports.QueryParamsResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryParamsResponse);
+        const message = { ...baseQueryParamsResponse };
         if (object.params !== undefined && object.params !== null) {
             message.params = auth_1.Params.fromJSON(object.params);
         }
@@ -317,7 +317,7 @@ exports.QueryParamsResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryParamsResponse);
+        const message = { ...baseQueryParamsResponse };
         if (object.params !== undefined && object.params !== null) {
             message.params = auth_1.Params.fromPartial(object.params);
         }

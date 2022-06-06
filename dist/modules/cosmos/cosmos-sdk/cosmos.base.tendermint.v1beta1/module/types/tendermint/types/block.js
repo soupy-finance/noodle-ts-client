@@ -26,7 +26,7 @@ exports.Block = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseBlock);
+        const message = { ...baseBlock };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -50,7 +50,7 @@ exports.Block = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseBlock);
+        const message = { ...baseBlock };
         if (object.header !== undefined && object.header !== null) {
             message.header = types_1.Header.fromJSON(object.header);
         }
@@ -94,7 +94,7 @@ exports.Block = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseBlock);
+        const message = { ...baseBlock };
         if (object.header !== undefined && object.header !== null) {
             message.header = types_1.Header.fromPartial(object.header);
         }

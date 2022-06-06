@@ -58,7 +58,7 @@ exports.GenesisState = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         message.clients = [];
         message.clients_consensus = [];
         message.clients_metadata = [];
@@ -91,7 +91,7 @@ exports.GenesisState = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         message.clients = [];
         message.clients_consensus = [];
         message.clients_metadata = [];
@@ -163,7 +163,7 @@ exports.GenesisState = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         message.clients = [];
         message.clients_consensus = [];
         message.clients_metadata = [];
@@ -221,7 +221,7 @@ exports.GenesisMetadata = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGenesisMetadata);
+        const message = { ...baseGenesisMetadata };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -239,7 +239,7 @@ exports.GenesisMetadata = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseGenesisMetadata);
+        const message = { ...baseGenesisMetadata };
         if (object.key !== undefined && object.key !== null) {
             message.key = bytesFromBase64(object.key);
         }
@@ -257,7 +257,7 @@ exports.GenesisMetadata = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseGenesisMetadata);
+        const message = { ...baseGenesisMetadata };
         if (object.key !== undefined && object.key !== null) {
             message.key = object.key;
         }
@@ -287,7 +287,9 @@ exports.IdentifiedGenesisMetadata = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseIdentifiedGenesisMetadata);
+        const message = {
+            ...baseIdentifiedGenesisMetadata,
+        };
         message.client_metadata = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -306,7 +308,9 @@ exports.IdentifiedGenesisMetadata = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseIdentifiedGenesisMetadata);
+        const message = {
+            ...baseIdentifiedGenesisMetadata,
+        };
         message.client_metadata = [];
         if (object.client_id !== undefined && object.client_id !== null) {
             message.client_id = String(object.client_id);
@@ -334,7 +338,9 @@ exports.IdentifiedGenesisMetadata = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseIdentifiedGenesisMetadata);
+        const message = {
+            ...baseIdentifiedGenesisMetadata,
+        };
         message.client_metadata = [];
         if (object.client_id !== undefined && object.client_id !== null) {
             message.client_id = object.client_id;

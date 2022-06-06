@@ -47,7 +47,9 @@ exports.GetValidatorSetByHeightRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGetValidatorSetByHeightRequest);
+        const message = {
+            ...baseGetValidatorSetByHeightRequest,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -65,7 +67,9 @@ exports.GetValidatorSetByHeightRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseGetValidatorSetByHeightRequest);
+        const message = {
+            ...baseGetValidatorSetByHeightRequest,
+        };
         if (object.height !== undefined && object.height !== null) {
             message.height = Number(object.height);
         }
@@ -90,7 +94,9 @@ exports.GetValidatorSetByHeightRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseGetValidatorSetByHeightRequest);
+        const message = {
+            ...baseGetValidatorSetByHeightRequest,
+        };
         if (object.height !== undefined && object.height !== null) {
             message.height = object.height;
         }
@@ -123,7 +129,9 @@ exports.GetValidatorSetByHeightResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGetValidatorSetByHeightResponse);
+        const message = {
+            ...baseGetValidatorSetByHeightResponse,
+        };
         message.validators = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -145,7 +153,9 @@ exports.GetValidatorSetByHeightResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseGetValidatorSetByHeightResponse);
+        const message = {
+            ...baseGetValidatorSetByHeightResponse,
+        };
         message.validators = [];
         if (object.block_height !== undefined && object.block_height !== null) {
             message.block_height = Number(object.block_height);
@@ -183,7 +193,9 @@ exports.GetValidatorSetByHeightResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseGetValidatorSetByHeightResponse);
+        const message = {
+            ...baseGetValidatorSetByHeightResponse,
+        };
         message.validators = [];
         if (object.block_height !== undefined && object.block_height !== null) {
             message.block_height = object.block_height;
@@ -216,7 +228,9 @@ exports.GetLatestValidatorSetRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGetLatestValidatorSetRequest);
+        const message = {
+            ...baseGetLatestValidatorSetRequest,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -231,7 +245,9 @@ exports.GetLatestValidatorSetRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseGetLatestValidatorSetRequest);
+        const message = {
+            ...baseGetLatestValidatorSetRequest,
+        };
         if (object.pagination !== undefined && object.pagination !== null) {
             message.pagination = pagination_1.PageRequest.fromJSON(object.pagination);
         }
@@ -249,7 +265,9 @@ exports.GetLatestValidatorSetRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseGetLatestValidatorSetRequest);
+        const message = {
+            ...baseGetLatestValidatorSetRequest,
+        };
         if (object.pagination !== undefined && object.pagination !== null) {
             message.pagination = pagination_1.PageRequest.fromPartial(object.pagination);
         }
@@ -276,7 +294,9 @@ exports.GetLatestValidatorSetResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGetLatestValidatorSetResponse);
+        const message = {
+            ...baseGetLatestValidatorSetResponse,
+        };
         message.validators = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -298,7 +318,9 @@ exports.GetLatestValidatorSetResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseGetLatestValidatorSetResponse);
+        const message = {
+            ...baseGetLatestValidatorSetResponse,
+        };
         message.validators = [];
         if (object.block_height !== undefined && object.block_height !== null) {
             message.block_height = Number(object.block_height);
@@ -336,7 +358,9 @@ exports.GetLatestValidatorSetResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseGetLatestValidatorSetResponse);
+        const message = {
+            ...baseGetLatestValidatorSetResponse,
+        };
         message.validators = [];
         if (object.block_height !== undefined && object.block_height !== null) {
             message.block_height = object.block_height;
@@ -382,7 +406,7 @@ exports.Validator = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseValidator);
+        const message = { ...baseValidator };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -406,7 +430,7 @@ exports.Validator = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseValidator);
+        const message = { ...baseValidator };
         if (object.address !== undefined && object.address !== null) {
             message.address = String(object.address);
         }
@@ -446,7 +470,7 @@ exports.Validator = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseValidator);
+        const message = { ...baseValidator };
         if (object.address !== undefined && object.address !== null) {
             message.address = object.address;
         }
@@ -486,7 +510,9 @@ exports.GetBlockByHeightRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGetBlockByHeightRequest);
+        const message = {
+            ...baseGetBlockByHeightRequest,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -501,7 +527,9 @@ exports.GetBlockByHeightRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseGetBlockByHeightRequest);
+        const message = {
+            ...baseGetBlockByHeightRequest,
+        };
         if (object.height !== undefined && object.height !== null) {
             message.height = Number(object.height);
         }
@@ -516,7 +544,9 @@ exports.GetBlockByHeightRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseGetBlockByHeightRequest);
+        const message = {
+            ...baseGetBlockByHeightRequest,
+        };
         if (object.height !== undefined && object.height !== null) {
             message.height = object.height;
         }
@@ -540,7 +570,9 @@ exports.GetBlockByHeightResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGetBlockByHeightResponse);
+        const message = {
+            ...baseGetBlockByHeightResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -558,7 +590,9 @@ exports.GetBlockByHeightResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseGetBlockByHeightResponse);
+        const message = {
+            ...baseGetBlockByHeightResponse,
+        };
         if (object.block_id !== undefined && object.block_id !== null) {
             message.block_id = types_1.BlockID.fromJSON(object.block_id);
         }
@@ -584,7 +618,9 @@ exports.GetBlockByHeightResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseGetBlockByHeightResponse);
+        const message = {
+            ...baseGetBlockByHeightResponse,
+        };
         if (object.block_id !== undefined && object.block_id !== null) {
             message.block_id = types_1.BlockID.fromPartial(object.block_id);
         }
@@ -608,7 +644,7 @@ exports.GetLatestBlockRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGetLatestBlockRequest);
+        const message = { ...baseGetLatestBlockRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -620,7 +656,7 @@ exports.GetLatestBlockRequest = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseGetLatestBlockRequest);
+        const message = { ...baseGetLatestBlockRequest };
         return message;
     },
     toJSON(_) {
@@ -628,7 +664,7 @@ exports.GetLatestBlockRequest = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseGetLatestBlockRequest);
+        const message = { ...baseGetLatestBlockRequest };
         return message;
     },
 };
@@ -646,7 +682,7 @@ exports.GetLatestBlockResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGetLatestBlockResponse);
+        const message = { ...baseGetLatestBlockResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -664,7 +700,7 @@ exports.GetLatestBlockResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseGetLatestBlockResponse);
+        const message = { ...baseGetLatestBlockResponse };
         if (object.block_id !== undefined && object.block_id !== null) {
             message.block_id = types_1.BlockID.fromJSON(object.block_id);
         }
@@ -690,7 +726,7 @@ exports.GetLatestBlockResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseGetLatestBlockResponse);
+        const message = { ...baseGetLatestBlockResponse };
         if (object.block_id !== undefined && object.block_id !== null) {
             message.block_id = types_1.BlockID.fromPartial(object.block_id);
         }
@@ -714,7 +750,7 @@ exports.GetSyncingRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGetSyncingRequest);
+        const message = { ...baseGetSyncingRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -726,7 +762,7 @@ exports.GetSyncingRequest = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseGetSyncingRequest);
+        const message = { ...baseGetSyncingRequest };
         return message;
     },
     toJSON(_) {
@@ -734,7 +770,7 @@ exports.GetSyncingRequest = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseGetSyncingRequest);
+        const message = { ...baseGetSyncingRequest };
         return message;
     },
 };
@@ -749,7 +785,7 @@ exports.GetSyncingResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGetSyncingResponse);
+        const message = { ...baseGetSyncingResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -764,7 +800,7 @@ exports.GetSyncingResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseGetSyncingResponse);
+        const message = { ...baseGetSyncingResponse };
         if (object.syncing !== undefined && object.syncing !== null) {
             message.syncing = Boolean(object.syncing);
         }
@@ -779,7 +815,7 @@ exports.GetSyncingResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseGetSyncingResponse);
+        const message = { ...baseGetSyncingResponse };
         if (object.syncing !== undefined && object.syncing !== null) {
             message.syncing = object.syncing;
         }
@@ -797,7 +833,7 @@ exports.GetNodeInfoRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGetNodeInfoRequest);
+        const message = { ...baseGetNodeInfoRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -809,7 +845,7 @@ exports.GetNodeInfoRequest = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseGetNodeInfoRequest);
+        const message = { ...baseGetNodeInfoRequest };
         return message;
     },
     toJSON(_) {
@@ -817,7 +853,7 @@ exports.GetNodeInfoRequest = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseGetNodeInfoRequest);
+        const message = { ...baseGetNodeInfoRequest };
         return message;
     },
 };
@@ -835,7 +871,7 @@ exports.GetNodeInfoResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGetNodeInfoResponse);
+        const message = { ...baseGetNodeInfoResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -853,7 +889,7 @@ exports.GetNodeInfoResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseGetNodeInfoResponse);
+        const message = { ...baseGetNodeInfoResponse };
         if (object.default_node_info !== undefined &&
             object.default_node_info !== null) {
             message.default_node_info = types_2.DefaultNodeInfo.fromJSON(object.default_node_info);
@@ -883,7 +919,7 @@ exports.GetNodeInfoResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseGetNodeInfoResponse);
+        const message = { ...baseGetNodeInfoResponse };
         if (object.default_node_info !== undefined &&
             object.default_node_info !== null) {
             message.default_node_info = types_2.DefaultNodeInfo.fromPartial(object.default_node_info);
@@ -941,7 +977,7 @@ exports.VersionInfo = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseVersionInfo);
+        const message = { ...baseVersionInfo };
         message.build_deps = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -978,7 +1014,7 @@ exports.VersionInfo = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseVersionInfo);
+        const message = { ...baseVersionInfo };
         message.build_deps = [];
         if (object.name !== undefined && object.name !== null) {
             message.name = String(object.name);
@@ -1049,7 +1085,7 @@ exports.VersionInfo = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseVersionInfo);
+        const message = { ...baseVersionInfo };
         message.build_deps = [];
         if (object.name !== undefined && object.name !== null) {
             message.name = object.name;
@@ -1119,7 +1155,7 @@ exports.Module = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseModule);
+        const message = { ...baseModule };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -1140,7 +1176,7 @@ exports.Module = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseModule);
+        const message = { ...baseModule };
         if (object.path !== undefined && object.path !== null) {
             message.path = String(object.path);
         }
@@ -1169,7 +1205,7 @@ exports.Module = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseModule);
+        const message = { ...baseModule };
         if (object.path !== undefined && object.path !== null) {
             message.path = object.path;
         }

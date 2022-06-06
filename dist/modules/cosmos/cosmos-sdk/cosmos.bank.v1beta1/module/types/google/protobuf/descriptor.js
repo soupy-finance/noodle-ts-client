@@ -395,7 +395,7 @@ exports.FileDescriptorSet = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseFileDescriptorSet);
+        const message = { ...baseFileDescriptorSet };
         message.file = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -411,7 +411,7 @@ exports.FileDescriptorSet = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseFileDescriptorSet);
+        const message = { ...baseFileDescriptorSet };
         message.file = [];
         if (object.file !== undefined && object.file !== null) {
             for (const e of object.file) {
@@ -431,7 +431,7 @@ exports.FileDescriptorSet = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseFileDescriptorSet);
+        const message = { ...baseFileDescriptorSet };
         message.file = [];
         if (object.file !== undefined && object.file !== null) {
             for (const e of object.file) {
@@ -496,7 +496,7 @@ exports.FileDescriptorProto = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseFileDescriptorProto);
+        const message = { ...baseFileDescriptorProto };
         message.dependency = [];
         message.public_dependency = [];
         message.weak_dependency = [];
@@ -567,7 +567,7 @@ exports.FileDescriptorProto = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseFileDescriptorProto);
+        const message = { ...baseFileDescriptorProto };
         message.dependency = [];
         message.public_dependency = [];
         message.weak_dependency = [];
@@ -703,7 +703,7 @@ exports.FileDescriptorProto = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseFileDescriptorProto);
+        const message = { ...baseFileDescriptorProto };
         message.dependency = [];
         message.public_dependency = [];
         message.weak_dependency = [];
@@ -820,7 +820,7 @@ exports.DescriptorProto = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseDescriptorProto);
+        const message = { ...baseDescriptorProto };
         message.field = [];
         message.extension = [];
         message.nested_type = [];
@@ -870,7 +870,7 @@ exports.DescriptorProto = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseDescriptorProto);
+        const message = { ...baseDescriptorProto };
         message.field = [];
         message.extension = [];
         message.nested_type = [];
@@ -992,7 +992,7 @@ exports.DescriptorProto = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseDescriptorProto);
+        const message = { ...baseDescriptorProto };
         message.field = [];
         message.extension = [];
         message.nested_type = [];
@@ -1074,7 +1074,9 @@ exports.DescriptorProto_ExtensionRange = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseDescriptorProto_ExtensionRange);
+        const message = {
+            ...baseDescriptorProto_ExtensionRange,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -1095,7 +1097,9 @@ exports.DescriptorProto_ExtensionRange = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseDescriptorProto_ExtensionRange);
+        const message = {
+            ...baseDescriptorProto_ExtensionRange,
+        };
         if (object.start !== undefined && object.start !== null) {
             message.start = Number(object.start);
         }
@@ -1127,7 +1131,9 @@ exports.DescriptorProto_ExtensionRange = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseDescriptorProto_ExtensionRange);
+        const message = {
+            ...baseDescriptorProto_ExtensionRange,
+        };
         if (object.start !== undefined && object.start !== null) {
             message.start = object.start;
         }
@@ -1163,7 +1169,9 @@ exports.DescriptorProto_ReservedRange = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseDescriptorProto_ReservedRange);
+        const message = {
+            ...baseDescriptorProto_ReservedRange,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -1181,7 +1189,9 @@ exports.DescriptorProto_ReservedRange = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseDescriptorProto_ReservedRange);
+        const message = {
+            ...baseDescriptorProto_ReservedRange,
+        };
         if (object.start !== undefined && object.start !== null) {
             message.start = Number(object.start);
         }
@@ -1203,7 +1213,9 @@ exports.DescriptorProto_ReservedRange = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseDescriptorProto_ReservedRange);
+        const message = {
+            ...baseDescriptorProto_ReservedRange,
+        };
         if (object.start !== undefined && object.start !== null) {
             message.start = object.start;
         }
@@ -1230,7 +1242,7 @@ exports.ExtensionRangeOptions = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseExtensionRangeOptions);
+        const message = { ...baseExtensionRangeOptions };
         message.uninterpreted_option = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -1246,7 +1258,7 @@ exports.ExtensionRangeOptions = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseExtensionRangeOptions);
+        const message = { ...baseExtensionRangeOptions };
         message.uninterpreted_option = [];
         if (object.uninterpreted_option !== undefined &&
             object.uninterpreted_option !== null) {
@@ -1267,7 +1279,7 @@ exports.ExtensionRangeOptions = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseExtensionRangeOptions);
+        const message = { ...baseExtensionRangeOptions };
         message.uninterpreted_option = [];
         if (object.uninterpreted_option !== undefined &&
             object.uninterpreted_option !== null) {
@@ -1330,7 +1342,7 @@ exports.FieldDescriptorProto = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseFieldDescriptorProto);
+        const message = { ...baseFieldDescriptorProto };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -1375,7 +1387,7 @@ exports.FieldDescriptorProto = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseFieldDescriptorProto);
+        const message = { ...baseFieldDescriptorProto };
         if (object.name !== undefined && object.name !== null) {
             message.name = String(object.name);
         }
@@ -1469,7 +1481,7 @@ exports.FieldDescriptorProto = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseFieldDescriptorProto);
+        const message = { ...baseFieldDescriptorProto };
         if (object.name !== undefined && object.name !== null) {
             message.name = object.name;
         }
@@ -1554,7 +1566,7 @@ exports.OneofDescriptorProto = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseOneofDescriptorProto);
+        const message = { ...baseOneofDescriptorProto };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -1572,7 +1584,7 @@ exports.OneofDescriptorProto = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseOneofDescriptorProto);
+        const message = { ...baseOneofDescriptorProto };
         if (object.name !== undefined && object.name !== null) {
             message.name = String(object.name);
         }
@@ -1597,7 +1609,7 @@ exports.OneofDescriptorProto = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseOneofDescriptorProto);
+        const message = { ...baseOneofDescriptorProto };
         if (object.name !== undefined && object.name !== null) {
             message.name = object.name;
         }
@@ -1636,7 +1648,7 @@ exports.EnumDescriptorProto = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseEnumDescriptorProto);
+        const message = { ...baseEnumDescriptorProto };
         message.value = [];
         message.reserved_range = [];
         message.reserved_name = [];
@@ -1666,7 +1678,7 @@ exports.EnumDescriptorProto = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseEnumDescriptorProto);
+        const message = { ...baseEnumDescriptorProto };
         message.value = [];
         message.reserved_range = [];
         message.reserved_name = [];
@@ -1727,7 +1739,7 @@ exports.EnumDescriptorProto = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseEnumDescriptorProto);
+        const message = { ...baseEnumDescriptorProto };
         message.value = [];
         message.reserved_range = [];
         message.reserved_name = [];
@@ -1775,7 +1787,9 @@ exports.EnumDescriptorProto_EnumReservedRange = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseEnumDescriptorProto_EnumReservedRange);
+        const message = {
+            ...baseEnumDescriptorProto_EnumReservedRange,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -1793,7 +1807,9 @@ exports.EnumDescriptorProto_EnumReservedRange = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseEnumDescriptorProto_EnumReservedRange);
+        const message = {
+            ...baseEnumDescriptorProto_EnumReservedRange,
+        };
         if (object.start !== undefined && object.start !== null) {
             message.start = Number(object.start);
         }
@@ -1815,7 +1831,9 @@ exports.EnumDescriptorProto_EnumReservedRange = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseEnumDescriptorProto_EnumReservedRange);
+        const message = {
+            ...baseEnumDescriptorProto_EnumReservedRange,
+        };
         if (object.start !== undefined && object.start !== null) {
             message.start = object.start;
         }
@@ -1848,7 +1866,9 @@ exports.EnumValueDescriptorProto = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseEnumValueDescriptorProto);
+        const message = {
+            ...baseEnumValueDescriptorProto,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -1869,7 +1889,9 @@ exports.EnumValueDescriptorProto = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseEnumValueDescriptorProto);
+        const message = {
+            ...baseEnumValueDescriptorProto,
+        };
         if (object.name !== undefined && object.name !== null) {
             message.name = String(object.name);
         }
@@ -1901,7 +1923,9 @@ exports.EnumValueDescriptorProto = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseEnumValueDescriptorProto);
+        const message = {
+            ...baseEnumValueDescriptorProto,
+        };
         if (object.name !== undefined && object.name !== null) {
             message.name = object.name;
         }
@@ -1940,7 +1964,7 @@ exports.ServiceDescriptorProto = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseServiceDescriptorProto);
+        const message = { ...baseServiceDescriptorProto };
         message.method = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -1962,7 +1986,7 @@ exports.ServiceDescriptorProto = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseServiceDescriptorProto);
+        const message = { ...baseServiceDescriptorProto };
         message.method = [];
         if (object.name !== undefined && object.name !== null) {
             message.name = String(object.name);
@@ -1999,7 +2023,7 @@ exports.ServiceDescriptorProto = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseServiceDescriptorProto);
+        const message = { ...baseServiceDescriptorProto };
         message.method = [];
         if (object.name !== undefined && object.name !== null) {
             message.name = object.name;
@@ -2053,7 +2077,7 @@ exports.MethodDescriptorProto = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMethodDescriptorProto);
+        const message = { ...baseMethodDescriptorProto };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -2083,7 +2107,7 @@ exports.MethodDescriptorProto = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMethodDescriptorProto);
+        const message = { ...baseMethodDescriptorProto };
         if (object.name !== undefined && object.name !== null) {
             message.name = String(object.name);
         }
@@ -2141,7 +2165,7 @@ exports.MethodDescriptorProto = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMethodDescriptorProto);
+        const message = { ...baseMethodDescriptorProto };
         if (object.name !== undefined && object.name !== null) {
             message.name = object.name;
         }
@@ -2275,7 +2299,7 @@ exports.FileOptions = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseFileOptions);
+        const message = { ...baseFileOptions };
         message.uninterpreted_option = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -2351,7 +2375,7 @@ exports.FileOptions = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseFileOptions);
+        const message = { ...baseFileOptions };
         message.uninterpreted_option = [];
         if (object.java_package !== undefined && object.java_package !== null) {
             message.java_package = String(object.java_package);
@@ -2544,7 +2568,7 @@ exports.FileOptions = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseFileOptions);
+        const message = { ...baseFileOptions };
         message.uninterpreted_option = [];
         if (object.java_package !== undefined && object.java_package !== null) {
             message.java_package = object.java_package;
@@ -2717,7 +2741,7 @@ exports.MessageOptions = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMessageOptions);
+        const message = { ...baseMessageOptions };
         message.uninterpreted_option = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -2745,7 +2769,7 @@ exports.MessageOptions = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMessageOptions);
+        const message = { ...baseMessageOptions };
         message.uninterpreted_option = [];
         if (object.message_set_wire_format !== undefined &&
             object.message_set_wire_format !== null) {
@@ -2799,7 +2823,7 @@ exports.MessageOptions = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMessageOptions);
+        const message = { ...baseMessageOptions };
         message.uninterpreted_option = [];
         if (object.message_set_wire_format !== undefined &&
             object.message_set_wire_format !== null) {
@@ -2873,7 +2897,7 @@ exports.FieldOptions = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseFieldOptions);
+        const message = { ...baseFieldOptions };
         message.uninterpreted_option = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -2907,7 +2931,7 @@ exports.FieldOptions = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseFieldOptions);
+        const message = { ...baseFieldOptions };
         message.uninterpreted_option = [];
         if (object.ctype !== undefined && object.ctype !== null) {
             message.ctype = fieldOptions_CTypeFromJSON(object.ctype);
@@ -2972,7 +2996,7 @@ exports.FieldOptions = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseFieldOptions);
+        const message = { ...baseFieldOptions };
         message.uninterpreted_option = [];
         if (object.ctype !== undefined && object.ctype !== null) {
             message.ctype = object.ctype;
@@ -3030,7 +3054,7 @@ exports.OneofOptions = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseOneofOptions);
+        const message = { ...baseOneofOptions };
         message.uninterpreted_option = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -3046,7 +3070,7 @@ exports.OneofOptions = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseOneofOptions);
+        const message = { ...baseOneofOptions };
         message.uninterpreted_option = [];
         if (object.uninterpreted_option !== undefined &&
             object.uninterpreted_option !== null) {
@@ -3067,7 +3091,7 @@ exports.OneofOptions = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseOneofOptions);
+        const message = { ...baseOneofOptions };
         message.uninterpreted_option = [];
         if (object.uninterpreted_option !== undefined &&
             object.uninterpreted_option !== null) {
@@ -3095,7 +3119,7 @@ exports.EnumOptions = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseEnumOptions);
+        const message = { ...baseEnumOptions };
         message.uninterpreted_option = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -3117,7 +3141,7 @@ exports.EnumOptions = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseEnumOptions);
+        const message = { ...baseEnumOptions };
         message.uninterpreted_option = [];
         if (object.allow_alias !== undefined && object.allow_alias !== null) {
             message.allow_alias = Boolean(object.allow_alias);
@@ -3153,7 +3177,7 @@ exports.EnumOptions = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseEnumOptions);
+        const message = { ...baseEnumOptions };
         message.uninterpreted_option = [];
         if (object.allow_alias !== undefined && object.allow_alias !== null) {
             message.allow_alias = object.allow_alias;
@@ -3190,7 +3214,7 @@ exports.EnumValueOptions = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseEnumValueOptions);
+        const message = { ...baseEnumValueOptions };
         message.uninterpreted_option = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -3209,7 +3233,7 @@ exports.EnumValueOptions = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseEnumValueOptions);
+        const message = { ...baseEnumValueOptions };
         message.uninterpreted_option = [];
         if (object.deprecated !== undefined && object.deprecated !== null) {
             message.deprecated = Boolean(object.deprecated);
@@ -3237,7 +3261,7 @@ exports.EnumValueOptions = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseEnumValueOptions);
+        const message = { ...baseEnumValueOptions };
         message.uninterpreted_option = [];
         if (object.deprecated !== undefined && object.deprecated !== null) {
             message.deprecated = object.deprecated;
@@ -3268,7 +3292,7 @@ exports.ServiceOptions = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseServiceOptions);
+        const message = { ...baseServiceOptions };
         message.uninterpreted_option = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -3287,7 +3311,7 @@ exports.ServiceOptions = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseServiceOptions);
+        const message = { ...baseServiceOptions };
         message.uninterpreted_option = [];
         if (object.deprecated !== undefined && object.deprecated !== null) {
             message.deprecated = Boolean(object.deprecated);
@@ -3315,7 +3339,7 @@ exports.ServiceOptions = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseServiceOptions);
+        const message = { ...baseServiceOptions };
         message.uninterpreted_option = [];
         if (object.deprecated !== undefined && object.deprecated !== null) {
             message.deprecated = object.deprecated;
@@ -3349,7 +3373,7 @@ exports.MethodOptions = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMethodOptions);
+        const message = { ...baseMethodOptions };
         message.uninterpreted_option = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -3371,7 +3395,7 @@ exports.MethodOptions = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMethodOptions);
+        const message = { ...baseMethodOptions };
         message.uninterpreted_option = [];
         if (object.deprecated !== undefined && object.deprecated !== null) {
             message.deprecated = Boolean(object.deprecated);
@@ -3408,7 +3432,7 @@ exports.MethodOptions = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMethodOptions);
+        const message = { ...baseMethodOptions };
         message.uninterpreted_option = [];
         if (object.deprecated !== undefined && object.deprecated !== null) {
             message.deprecated = object.deprecated;
@@ -3467,7 +3491,7 @@ exports.UninterpretedOption = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseUninterpretedOption);
+        const message = { ...baseUninterpretedOption };
         message.name = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -3501,7 +3525,7 @@ exports.UninterpretedOption = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseUninterpretedOption);
+        const message = { ...baseUninterpretedOption };
         message.name = [];
         if (object.name !== undefined && object.name !== null) {
             for (const e of object.name) {
@@ -3572,7 +3596,7 @@ exports.UninterpretedOption = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseUninterpretedOption);
+        const message = { ...baseUninterpretedOption };
         message.name = [];
         if (object.name !== undefined && object.name !== null) {
             for (const e of object.name) {
@@ -3639,7 +3663,9 @@ exports.UninterpretedOption_NamePart = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseUninterpretedOption_NamePart);
+        const message = {
+            ...baseUninterpretedOption_NamePart,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -3657,7 +3683,9 @@ exports.UninterpretedOption_NamePart = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseUninterpretedOption_NamePart);
+        const message = {
+            ...baseUninterpretedOption_NamePart,
+        };
         if (object.name_part !== undefined && object.name_part !== null) {
             message.name_part = String(object.name_part);
         }
@@ -3680,7 +3708,9 @@ exports.UninterpretedOption_NamePart = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseUninterpretedOption_NamePart);
+        const message = {
+            ...baseUninterpretedOption_NamePart,
+        };
         if (object.name_part !== undefined && object.name_part !== null) {
             message.name_part = object.name_part;
         }
@@ -3707,7 +3737,7 @@ exports.SourceCodeInfo = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseSourceCodeInfo);
+        const message = { ...baseSourceCodeInfo };
         message.location = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -3723,7 +3753,7 @@ exports.SourceCodeInfo = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseSourceCodeInfo);
+        const message = { ...baseSourceCodeInfo };
         message.location = [];
         if (object.location !== undefined && object.location !== null) {
             for (const e of object.location) {
@@ -3743,7 +3773,7 @@ exports.SourceCodeInfo = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseSourceCodeInfo);
+        const message = { ...baseSourceCodeInfo };
         message.location = [];
         if (object.location !== undefined && object.location !== null) {
             for (const e of object.location) {
@@ -3786,7 +3816,9 @@ exports.SourceCodeInfo_Location = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseSourceCodeInfo_Location);
+        const message = {
+            ...baseSourceCodeInfo_Location,
+        };
         message.path = [];
         message.span = [];
         message.leading_detached_comments = [];
@@ -3832,7 +3864,9 @@ exports.SourceCodeInfo_Location = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseSourceCodeInfo_Location);
+        const message = {
+            ...baseSourceCodeInfo_Location,
+        };
         message.path = [];
         message.span = [];
         message.leading_detached_comments = [];
@@ -3895,7 +3929,9 @@ exports.SourceCodeInfo_Location = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseSourceCodeInfo_Location);
+        const message = {
+            ...baseSourceCodeInfo_Location,
+        };
         message.path = [];
         message.span = [];
         message.leading_detached_comments = [];
@@ -3943,7 +3979,7 @@ exports.GeneratedCodeInfo = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGeneratedCodeInfo);
+        const message = { ...baseGeneratedCodeInfo };
         message.annotation = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -3959,7 +3995,7 @@ exports.GeneratedCodeInfo = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseGeneratedCodeInfo);
+        const message = { ...baseGeneratedCodeInfo };
         message.annotation = [];
         if (object.annotation !== undefined && object.annotation !== null) {
             for (const e of object.annotation) {
@@ -3979,7 +4015,7 @@ exports.GeneratedCodeInfo = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseGeneratedCodeInfo);
+        const message = { ...baseGeneratedCodeInfo };
         message.annotation = [];
         if (object.annotation !== undefined && object.annotation !== null) {
             for (const e of object.annotation) {
@@ -4016,7 +4052,9 @@ exports.GeneratedCodeInfo_Annotation = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGeneratedCodeInfo_Annotation);
+        const message = {
+            ...baseGeneratedCodeInfo_Annotation,
+        };
         message.path = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -4049,7 +4087,9 @@ exports.GeneratedCodeInfo_Annotation = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseGeneratedCodeInfo_Annotation);
+        const message = {
+            ...baseGeneratedCodeInfo_Annotation,
+        };
         message.path = [];
         if (object.path !== undefined && object.path !== null) {
             for (const e of object.path) {
@@ -4091,7 +4131,9 @@ exports.GeneratedCodeInfo_Annotation = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseGeneratedCodeInfo_Annotation);
+        const message = {
+            ...baseGeneratedCodeInfo_Annotation,
+        };
         message.path = [];
         if (object.path !== undefined && object.path !== null) {
             for (const e of object.path) {

@@ -167,7 +167,7 @@ exports.Channel = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseChannel);
+        const message = { ...baseChannel };
         message.connection_hops = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -195,7 +195,7 @@ exports.Channel = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseChannel);
+        const message = { ...baseChannel };
         message.connection_hops = [];
         if (object.state !== undefined && object.state !== null) {
             message.state = stateFromJSON(object.state);
@@ -248,7 +248,7 @@ exports.Channel = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseChannel);
+        const message = { ...baseChannel };
         message.connection_hops = [];
         if (object.state !== undefined && object.state !== null) {
             message.state = object.state;
@@ -319,7 +319,7 @@ exports.IdentifiedChannel = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseIdentifiedChannel);
+        const message = { ...baseIdentifiedChannel };
         message.connection_hops = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -353,7 +353,7 @@ exports.IdentifiedChannel = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseIdentifiedChannel);
+        const message = { ...baseIdentifiedChannel };
         message.connection_hops = [];
         if (object.state !== undefined && object.state !== null) {
             message.state = stateFromJSON(object.state);
@@ -420,7 +420,7 @@ exports.IdentifiedChannel = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseIdentifiedChannel);
+        const message = { ...baseIdentifiedChannel };
         message.connection_hops = [];
         if (object.state !== undefined && object.state !== null) {
             message.state = object.state;
@@ -481,7 +481,7 @@ exports.Counterparty = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseCounterparty);
+        const message = { ...baseCounterparty };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -499,7 +499,7 @@ exports.Counterparty = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseCounterparty);
+        const message = { ...baseCounterparty };
         if (object.port_id !== undefined && object.port_id !== null) {
             message.port_id = String(object.port_id);
         }
@@ -521,7 +521,7 @@ exports.Counterparty = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseCounterparty);
+        const message = { ...baseCounterparty };
         if (object.port_id !== undefined && object.port_id !== null) {
             message.port_id = object.port_id;
         }
@@ -576,7 +576,7 @@ exports.Packet = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, basePacket);
+        const message = { ...basePacket };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -612,7 +612,7 @@ exports.Packet = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, basePacket);
+        const message = { ...basePacket };
         if (object.sequence !== undefined && object.sequence !== null) {
             message.sequence = Number(object.sequence);
         }
@@ -685,7 +685,7 @@ exports.Packet = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, basePacket);
+        const message = { ...basePacket };
         if (object.sequence !== undefined && object.sequence !== null) {
             message.sequence = object.sequence;
         }
@@ -760,7 +760,7 @@ exports.PacketState = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, basePacketState);
+        const message = { ...basePacketState };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -784,7 +784,7 @@ exports.PacketState = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, basePacketState);
+        const message = { ...basePacketState };
         if (object.port_id !== undefined && object.port_id !== null) {
             message.port_id = String(object.port_id);
         }
@@ -818,7 +818,7 @@ exports.PacketState = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, basePacketState);
+        const message = { ...basePacketState };
         if (object.port_id !== undefined && object.port_id !== null) {
             message.port_id = object.port_id;
         }
@@ -860,7 +860,7 @@ exports.Acknowledgement = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseAcknowledgement);
+        const message = { ...baseAcknowledgement };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -878,7 +878,7 @@ exports.Acknowledgement = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseAcknowledgement);
+        const message = { ...baseAcknowledgement };
         if (object.result !== undefined && object.result !== null) {
             message.result = bytesFromBase64(object.result);
         }
@@ -901,7 +901,7 @@ exports.Acknowledgement = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseAcknowledgement);
+        const message = { ...baseAcknowledgement };
         if (object.result !== undefined && object.result !== null) {
             message.result = object.result;
         }

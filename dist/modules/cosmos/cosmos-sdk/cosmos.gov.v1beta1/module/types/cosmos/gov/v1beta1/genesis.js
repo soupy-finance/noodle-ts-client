@@ -58,7 +58,7 @@ exports.GenesisState = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         message.deposits = [];
         message.votes = [];
         message.proposals = [];
@@ -94,7 +94,7 @@ exports.GenesisState = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         message.deposits = [];
         message.votes = [];
         message.proposals = [];
@@ -177,7 +177,7 @@ exports.GenesisState = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         message.deposits = [];
         message.votes = [];
         message.proposals = [];

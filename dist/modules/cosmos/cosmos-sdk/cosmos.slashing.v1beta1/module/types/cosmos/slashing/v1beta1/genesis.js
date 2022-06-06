@@ -46,7 +46,7 @@ exports.GenesisState = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         message.signing_infos = [];
         message.missed_blocks = [];
         while (reader.pos < end) {
@@ -69,7 +69,7 @@ exports.GenesisState = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         message.signing_infos = [];
         message.missed_blocks = [];
         if (object.params !== undefined && object.params !== null) {
@@ -109,7 +109,7 @@ exports.GenesisState = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         message.signing_infos = [];
         message.missed_blocks = [];
         if (object.params !== undefined && object.params !== null) {
@@ -145,7 +145,7 @@ exports.SigningInfo = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseSigningInfo);
+        const message = { ...baseSigningInfo };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -163,7 +163,7 @@ exports.SigningInfo = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseSigningInfo);
+        const message = { ...baseSigningInfo };
         if (object.address !== undefined && object.address !== null) {
             message.address = String(object.address);
         }
@@ -189,7 +189,7 @@ exports.SigningInfo = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseSigningInfo);
+        const message = { ...baseSigningInfo };
         if (object.address !== undefined && object.address !== null) {
             message.address = object.address;
         }
@@ -220,7 +220,7 @@ exports.ValidatorMissedBlocks = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseValidatorMissedBlocks);
+        const message = { ...baseValidatorMissedBlocks };
         message.missed_blocks = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -239,7 +239,7 @@ exports.ValidatorMissedBlocks = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseValidatorMissedBlocks);
+        const message = { ...baseValidatorMissedBlocks };
         message.missed_blocks = [];
         if (object.address !== undefined && object.address !== null) {
             message.address = String(object.address);
@@ -266,7 +266,7 @@ exports.ValidatorMissedBlocks = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseValidatorMissedBlocks);
+        const message = { ...baseValidatorMissedBlocks };
         message.missed_blocks = [];
         if (object.address !== undefined && object.address !== null) {
             message.address = object.address;
@@ -296,7 +296,7 @@ exports.MissedBlock = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMissedBlock);
+        const message = { ...baseMissedBlock };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -314,7 +314,7 @@ exports.MissedBlock = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMissedBlock);
+        const message = { ...baseMissedBlock };
         if (object.index !== undefined && object.index !== null) {
             message.index = Number(object.index);
         }
@@ -336,7 +336,7 @@ exports.MissedBlock = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMissedBlock);
+        const message = { ...baseMissedBlock };
         if (object.index !== undefined && object.index !== null) {
             message.index = object.index;
         }

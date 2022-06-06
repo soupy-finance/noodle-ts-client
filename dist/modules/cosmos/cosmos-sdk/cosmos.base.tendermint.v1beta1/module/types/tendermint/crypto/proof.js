@@ -48,7 +48,7 @@ exports.Proof = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseProof);
+        const message = { ...baseProof };
         message.aunts = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -73,7 +73,7 @@ exports.Proof = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseProof);
+        const message = { ...baseProof };
         message.aunts = [];
         if (object.total !== undefined && object.total !== null) {
             message.total = Number(object.total);
@@ -112,7 +112,7 @@ exports.Proof = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseProof);
+        const message = { ...baseProof };
         message.aunts = [];
         if (object.total !== undefined && object.total !== null) {
             message.total = object.total;
@@ -154,7 +154,7 @@ exports.ValueOp = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseValueOp);
+        const message = { ...baseValueOp };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -172,7 +172,7 @@ exports.ValueOp = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseValueOp);
+        const message = { ...baseValueOp };
         if (object.key !== undefined && object.key !== null) {
             message.key = bytesFromBase64(object.key);
         }
@@ -193,7 +193,7 @@ exports.ValueOp = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseValueOp);
+        const message = { ...baseValueOp };
         if (object.key !== undefined && object.key !== null) {
             message.key = object.key;
         }
@@ -226,7 +226,7 @@ exports.DominoOp = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseDominoOp);
+        const message = { ...baseDominoOp };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -247,7 +247,7 @@ exports.DominoOp = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseDominoOp);
+        const message = { ...baseDominoOp };
         if (object.key !== undefined && object.key !== null) {
             message.key = String(object.key);
         }
@@ -276,7 +276,7 @@ exports.DominoOp = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseDominoOp);
+        const message = { ...baseDominoOp };
         if (object.key !== undefined && object.key !== null) {
             message.key = object.key;
         }
@@ -315,7 +315,7 @@ exports.ProofOp = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseProofOp);
+        const message = { ...baseProofOp };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -336,7 +336,7 @@ exports.ProofOp = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseProofOp);
+        const message = { ...baseProofOp };
         if (object.type !== undefined && object.type !== null) {
             message.type = String(object.type);
         }
@@ -361,7 +361,7 @@ exports.ProofOp = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseProofOp);
+        const message = { ...baseProofOp };
         if (object.type !== undefined && object.type !== null) {
             message.type = object.type;
         }
@@ -394,7 +394,7 @@ exports.ProofOps = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseProofOps);
+        const message = { ...baseProofOps };
         message.ops = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -410,7 +410,7 @@ exports.ProofOps = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseProofOps);
+        const message = { ...baseProofOps };
         message.ops = [];
         if (object.ops !== undefined && object.ops !== null) {
             for (const e of object.ops) {
@@ -430,7 +430,7 @@ exports.ProofOps = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseProofOps);
+        const message = { ...baseProofOps };
         message.ops = [];
         if (object.ops !== undefined && object.ops !== null) {
             for (const e of object.ops) {

@@ -22,7 +22,7 @@ exports.MsgGrantAllowance = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgGrantAllowance);
+        const message = { ...baseMsgGrantAllowance };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -43,7 +43,7 @@ exports.MsgGrantAllowance = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgGrantAllowance);
+        const message = { ...baseMsgGrantAllowance };
         if (object.granter !== undefined && object.granter !== null) {
             message.granter = String(object.granter);
         }
@@ -75,7 +75,7 @@ exports.MsgGrantAllowance = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgGrantAllowance);
+        const message = { ...baseMsgGrantAllowance };
         if (object.granter !== undefined && object.granter !== null) {
             message.granter = object.granter;
         }
@@ -105,7 +105,9 @@ exports.MsgGrantAllowanceResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgGrantAllowanceResponse);
+        const message = {
+            ...baseMsgGrantAllowanceResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -117,7 +119,9 @@ exports.MsgGrantAllowanceResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseMsgGrantAllowanceResponse);
+        const message = {
+            ...baseMsgGrantAllowanceResponse,
+        };
         return message;
     },
     toJSON(_) {
@@ -125,7 +129,9 @@ exports.MsgGrantAllowanceResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseMsgGrantAllowanceResponse);
+        const message = {
+            ...baseMsgGrantAllowanceResponse,
+        };
         return message;
     },
 };
@@ -143,7 +149,7 @@ exports.MsgRevokeAllowance = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgRevokeAllowance);
+        const message = { ...baseMsgRevokeAllowance };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -161,7 +167,7 @@ exports.MsgRevokeAllowance = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgRevokeAllowance);
+        const message = { ...baseMsgRevokeAllowance };
         if (object.granter !== undefined && object.granter !== null) {
             message.granter = String(object.granter);
         }
@@ -183,7 +189,7 @@ exports.MsgRevokeAllowance = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgRevokeAllowance);
+        const message = { ...baseMsgRevokeAllowance };
         if (object.granter !== undefined && object.granter !== null) {
             message.granter = object.granter;
         }
@@ -207,7 +213,9 @@ exports.MsgRevokeAllowanceResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgRevokeAllowanceResponse);
+        const message = {
+            ...baseMsgRevokeAllowanceResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -219,7 +227,9 @@ exports.MsgRevokeAllowanceResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseMsgRevokeAllowanceResponse);
+        const message = {
+            ...baseMsgRevokeAllowanceResponse,
+        };
         return message;
     },
     toJSON(_) {
@@ -227,7 +237,9 @@ exports.MsgRevokeAllowanceResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseMsgRevokeAllowanceResponse);
+        const message = {
+            ...baseMsgRevokeAllowanceResponse,
+        };
         return message;
     },
 };

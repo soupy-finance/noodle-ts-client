@@ -9,26 +9,6 @@
  * ## SOURCE: https://github.com/acacode/swagger-typescript-api ##
  * ---------------------------------------------------------------
  */
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Api = exports.HttpClient = exports.ContentType = void 0;
 var ContentType;
@@ -79,17 +59,24 @@ class HttpClient {
                 this.abortControllers.delete(cancelToken);
             }
         };
-        this.request = (_a) => {
-            var { body, secure, path, type, query, format = "json", baseUrl, cancelToken } = _a, params = __rest(_a, ["body", "secure", "path", "type", "query", "format", "baseUrl", "cancelToken"]);
+        this.request = ({ body, secure, path, type, query, format = "json", baseUrl, cancelToken, ...params }) => {
             const secureParams = (secure && this.securityWorker && this.securityWorker(this.securityData)) || {};
             const requestParams = this.mergeRequestParams(params, secureParams);
             const queryString = query && this.toQueryString(query);
             const payloadFormatter = this.contentFormatters[type || ContentType.Json];
-            return fetch(`${baseUrl || this.baseUrl || ""}${path}${queryString ? `?${queryString}` : ""}`, Object.assign(Object.assign({}, requestParams), { headers: Object.assign(Object.assign({}, (type && type !== ContentType.FormData ? { "Content-Type": type } : {})), (requestParams.headers || {})), signal: cancelToken ? this.createAbortSignal(cancelToken) : void 0, body: typeof body === "undefined" || body === null ? null : payloadFormatter(body) })).then((response) => __awaiter(this, void 0, void 0, function* () {
+            return fetch(`${baseUrl || this.baseUrl || ""}${path}${queryString ? `?${queryString}` : ""}`, {
+                ...requestParams,
+                headers: {
+                    ...(type && type !== ContentType.FormData ? { "Content-Type": type } : {}),
+                    ...(requestParams.headers || {}),
+                },
+                signal: cancelToken ? this.createAbortSignal(cancelToken) : void 0,
+                body: typeof body === "undefined" || body === null ? null : payloadFormatter(body),
+            }).then(async (response) => {
                 const r = response;
                 r.data = null;
                 r.error = null;
-                const data = yield response[format]()
+                const data = await response[format]()
                     .then((data) => {
                     if (r.ok) {
                         r.data = data;
@@ -109,7 +96,7 @@ class HttpClient {
                 if (!response.ok)
                     throw data;
                 return data;
-            }));
+            });
         };
         Object.assign(this, apiConfig);
     }
@@ -133,7 +120,16 @@ class HttpClient {
         return queryString ? `?${queryString}` : "";
     }
     mergeRequestParams(params1, params2) {
-        return Object.assign(Object.assign(Object.assign(Object.assign({}, this.baseApiParams), params1), (params2 || {})), { headers: Object.assign(Object.assign(Object.assign({}, (this.baseApiParams.headers || {})), (params1.headers || {})), ((params2 && params2.headers) || {})) });
+        return {
+            ...this.baseApiParams,
+            ...params1,
+            ...(params2 || {}),
+            headers: {
+                ...(this.baseApiParams.headers || {}),
+                ...(params1.headers || {}),
+                ...((params2 && params2.headers) || {}),
+            },
+        };
     }
 }
 exports.HttpClient = HttpClient;
@@ -152,7 +148,12 @@ class Api extends HttpClient {
          * @summary ClientParams queries all parameters of the ibc client.
          * @request GET:/ibc/client/v1/params
          */
-        this.queryClientParams = (params = {}) => this.request(Object.assign({ path: `/ibc/client/v1/params`, method: "GET", format: "json" }, params));
+        this.queryClientParams = (params = {}) => this.request({
+            path: `/ibc/client/v1/params`,
+            method: "GET",
+            format: "json",
+            ...params,
+        });
         /**
          * No description
          *
@@ -161,7 +162,13 @@ class Api extends HttpClient {
          * @summary ClientStates queries all the IBC light clients of a chain.
          * @request GET:/ibc/core/client/v1/client_states
          */
-        this.queryClientStates = (query, params = {}) => this.request(Object.assign({ path: `/ibc/core/client/v1/client_states`, method: "GET", query: query, format: "json" }, params));
+        this.queryClientStates = (query, params = {}) => this.request({
+            path: `/ibc/core/client/v1/client_states`,
+            method: "GET",
+            query: query,
+            format: "json",
+            ...params,
+        });
         /**
          * No description
          *
@@ -170,7 +177,12 @@ class Api extends HttpClient {
          * @summary ClientState queries an IBC light client.
          * @request GET:/ibc/core/client/v1/client_states/{client_id}
          */
-        this.queryClientState = (client_id, params = {}) => this.request(Object.assign({ path: `/ibc/core/client/v1/client_states/${client_id}`, method: "GET", format: "json" }, params));
+        this.queryClientState = (client_id, params = {}) => this.request({
+            path: `/ibc/core/client/v1/client_states/${client_id}`,
+            method: "GET",
+            format: "json",
+            ...params,
+        });
         /**
          * No description
          *
@@ -179,7 +191,12 @@ class Api extends HttpClient {
          * @summary Status queries the status of an IBC client.
          * @request GET:/ibc/core/client/v1/client_status/{client_id}
          */
-        this.queryClientStatus = (client_id, params = {}) => this.request(Object.assign({ path: `/ibc/core/client/v1/client_status/${client_id}`, method: "GET", format: "json" }, params));
+        this.queryClientStatus = (client_id, params = {}) => this.request({
+            path: `/ibc/core/client/v1/client_status/${client_id}`,
+            method: "GET",
+            format: "json",
+            ...params,
+        });
         /**
        * No description
        *
@@ -189,7 +206,13 @@ class Api extends HttpClient {
       client.
        * @request GET:/ibc/core/client/v1/consensus_states/{client_id}
        */
-        this.queryConsensusStates = (client_id, query, params = {}) => this.request(Object.assign({ path: `/ibc/core/client/v1/consensus_states/${client_id}`, method: "GET", query: query, format: "json" }, params));
+        this.queryConsensusStates = (client_id, query, params = {}) => this.request({
+            path: `/ibc/core/client/v1/consensus_states/${client_id}`,
+            method: "GET",
+            query: query,
+            format: "json",
+            ...params,
+        });
         /**
        * No description
        *
@@ -199,7 +222,13 @@ class Api extends HttpClient {
       a given height.
        * @request GET:/ibc/core/client/v1/consensus_states/{client_id}/revision/{revision_number}/height/{revision_height}
        */
-        this.queryConsensusState = (client_id, revision_number, revision_height, query, params = {}) => this.request(Object.assign({ path: `/ibc/core/client/v1/consensus_states/${client_id}/revision/${revision_number}/height/${revision_height}`, method: "GET", query: query, format: "json" }, params));
+        this.queryConsensusState = (client_id, revision_number, revision_height, query, params = {}) => this.request({
+            path: `/ibc/core/client/v1/consensus_states/${client_id}/revision/${revision_number}/height/${revision_height}`,
+            method: "GET",
+            query: query,
+            format: "json",
+            ...params,
+        });
         /**
          * No description
          *
@@ -208,7 +237,12 @@ class Api extends HttpClient {
          * @summary UpgradedClientState queries an Upgraded IBC light client.
          * @request GET:/ibc/core/client/v1/upgraded_client_states
          */
-        this.queryUpgradedClientState = (params = {}) => this.request(Object.assign({ path: `/ibc/core/client/v1/upgraded_client_states`, method: "GET", format: "json" }, params));
+        this.queryUpgradedClientState = (params = {}) => this.request({
+            path: `/ibc/core/client/v1/upgraded_client_states`,
+            method: "GET",
+            format: "json",
+            ...params,
+        });
         /**
          * No description
          *
@@ -217,7 +251,12 @@ class Api extends HttpClient {
          * @summary UpgradedConsensusState queries an Upgraded IBC consensus state.
          * @request GET:/ibc/core/client/v1/upgraded_consensus_states
          */
-        this.queryUpgradedConsensusState = (params = {}) => this.request(Object.assign({ path: `/ibc/core/client/v1/upgraded_consensus_states`, method: "GET", format: "json" }, params));
+        this.queryUpgradedConsensusState = (params = {}) => this.request({
+            path: `/ibc/core/client/v1/upgraded_consensus_states`,
+            method: "GET",
+            format: "json",
+            ...params,
+        });
     }
 }
 exports.Api = Api;

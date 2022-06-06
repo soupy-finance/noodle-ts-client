@@ -65,7 +65,7 @@ exports.MsgTransfer = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgTransfer);
+        const message = { ...baseMsgTransfer };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -98,7 +98,7 @@ exports.MsgTransfer = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgTransfer);
+        const message = { ...baseMsgTransfer };
         if (object.source_port !== undefined && object.source_port !== null) {
             message.source_port = String(object.source_port);
         }
@@ -163,7 +163,7 @@ exports.MsgTransfer = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgTransfer);
+        const message = { ...baseMsgTransfer };
         if (object.source_port !== undefined && object.source_port !== null) {
             message.source_port = object.source_port;
         }
@@ -218,7 +218,7 @@ exports.MsgTransferResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgTransferResponse);
+        const message = { ...baseMsgTransferResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -230,7 +230,7 @@ exports.MsgTransferResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseMsgTransferResponse);
+        const message = { ...baseMsgTransferResponse };
         return message;
     },
     toJSON(_) {
@@ -238,7 +238,7 @@ exports.MsgTransferResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseMsgTransferResponse);
+        const message = { ...baseMsgTransferResponse };
         return message;
     },
 };

@@ -46,7 +46,7 @@ exports.ValidatorSet = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseValidatorSet);
+        const message = { ...baseValidatorSet };
         message.validators = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -68,7 +68,7 @@ exports.ValidatorSet = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseValidatorSet);
+        const message = { ...baseValidatorSet };
         message.validators = [];
         if (object.validators !== undefined && object.validators !== null) {
             for (const e of object.validators) {
@@ -107,7 +107,7 @@ exports.ValidatorSet = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseValidatorSet);
+        const message = { ...baseValidatorSet };
         message.validators = [];
         if (object.validators !== undefined && object.validators !== null) {
             for (const e of object.validators) {
@@ -150,7 +150,7 @@ exports.Validator = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseValidator);
+        const message = { ...baseValidator };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -174,7 +174,7 @@ exports.Validator = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseValidator);
+        const message = { ...baseValidator };
         if (object.address !== undefined && object.address !== null) {
             message.address = bytesFromBase64(object.address);
         }
@@ -214,7 +214,7 @@ exports.Validator = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseValidator);
+        const message = { ...baseValidator };
         if (object.address !== undefined && object.address !== null) {
             message.address = object.address;
         }
@@ -257,7 +257,7 @@ exports.SimpleValidator = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseSimpleValidator);
+        const message = { ...baseSimpleValidator };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -275,7 +275,7 @@ exports.SimpleValidator = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseSimpleValidator);
+        const message = { ...baseSimpleValidator };
         if (object.pub_key !== undefined && object.pub_key !== null) {
             message.pub_key = keys_1.PublicKey.fromJSON(object.pub_key);
         }
@@ -301,7 +301,7 @@ exports.SimpleValidator = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseSimpleValidator);
+        const message = { ...baseSimpleValidator };
         if (object.pub_key !== undefined && object.pub_key !== null) {
             message.pub_key = keys_1.PublicKey.fromPartial(object.pub_key);
         }

@@ -49,7 +49,7 @@ exports.Tx = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseTx);
+        const message = { ...baseTx };
         message.signatures = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -71,7 +71,7 @@ exports.Tx = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseTx);
+        const message = { ...baseTx };
         message.signatures = [];
         if (object.body !== undefined && object.body !== null) {
             message.body = exports.TxBody.fromJSON(object.body);
@@ -109,7 +109,7 @@ exports.Tx = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseTx);
+        const message = { ...baseTx };
         message.signatures = [];
         if (object.body !== undefined && object.body !== null) {
             message.body = exports.TxBody.fromPartial(object.body);
@@ -148,7 +148,7 @@ exports.TxRaw = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseTxRaw);
+        const message = { ...baseTxRaw };
         message.signatures = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -170,7 +170,7 @@ exports.TxRaw = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseTxRaw);
+        const message = { ...baseTxRaw };
         message.signatures = [];
         if (object.body_bytes !== undefined && object.body_bytes !== null) {
             message.body_bytes = bytesFromBase64(object.body_bytes);
@@ -203,7 +203,7 @@ exports.TxRaw = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseTxRaw);
+        const message = { ...baseTxRaw };
         message.signatures = [];
         if (object.body_bytes !== undefined && object.body_bytes !== null) {
             message.body_bytes = object.body_bytes;
@@ -246,7 +246,7 @@ exports.SignDoc = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseSignDoc);
+        const message = { ...baseSignDoc };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -270,7 +270,7 @@ exports.SignDoc = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseSignDoc);
+        const message = { ...baseSignDoc };
         if (object.body_bytes !== undefined && object.body_bytes !== null) {
             message.body_bytes = bytesFromBase64(object.body_bytes);
         }
@@ -306,7 +306,7 @@ exports.SignDoc = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseSignDoc);
+        const message = { ...baseSignDoc };
         if (object.body_bytes !== undefined && object.body_bytes !== null) {
             message.body_bytes = object.body_bytes;
         }
@@ -358,7 +358,7 @@ exports.TxBody = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseTxBody);
+        const message = { ...baseTxBody };
         message.messages = [];
         message.extension_options = [];
         message.non_critical_extension_options = [];
@@ -388,7 +388,7 @@ exports.TxBody = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseTxBody);
+        const message = { ...baseTxBody };
         message.messages = [];
         message.extension_options = [];
         message.non_critical_extension_options = [];
@@ -449,7 +449,7 @@ exports.TxBody = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseTxBody);
+        const message = { ...baseTxBody };
         message.messages = [];
         message.extension_options = [];
         message.non_critical_extension_options = [];
@@ -499,7 +499,7 @@ exports.AuthInfo = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseAuthInfo);
+        const message = { ...baseAuthInfo };
         message.signer_infos = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -518,7 +518,7 @@ exports.AuthInfo = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseAuthInfo);
+        const message = { ...baseAuthInfo };
         message.signer_infos = [];
         if (object.signer_infos !== undefined && object.signer_infos !== null) {
             for (const e of object.signer_infos) {
@@ -546,7 +546,7 @@ exports.AuthInfo = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseAuthInfo);
+        const message = { ...baseAuthInfo };
         message.signer_infos = [];
         if (object.signer_infos !== undefined && object.signer_infos !== null) {
             for (const e of object.signer_infos) {
@@ -579,7 +579,7 @@ exports.SignerInfo = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseSignerInfo);
+        const message = { ...baseSignerInfo };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -600,7 +600,7 @@ exports.SignerInfo = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseSignerInfo);
+        const message = { ...baseSignerInfo };
         if (object.public_key !== undefined && object.public_key !== null) {
             message.public_key = any_1.Any.fromJSON(object.public_key);
         }
@@ -635,7 +635,7 @@ exports.SignerInfo = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseSignerInfo);
+        const message = { ...baseSignerInfo };
         if (object.public_key !== undefined && object.public_key !== null) {
             message.public_key = any_1.Any.fromPartial(object.public_key);
         }
@@ -671,7 +671,7 @@ exports.ModeInfo = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseModeInfo);
+        const message = { ...baseModeInfo };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -689,7 +689,7 @@ exports.ModeInfo = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseModeInfo);
+        const message = { ...baseModeInfo };
         if (object.single !== undefined && object.single !== null) {
             message.single = exports.ModeInfo_Single.fromJSON(object.single);
         }
@@ -717,7 +717,7 @@ exports.ModeInfo = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseModeInfo);
+        const message = { ...baseModeInfo };
         if (object.single !== undefined && object.single !== null) {
             message.single = exports.ModeInfo_Single.fromPartial(object.single);
         }
@@ -744,7 +744,7 @@ exports.ModeInfo_Single = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseModeInfo_Single);
+        const message = { ...baseModeInfo_Single };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -759,7 +759,7 @@ exports.ModeInfo_Single = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseModeInfo_Single);
+        const message = { ...baseModeInfo_Single };
         if (object.mode !== undefined && object.mode !== null) {
             message.mode = (0, signing_1.signModeFromJSON)(object.mode);
         }
@@ -774,7 +774,7 @@ exports.ModeInfo_Single = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseModeInfo_Single);
+        const message = { ...baseModeInfo_Single };
         if (object.mode !== undefined && object.mode !== null) {
             message.mode = object.mode;
         }
@@ -798,7 +798,7 @@ exports.ModeInfo_Multi = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseModeInfo_Multi);
+        const message = { ...baseModeInfo_Multi };
         message.mode_infos = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -817,7 +817,7 @@ exports.ModeInfo_Multi = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseModeInfo_Multi);
+        const message = { ...baseModeInfo_Multi };
         message.mode_infos = [];
         if (object.bitarray !== undefined && object.bitarray !== null) {
             message.bitarray = multisig_1.CompactBitArray.fromJSON(object.bitarray);
@@ -847,7 +847,7 @@ exports.ModeInfo_Multi = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseModeInfo_Multi);
+        const message = { ...baseModeInfo_Multi };
         message.mode_infos = [];
         if (object.bitarray !== undefined && object.bitarray !== null) {
             message.bitarray = multisig_1.CompactBitArray.fromPartial(object.bitarray);
@@ -883,7 +883,7 @@ exports.Fee = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseFee);
+        const message = { ...baseFee };
         message.amount = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -908,7 +908,7 @@ exports.Fee = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseFee);
+        const message = { ...baseFee };
         message.amount = [];
         if (object.amount !== undefined && object.amount !== null) {
             for (const e of object.amount) {
@@ -949,7 +949,7 @@ exports.Fee = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseFee);
+        const message = { ...baseFee };
         message.amount = [];
         if (object.amount !== undefined && object.amount !== null) {
             for (const e of object.amount) {

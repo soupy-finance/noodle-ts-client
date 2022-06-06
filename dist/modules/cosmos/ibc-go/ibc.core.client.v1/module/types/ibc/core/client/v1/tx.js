@@ -22,7 +22,7 @@ exports.MsgCreateClient = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgCreateClient);
+        const message = { ...baseMsgCreateClient };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -43,7 +43,7 @@ exports.MsgCreateClient = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgCreateClient);
+        const message = { ...baseMsgCreateClient };
         if (object.client_state !== undefined && object.client_state !== null) {
             message.client_state = any_1.Any.fromJSON(object.client_state);
         }
@@ -79,7 +79,7 @@ exports.MsgCreateClient = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgCreateClient);
+        const message = { ...baseMsgCreateClient };
         if (object.client_state !== undefined && object.client_state !== null) {
             message.client_state = any_1.Any.fromPartial(object.client_state);
         }
@@ -110,7 +110,9 @@ exports.MsgCreateClientResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgCreateClientResponse);
+        const message = {
+            ...baseMsgCreateClientResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -122,7 +124,9 @@ exports.MsgCreateClientResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseMsgCreateClientResponse);
+        const message = {
+            ...baseMsgCreateClientResponse,
+        };
         return message;
     },
     toJSON(_) {
@@ -130,7 +134,9 @@ exports.MsgCreateClientResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseMsgCreateClientResponse);
+        const message = {
+            ...baseMsgCreateClientResponse,
+        };
         return message;
     },
 };
@@ -151,7 +157,7 @@ exports.MsgUpdateClient = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgUpdateClient);
+        const message = { ...baseMsgUpdateClient };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -172,7 +178,7 @@ exports.MsgUpdateClient = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgUpdateClient);
+        const message = { ...baseMsgUpdateClient };
         if (object.client_id !== undefined && object.client_id !== null) {
             message.client_id = String(object.client_id);
         }
@@ -202,7 +208,7 @@ exports.MsgUpdateClient = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgUpdateClient);
+        const message = { ...baseMsgUpdateClient };
         if (object.client_id !== undefined && object.client_id !== null) {
             message.client_id = object.client_id;
         }
@@ -232,7 +238,9 @@ exports.MsgUpdateClientResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgUpdateClientResponse);
+        const message = {
+            ...baseMsgUpdateClientResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -244,7 +252,9 @@ exports.MsgUpdateClientResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseMsgUpdateClientResponse);
+        const message = {
+            ...baseMsgUpdateClientResponse,
+        };
         return message;
     },
     toJSON(_) {
@@ -252,7 +262,9 @@ exports.MsgUpdateClientResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseMsgUpdateClientResponse);
+        const message = {
+            ...baseMsgUpdateClientResponse,
+        };
         return message;
     },
 };
@@ -282,7 +294,7 @@ exports.MsgUpgradeClient = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgUpgradeClient);
+        const message = { ...baseMsgUpgradeClient };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -312,7 +324,7 @@ exports.MsgUpgradeClient = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgUpgradeClient);
+        const message = { ...baseMsgUpgradeClient };
         if (object.client_id !== undefined && object.client_id !== null) {
             message.client_id = String(object.client_id);
         }
@@ -371,7 +383,7 @@ exports.MsgUpgradeClient = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgUpgradeClient);
+        const message = { ...baseMsgUpgradeClient };
         if (object.client_id !== undefined && object.client_id !== null) {
             message.client_id = object.client_id;
         }
@@ -423,7 +435,9 @@ exports.MsgUpgradeClientResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgUpgradeClientResponse);
+        const message = {
+            ...baseMsgUpgradeClientResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -435,7 +449,9 @@ exports.MsgUpgradeClientResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseMsgUpgradeClientResponse);
+        const message = {
+            ...baseMsgUpgradeClientResponse,
+        };
         return message;
     },
     toJSON(_) {
@@ -443,7 +459,9 @@ exports.MsgUpgradeClientResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseMsgUpgradeClientResponse);
+        const message = {
+            ...baseMsgUpgradeClientResponse,
+        };
         return message;
     },
 };
@@ -464,7 +482,7 @@ exports.MsgSubmitMisbehaviour = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgSubmitMisbehaviour);
+        const message = { ...baseMsgSubmitMisbehaviour };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -485,7 +503,7 @@ exports.MsgSubmitMisbehaviour = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgSubmitMisbehaviour);
+        const message = { ...baseMsgSubmitMisbehaviour };
         if (object.client_id !== undefined && object.client_id !== null) {
             message.client_id = String(object.client_id);
         }
@@ -517,7 +535,7 @@ exports.MsgSubmitMisbehaviour = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgSubmitMisbehaviour);
+        const message = { ...baseMsgSubmitMisbehaviour };
         if (object.client_id !== undefined && object.client_id !== null) {
             message.client_id = object.client_id;
         }
@@ -547,7 +565,9 @@ exports.MsgSubmitMisbehaviourResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgSubmitMisbehaviourResponse);
+        const message = {
+            ...baseMsgSubmitMisbehaviourResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -559,7 +579,9 @@ exports.MsgSubmitMisbehaviourResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseMsgSubmitMisbehaviourResponse);
+        const message = {
+            ...baseMsgSubmitMisbehaviourResponse,
+        };
         return message;
     },
     toJSON(_) {
@@ -567,7 +589,9 @@ exports.MsgSubmitMisbehaviourResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseMsgSubmitMisbehaviourResponse);
+        const message = {
+            ...baseMsgSubmitMisbehaviourResponse,
+        };
         return message;
     },
 };

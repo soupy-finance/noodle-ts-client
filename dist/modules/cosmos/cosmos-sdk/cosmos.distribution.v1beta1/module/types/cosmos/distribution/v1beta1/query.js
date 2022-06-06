@@ -39,7 +39,7 @@ exports.QueryParamsRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryParamsRequest);
+        const message = { ...baseQueryParamsRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -51,7 +51,7 @@ exports.QueryParamsRequest = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseQueryParamsRequest);
+        const message = { ...baseQueryParamsRequest };
         return message;
     },
     toJSON(_) {
@@ -59,7 +59,7 @@ exports.QueryParamsRequest = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseQueryParamsRequest);
+        const message = { ...baseQueryParamsRequest };
         return message;
     },
 };
@@ -74,7 +74,7 @@ exports.QueryParamsResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryParamsResponse);
+        const message = { ...baseQueryParamsResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -89,7 +89,7 @@ exports.QueryParamsResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryParamsResponse);
+        const message = { ...baseQueryParamsResponse };
         if (object.params !== undefined && object.params !== null) {
             message.params = distribution_1.Params.fromJSON(object.params);
         }
@@ -105,7 +105,7 @@ exports.QueryParamsResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryParamsResponse);
+        const message = { ...baseQueryParamsResponse };
         if (object.params !== undefined && object.params !== null) {
             message.params = distribution_1.Params.fromPartial(object.params);
         }
@@ -128,7 +128,9 @@ exports.QueryValidatorOutstandingRewardsRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryValidatorOutstandingRewardsRequest);
+        const message = {
+            ...baseQueryValidatorOutstandingRewardsRequest,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -143,7 +145,9 @@ exports.QueryValidatorOutstandingRewardsRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryValidatorOutstandingRewardsRequest);
+        const message = {
+            ...baseQueryValidatorOutstandingRewardsRequest,
+        };
         if (object.validator_address !== undefined &&
             object.validator_address !== null) {
             message.validator_address = String(object.validator_address);
@@ -160,7 +164,9 @@ exports.QueryValidatorOutstandingRewardsRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryValidatorOutstandingRewardsRequest);
+        const message = {
+            ...baseQueryValidatorOutstandingRewardsRequest,
+        };
         if (object.validator_address !== undefined &&
             object.validator_address !== null) {
             message.validator_address = object.validator_address;
@@ -182,7 +188,9 @@ exports.QueryValidatorOutstandingRewardsResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryValidatorOutstandingRewardsResponse);
+        const message = {
+            ...baseQueryValidatorOutstandingRewardsResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -197,7 +205,9 @@ exports.QueryValidatorOutstandingRewardsResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryValidatorOutstandingRewardsResponse);
+        const message = {
+            ...baseQueryValidatorOutstandingRewardsResponse,
+        };
         if (object.rewards !== undefined && object.rewards !== null) {
             message.rewards = distribution_1.ValidatorOutstandingRewards.fromJSON(object.rewards);
         }
@@ -215,7 +225,9 @@ exports.QueryValidatorOutstandingRewardsResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryValidatorOutstandingRewardsResponse);
+        const message = {
+            ...baseQueryValidatorOutstandingRewardsResponse,
+        };
         if (object.rewards !== undefined && object.rewards !== null) {
             message.rewards = distribution_1.ValidatorOutstandingRewards.fromPartial(object.rewards);
         }
@@ -236,7 +248,9 @@ exports.QueryValidatorCommissionRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryValidatorCommissionRequest);
+        const message = {
+            ...baseQueryValidatorCommissionRequest,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -251,7 +265,9 @@ exports.QueryValidatorCommissionRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryValidatorCommissionRequest);
+        const message = {
+            ...baseQueryValidatorCommissionRequest,
+        };
         if (object.validator_address !== undefined &&
             object.validator_address !== null) {
             message.validator_address = String(object.validator_address);
@@ -268,7 +284,9 @@ exports.QueryValidatorCommissionRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryValidatorCommissionRequest);
+        const message = {
+            ...baseQueryValidatorCommissionRequest,
+        };
         if (object.validator_address !== undefined &&
             object.validator_address !== null) {
             message.validator_address = object.validator_address;
@@ -290,7 +308,9 @@ exports.QueryValidatorCommissionResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryValidatorCommissionResponse);
+        const message = {
+            ...baseQueryValidatorCommissionResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -305,7 +325,9 @@ exports.QueryValidatorCommissionResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryValidatorCommissionResponse);
+        const message = {
+            ...baseQueryValidatorCommissionResponse,
+        };
         if (object.commission !== undefined && object.commission !== null) {
             message.commission = distribution_1.ValidatorAccumulatedCommission.fromJSON(object.commission);
         }
@@ -323,7 +345,9 @@ exports.QueryValidatorCommissionResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryValidatorCommissionResponse);
+        const message = {
+            ...baseQueryValidatorCommissionResponse,
+        };
         if (object.commission !== undefined && object.commission !== null) {
             message.commission = distribution_1.ValidatorAccumulatedCommission.fromPartial(object.commission);
         }
@@ -357,7 +381,9 @@ exports.QueryValidatorSlashesRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryValidatorSlashesRequest);
+        const message = {
+            ...baseQueryValidatorSlashesRequest,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -381,7 +407,9 @@ exports.QueryValidatorSlashesRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryValidatorSlashesRequest);
+        const message = {
+            ...baseQueryValidatorSlashesRequest,
+        };
         if (object.validator_address !== undefined &&
             object.validator_address !== null) {
             message.validator_address = String(object.validator_address);
@@ -425,7 +453,9 @@ exports.QueryValidatorSlashesRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryValidatorSlashesRequest);
+        const message = {
+            ...baseQueryValidatorSlashesRequest,
+        };
         if (object.validator_address !== undefined &&
             object.validator_address !== null) {
             message.validator_address = object.validator_address;
@@ -469,7 +499,9 @@ exports.QueryValidatorSlashesResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryValidatorSlashesResponse);
+        const message = {
+            ...baseQueryValidatorSlashesResponse,
+        };
         message.slashes = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -488,7 +520,9 @@ exports.QueryValidatorSlashesResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryValidatorSlashesResponse);
+        const message = {
+            ...baseQueryValidatorSlashesResponse,
+        };
         message.slashes = [];
         if (object.slashes !== undefined && object.slashes !== null) {
             for (const e of object.slashes) {
@@ -518,7 +552,9 @@ exports.QueryValidatorSlashesResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryValidatorSlashesResponse);
+        const message = {
+            ...baseQueryValidatorSlashesResponse,
+        };
         message.slashes = [];
         if (object.slashes !== undefined && object.slashes !== null) {
             for (const e of object.slashes) {
@@ -551,7 +587,9 @@ exports.QueryDelegationRewardsRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryDelegationRewardsRequest);
+        const message = {
+            ...baseQueryDelegationRewardsRequest,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -569,7 +607,9 @@ exports.QueryDelegationRewardsRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryDelegationRewardsRequest);
+        const message = {
+            ...baseQueryDelegationRewardsRequest,
+        };
         if (object.delegator_address !== undefined &&
             object.delegator_address !== null) {
             message.delegator_address = String(object.delegator_address);
@@ -595,7 +635,9 @@ exports.QueryDelegationRewardsRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryDelegationRewardsRequest);
+        const message = {
+            ...baseQueryDelegationRewardsRequest,
+        };
         if (object.delegator_address !== undefined &&
             object.delegator_address !== null) {
             message.delegator_address = object.delegator_address;
@@ -624,7 +666,9 @@ exports.QueryDelegationRewardsResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryDelegationRewardsResponse);
+        const message = {
+            ...baseQueryDelegationRewardsResponse,
+        };
         message.rewards = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -640,7 +684,9 @@ exports.QueryDelegationRewardsResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryDelegationRewardsResponse);
+        const message = {
+            ...baseQueryDelegationRewardsResponse,
+        };
         message.rewards = [];
         if (object.rewards !== undefined && object.rewards !== null) {
             for (const e of object.rewards) {
@@ -660,7 +706,9 @@ exports.QueryDelegationRewardsResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryDelegationRewardsResponse);
+        const message = {
+            ...baseQueryDelegationRewardsResponse,
+        };
         message.rewards = [];
         if (object.rewards !== undefined && object.rewards !== null) {
             for (const e of object.rewards) {
@@ -683,7 +731,9 @@ exports.QueryDelegationTotalRewardsRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryDelegationTotalRewardsRequest);
+        const message = {
+            ...baseQueryDelegationTotalRewardsRequest,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -698,7 +748,9 @@ exports.QueryDelegationTotalRewardsRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryDelegationTotalRewardsRequest);
+        const message = {
+            ...baseQueryDelegationTotalRewardsRequest,
+        };
         if (object.delegator_address !== undefined &&
             object.delegator_address !== null) {
             message.delegator_address = String(object.delegator_address);
@@ -715,7 +767,9 @@ exports.QueryDelegationTotalRewardsRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryDelegationTotalRewardsRequest);
+        const message = {
+            ...baseQueryDelegationTotalRewardsRequest,
+        };
         if (object.delegator_address !== undefined &&
             object.delegator_address !== null) {
             message.delegator_address = object.delegator_address;
@@ -740,7 +794,9 @@ exports.QueryDelegationTotalRewardsResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryDelegationTotalRewardsResponse);
+        const message = {
+            ...baseQueryDelegationTotalRewardsResponse,
+        };
         message.rewards = [];
         message.total = [];
         while (reader.pos < end) {
@@ -760,7 +816,9 @@ exports.QueryDelegationTotalRewardsResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryDelegationTotalRewardsResponse);
+        const message = {
+            ...baseQueryDelegationTotalRewardsResponse,
+        };
         message.rewards = [];
         message.total = [];
         if (object.rewards !== undefined && object.rewards !== null) {
@@ -792,7 +850,9 @@ exports.QueryDelegationTotalRewardsResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryDelegationTotalRewardsResponse);
+        const message = {
+            ...baseQueryDelegationTotalRewardsResponse,
+        };
         message.rewards = [];
         message.total = [];
         if (object.rewards !== undefined && object.rewards !== null) {
@@ -819,7 +879,9 @@ exports.QueryDelegatorValidatorsRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryDelegatorValidatorsRequest);
+        const message = {
+            ...baseQueryDelegatorValidatorsRequest,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -834,7 +896,9 @@ exports.QueryDelegatorValidatorsRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryDelegatorValidatorsRequest);
+        const message = {
+            ...baseQueryDelegatorValidatorsRequest,
+        };
         if (object.delegator_address !== undefined &&
             object.delegator_address !== null) {
             message.delegator_address = String(object.delegator_address);
@@ -851,7 +915,9 @@ exports.QueryDelegatorValidatorsRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryDelegatorValidatorsRequest);
+        const message = {
+            ...baseQueryDelegatorValidatorsRequest,
+        };
         if (object.delegator_address !== undefined &&
             object.delegator_address !== null) {
             message.delegator_address = object.delegator_address;
@@ -873,7 +939,9 @@ exports.QueryDelegatorValidatorsResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryDelegatorValidatorsResponse);
+        const message = {
+            ...baseQueryDelegatorValidatorsResponse,
+        };
         message.validators = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -889,7 +957,9 @@ exports.QueryDelegatorValidatorsResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryDelegatorValidatorsResponse);
+        const message = {
+            ...baseQueryDelegatorValidatorsResponse,
+        };
         message.validators = [];
         if (object.validators !== undefined && object.validators !== null) {
             for (const e of object.validators) {
@@ -909,7 +979,9 @@ exports.QueryDelegatorValidatorsResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryDelegatorValidatorsResponse);
+        const message = {
+            ...baseQueryDelegatorValidatorsResponse,
+        };
         message.validators = [];
         if (object.validators !== undefined && object.validators !== null) {
             for (const e of object.validators) {
@@ -932,7 +1004,9 @@ exports.QueryDelegatorWithdrawAddressRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryDelegatorWithdrawAddressRequest);
+        const message = {
+            ...baseQueryDelegatorWithdrawAddressRequest,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -947,7 +1021,9 @@ exports.QueryDelegatorWithdrawAddressRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryDelegatorWithdrawAddressRequest);
+        const message = {
+            ...baseQueryDelegatorWithdrawAddressRequest,
+        };
         if (object.delegator_address !== undefined &&
             object.delegator_address !== null) {
             message.delegator_address = String(object.delegator_address);
@@ -964,7 +1040,9 @@ exports.QueryDelegatorWithdrawAddressRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryDelegatorWithdrawAddressRequest);
+        const message = {
+            ...baseQueryDelegatorWithdrawAddressRequest,
+        };
         if (object.delegator_address !== undefined &&
             object.delegator_address !== null) {
             message.delegator_address = object.delegator_address;
@@ -988,7 +1066,9 @@ exports.QueryDelegatorWithdrawAddressResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryDelegatorWithdrawAddressResponse);
+        const message = {
+            ...baseQueryDelegatorWithdrawAddressResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -1003,7 +1083,9 @@ exports.QueryDelegatorWithdrawAddressResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryDelegatorWithdrawAddressResponse);
+        const message = {
+            ...baseQueryDelegatorWithdrawAddressResponse,
+        };
         if (object.withdraw_address !== undefined &&
             object.withdraw_address !== null) {
             message.withdraw_address = String(object.withdraw_address);
@@ -1020,7 +1102,9 @@ exports.QueryDelegatorWithdrawAddressResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryDelegatorWithdrawAddressResponse);
+        const message = {
+            ...baseQueryDelegatorWithdrawAddressResponse,
+        };
         if (object.withdraw_address !== undefined &&
             object.withdraw_address !== null) {
             message.withdraw_address = object.withdraw_address;
@@ -1039,7 +1123,9 @@ exports.QueryCommunityPoolRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryCommunityPoolRequest);
+        const message = {
+            ...baseQueryCommunityPoolRequest,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -1051,7 +1137,9 @@ exports.QueryCommunityPoolRequest = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseQueryCommunityPoolRequest);
+        const message = {
+            ...baseQueryCommunityPoolRequest,
+        };
         return message;
     },
     toJSON(_) {
@@ -1059,7 +1147,9 @@ exports.QueryCommunityPoolRequest = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseQueryCommunityPoolRequest);
+        const message = {
+            ...baseQueryCommunityPoolRequest,
+        };
         return message;
     },
 };
@@ -1074,7 +1164,9 @@ exports.QueryCommunityPoolResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryCommunityPoolResponse);
+        const message = {
+            ...baseQueryCommunityPoolResponse,
+        };
         message.pool = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -1090,7 +1182,9 @@ exports.QueryCommunityPoolResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryCommunityPoolResponse);
+        const message = {
+            ...baseQueryCommunityPoolResponse,
+        };
         message.pool = [];
         if (object.pool !== undefined && object.pool !== null) {
             for (const e of object.pool) {
@@ -1110,7 +1204,9 @@ exports.QueryCommunityPoolResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryCommunityPoolResponse);
+        const message = {
+            ...baseQueryCommunityPoolResponse,
+        };
         message.pool = [];
         if (object.pool !== undefined && object.pool !== null) {
             for (const e of object.pool) {

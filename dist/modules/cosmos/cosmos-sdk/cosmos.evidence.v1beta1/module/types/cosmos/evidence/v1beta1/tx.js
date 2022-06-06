@@ -19,7 +19,7 @@ exports.MsgSubmitEvidence = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgSubmitEvidence);
+        const message = { ...baseMsgSubmitEvidence };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -37,7 +37,7 @@ exports.MsgSubmitEvidence = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgSubmitEvidence);
+        const message = { ...baseMsgSubmitEvidence };
         if (object.submitter !== undefined && object.submitter !== null) {
             message.submitter = String(object.submitter);
         }
@@ -62,7 +62,7 @@ exports.MsgSubmitEvidence = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgSubmitEvidence);
+        const message = { ...baseMsgSubmitEvidence };
         if (object.submitter !== undefined && object.submitter !== null) {
             message.submitter = object.submitter;
         }
@@ -89,7 +89,9 @@ exports.MsgSubmitEvidenceResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgSubmitEvidenceResponse);
+        const message = {
+            ...baseMsgSubmitEvidenceResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -104,7 +106,9 @@ exports.MsgSubmitEvidenceResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgSubmitEvidenceResponse);
+        const message = {
+            ...baseMsgSubmitEvidenceResponse,
+        };
         if (object.hash !== undefined && object.hash !== null) {
             message.hash = bytesFromBase64(object.hash);
         }
@@ -117,7 +121,9 @@ exports.MsgSubmitEvidenceResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgSubmitEvidenceResponse);
+        const message = {
+            ...baseMsgSubmitEvidenceResponse,
+        };
         if (object.hash !== undefined && object.hash !== null) {
             message.hash = object.hash;
         }

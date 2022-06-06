@@ -78,7 +78,7 @@ exports.StakeAuthorization = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseStakeAuthorization);
+        const message = { ...baseStakeAuthorization };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -102,7 +102,7 @@ exports.StakeAuthorization = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseStakeAuthorization);
+        const message = { ...baseStakeAuthorization };
         if (object.max_tokens !== undefined && object.max_tokens !== null) {
             message.max_tokens = coin_1.Coin.fromJSON(object.max_tokens);
         }
@@ -149,7 +149,7 @@ exports.StakeAuthorization = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseStakeAuthorization);
+        const message = { ...baseStakeAuthorization };
         if (object.max_tokens !== undefined && object.max_tokens !== null) {
             message.max_tokens = coin_1.Coin.fromPartial(object.max_tokens);
         }
@@ -189,7 +189,9 @@ exports.StakeAuthorization_Validators = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseStakeAuthorization_Validators);
+        const message = {
+            ...baseStakeAuthorization_Validators,
+        };
         message.address = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -205,7 +207,9 @@ exports.StakeAuthorization_Validators = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseStakeAuthorization_Validators);
+        const message = {
+            ...baseStakeAuthorization_Validators,
+        };
         message.address = [];
         if (object.address !== undefined && object.address !== null) {
             for (const e of object.address) {
@@ -225,7 +229,9 @@ exports.StakeAuthorization_Validators = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseStakeAuthorization_Validators);
+        const message = {
+            ...baseStakeAuthorization_Validators,
+        };
         message.address = [];
         if (object.address !== undefined && object.address !== null) {
             for (const e of object.address) {

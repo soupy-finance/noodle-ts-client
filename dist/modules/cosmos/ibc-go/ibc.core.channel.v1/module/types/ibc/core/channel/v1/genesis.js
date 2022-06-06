@@ -61,7 +61,7 @@ exports.GenesisState = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         message.channels = [];
         message.acknowledgements = [];
         message.commitments = [];
@@ -104,7 +104,7 @@ exports.GenesisState = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         message.channels = [];
         message.acknowledgements = [];
         message.commitments = [];
@@ -206,7 +206,7 @@ exports.GenesisState = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         message.channels = [];
         message.acknowledgements = [];
         message.commitments = [];
@@ -277,7 +277,7 @@ exports.PacketSequence = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, basePacketSequence);
+        const message = { ...basePacketSequence };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -298,7 +298,7 @@ exports.PacketSequence = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, basePacketSequence);
+        const message = { ...basePacketSequence };
         if (object.port_id !== undefined && object.port_id !== null) {
             message.port_id = String(object.port_id);
         }
@@ -327,7 +327,7 @@ exports.PacketSequence = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, basePacketSequence);
+        const message = { ...basePacketSequence };
         if (object.port_id !== undefined && object.port_id !== null) {
             message.port_id = object.port_id;
         }

@@ -41,7 +41,7 @@ exports.MsgCreateOrder = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgCreateOrder);
+        const message = { ...baseMsgCreateOrder };
         message.flags = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -75,7 +75,7 @@ exports.MsgCreateOrder = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgCreateOrder);
+        const message = { ...baseMsgCreateOrder };
         message.flags = [];
         if (object.creator !== undefined && object.creator !== null) {
             message.creator = String(object.creator);
@@ -137,7 +137,7 @@ exports.MsgCreateOrder = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgCreateOrder);
+        const message = { ...baseMsgCreateOrder };
         message.flags = [];
         if (object.creator !== undefined && object.creator !== null) {
             message.creator = object.creator;
@@ -191,7 +191,7 @@ exports.MsgCreateOrderResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgCreateOrderResponse);
+        const message = { ...baseMsgCreateOrderResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -203,7 +203,7 @@ exports.MsgCreateOrderResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseMsgCreateOrderResponse);
+        const message = { ...baseMsgCreateOrderResponse };
         return message;
     },
     toJSON(_) {
@@ -211,7 +211,7 @@ exports.MsgCreateOrderResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseMsgCreateOrderResponse);
+        const message = { ...baseMsgCreateOrderResponse };
         return message;
     },
 };

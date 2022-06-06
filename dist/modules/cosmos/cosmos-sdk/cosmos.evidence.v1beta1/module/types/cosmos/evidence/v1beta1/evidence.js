@@ -49,7 +49,7 @@ exports.Equivocation = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseEquivocation);
+        const message = { ...baseEquivocation };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -73,7 +73,7 @@ exports.Equivocation = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseEquivocation);
+        const message = { ...baseEquivocation };
         if (object.height !== undefined && object.height !== null) {
             message.height = Number(object.height);
         }
@@ -113,7 +113,7 @@ exports.Equivocation = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseEquivocation);
+        const message = { ...baseEquivocation };
         if (object.height !== undefined && object.height !== null) {
             message.height = object.height;
         }

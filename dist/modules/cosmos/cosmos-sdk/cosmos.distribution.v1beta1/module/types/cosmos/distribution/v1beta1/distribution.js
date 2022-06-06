@@ -54,7 +54,7 @@ exports.Params = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseParams);
+        const message = { ...baseParams };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -78,7 +78,7 @@ exports.Params = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseParams);
+        const message = { ...baseParams };
         if (object.community_tax !== undefined && object.community_tax !== null) {
             message.community_tax = String(object.community_tax);
         }
@@ -121,7 +121,7 @@ exports.Params = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseParams);
+        const message = { ...baseParams };
         if (object.community_tax !== undefined && object.community_tax !== null) {
             message.community_tax = object.community_tax;
         }
@@ -166,7 +166,9 @@ exports.ValidatorHistoricalRewards = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseValidatorHistoricalRewards);
+        const message = {
+            ...baseValidatorHistoricalRewards,
+        };
         message.cumulative_reward_ratio = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -185,7 +187,9 @@ exports.ValidatorHistoricalRewards = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseValidatorHistoricalRewards);
+        const message = {
+            ...baseValidatorHistoricalRewards,
+        };
         message.cumulative_reward_ratio = [];
         if (object.cumulative_reward_ratio !== undefined &&
             object.cumulative_reward_ratio !== null) {
@@ -215,7 +219,9 @@ exports.ValidatorHistoricalRewards = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseValidatorHistoricalRewards);
+        const message = {
+            ...baseValidatorHistoricalRewards,
+        };
         message.cumulative_reward_ratio = [];
         if (object.cumulative_reward_ratio !== undefined &&
             object.cumulative_reward_ratio !== null) {
@@ -247,7 +253,9 @@ exports.ValidatorCurrentRewards = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseValidatorCurrentRewards);
+        const message = {
+            ...baseValidatorCurrentRewards,
+        };
         message.rewards = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -266,7 +274,9 @@ exports.ValidatorCurrentRewards = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseValidatorCurrentRewards);
+        const message = {
+            ...baseValidatorCurrentRewards,
+        };
         message.rewards = [];
         if (object.rewards !== undefined && object.rewards !== null) {
             for (const e of object.rewards) {
@@ -293,7 +303,9 @@ exports.ValidatorCurrentRewards = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseValidatorCurrentRewards);
+        const message = {
+            ...baseValidatorCurrentRewards,
+        };
         message.rewards = [];
         if (object.rewards !== undefined && object.rewards !== null) {
             for (const e of object.rewards) {
@@ -320,7 +332,9 @@ exports.ValidatorAccumulatedCommission = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseValidatorAccumulatedCommission);
+        const message = {
+            ...baseValidatorAccumulatedCommission,
+        };
         message.commission = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -336,7 +350,9 @@ exports.ValidatorAccumulatedCommission = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseValidatorAccumulatedCommission);
+        const message = {
+            ...baseValidatorAccumulatedCommission,
+        };
         message.commission = [];
         if (object.commission !== undefined && object.commission !== null) {
             for (const e of object.commission) {
@@ -356,7 +372,9 @@ exports.ValidatorAccumulatedCommission = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseValidatorAccumulatedCommission);
+        const message = {
+            ...baseValidatorAccumulatedCommission,
+        };
         message.commission = [];
         if (object.commission !== undefined && object.commission !== null) {
             for (const e of object.commission) {
@@ -377,7 +395,9 @@ exports.ValidatorOutstandingRewards = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseValidatorOutstandingRewards);
+        const message = {
+            ...baseValidatorOutstandingRewards,
+        };
         message.rewards = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -393,7 +413,9 @@ exports.ValidatorOutstandingRewards = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseValidatorOutstandingRewards);
+        const message = {
+            ...baseValidatorOutstandingRewards,
+        };
         message.rewards = [];
         if (object.rewards !== undefined && object.rewards !== null) {
             for (const e of object.rewards) {
@@ -413,7 +435,9 @@ exports.ValidatorOutstandingRewards = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseValidatorOutstandingRewards);
+        const message = {
+            ...baseValidatorOutstandingRewards,
+        };
         message.rewards = [];
         if (object.rewards !== undefined && object.rewards !== null) {
             for (const e of object.rewards) {
@@ -437,7 +461,7 @@ exports.ValidatorSlashEvent = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseValidatorSlashEvent);
+        const message = { ...baseValidatorSlashEvent };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -455,7 +479,7 @@ exports.ValidatorSlashEvent = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseValidatorSlashEvent);
+        const message = { ...baseValidatorSlashEvent };
         if (object.validator_period !== undefined &&
             object.validator_period !== null) {
             message.validator_period = Number(object.validator_period);
@@ -479,7 +503,7 @@ exports.ValidatorSlashEvent = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseValidatorSlashEvent);
+        const message = { ...baseValidatorSlashEvent };
         if (object.validator_period !== undefined &&
             object.validator_period !== null) {
             message.validator_period = object.validator_period;
@@ -507,7 +531,7 @@ exports.ValidatorSlashEvents = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseValidatorSlashEvents);
+        const message = { ...baseValidatorSlashEvents };
         message.validator_slash_events = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -523,7 +547,7 @@ exports.ValidatorSlashEvents = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseValidatorSlashEvents);
+        const message = { ...baseValidatorSlashEvents };
         message.validator_slash_events = [];
         if (object.validator_slash_events !== undefined &&
             object.validator_slash_events !== null) {
@@ -544,7 +568,7 @@ exports.ValidatorSlashEvents = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseValidatorSlashEvents);
+        const message = { ...baseValidatorSlashEvents };
         message.validator_slash_events = [];
         if (object.validator_slash_events !== undefined &&
             object.validator_slash_events !== null) {
@@ -566,7 +590,7 @@ exports.FeePool = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseFeePool);
+        const message = { ...baseFeePool };
         message.community_pool = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -582,7 +606,7 @@ exports.FeePool = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseFeePool);
+        const message = { ...baseFeePool };
         message.community_pool = [];
         if (object.community_pool !== undefined && object.community_pool !== null) {
             for (const e of object.community_pool) {
@@ -602,7 +626,7 @@ exports.FeePool = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseFeePool);
+        const message = { ...baseFeePool };
         message.community_pool = [];
         if (object.community_pool !== undefined && object.community_pool !== null) {
             for (const e of object.community_pool) {
@@ -636,7 +660,9 @@ exports.CommunityPoolSpendProposal = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseCommunityPoolSpendProposal);
+        const message = {
+            ...baseCommunityPoolSpendProposal,
+        };
         message.amount = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -661,7 +687,9 @@ exports.CommunityPoolSpendProposal = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseCommunityPoolSpendProposal);
+        const message = {
+            ...baseCommunityPoolSpendProposal,
+        };
         message.amount = [];
         if (object.title !== undefined && object.title !== null) {
             message.title = String(object.title);
@@ -703,7 +731,9 @@ exports.CommunityPoolSpendProposal = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseCommunityPoolSpendProposal);
+        const message = {
+            ...baseCommunityPoolSpendProposal,
+        };
         message.amount = [];
         if (object.title !== undefined && object.title !== null) {
             message.title = object.title;
@@ -752,7 +782,7 @@ exports.DelegatorStartingInfo = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseDelegatorStartingInfo);
+        const message = { ...baseDelegatorStartingInfo };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -773,7 +803,7 @@ exports.DelegatorStartingInfo = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseDelegatorStartingInfo);
+        const message = { ...baseDelegatorStartingInfo };
         if (object.previous_period !== undefined &&
             object.previous_period !== null) {
             message.previous_period = Number(object.previous_period);
@@ -804,7 +834,7 @@ exports.DelegatorStartingInfo = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseDelegatorStartingInfo);
+        const message = { ...baseDelegatorStartingInfo };
         if (object.previous_period !== undefined &&
             object.previous_period !== null) {
             message.previous_period = object.previous_period;
@@ -841,7 +871,9 @@ exports.DelegationDelegatorReward = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseDelegationDelegatorReward);
+        const message = {
+            ...baseDelegationDelegatorReward,
+        };
         message.reward = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -860,7 +892,9 @@ exports.DelegationDelegatorReward = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseDelegationDelegatorReward);
+        const message = {
+            ...baseDelegationDelegatorReward,
+        };
         message.reward = [];
         if (object.validator_address !== undefined &&
             object.validator_address !== null) {
@@ -889,7 +923,9 @@ exports.DelegationDelegatorReward = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseDelegationDelegatorReward);
+        const message = {
+            ...baseDelegationDelegatorReward,
+        };
         message.reward = [];
         if (object.validator_address !== undefined &&
             object.validator_address !== null) {
@@ -935,7 +971,9 @@ exports.CommunityPoolSpendProposalWithDeposit = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseCommunityPoolSpendProposalWithDeposit);
+        const message = {
+            ...baseCommunityPoolSpendProposalWithDeposit,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -962,7 +1000,9 @@ exports.CommunityPoolSpendProposalWithDeposit = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseCommunityPoolSpendProposalWithDeposit);
+        const message = {
+            ...baseCommunityPoolSpendProposalWithDeposit,
+        };
         if (object.title !== undefined && object.title !== null) {
             message.title = String(object.title);
         }
@@ -1006,7 +1046,9 @@ exports.CommunityPoolSpendProposalWithDeposit = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseCommunityPoolSpendProposalWithDeposit);
+        const message = {
+            ...baseCommunityPoolSpendProposalWithDeposit,
+        };
         if (object.title !== undefined && object.title !== null) {
             message.title = object.title;
         }

@@ -45,7 +45,7 @@ exports.NetAddress = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseNetAddress);
+        const message = { ...baseNetAddress };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -66,7 +66,7 @@ exports.NetAddress = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseNetAddress);
+        const message = { ...baseNetAddress };
         if (object.id !== undefined && object.id !== null) {
             message.id = String(object.id);
         }
@@ -95,7 +95,7 @@ exports.NetAddress = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseNetAddress);
+        const message = { ...baseNetAddress };
         if (object.id !== undefined && object.id !== null) {
             message.id = object.id;
         }
@@ -134,7 +134,7 @@ exports.ProtocolVersion = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseProtocolVersion);
+        const message = { ...baseProtocolVersion };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -155,7 +155,7 @@ exports.ProtocolVersion = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseProtocolVersion);
+        const message = { ...baseProtocolVersion };
         if (object.p2p !== undefined && object.p2p !== null) {
             message.p2p = Number(object.p2p);
         }
@@ -184,7 +184,7 @@ exports.ProtocolVersion = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseProtocolVersion);
+        const message = { ...baseProtocolVersion };
         if (object.p2p !== undefined && object.p2p !== null) {
             message.p2p = object.p2p;
         }
@@ -244,7 +244,7 @@ exports.DefaultNodeInfo = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseDefaultNodeInfo);
+        const message = { ...baseDefaultNodeInfo };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -280,7 +280,7 @@ exports.DefaultNodeInfo = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseDefaultNodeInfo);
+        const message = { ...baseDefaultNodeInfo };
         if (object.protocol_version !== undefined &&
             object.protocol_version !== null) {
             message.protocol_version = exports.ProtocolVersion.fromJSON(object.protocol_version);
@@ -352,7 +352,7 @@ exports.DefaultNodeInfo = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseDefaultNodeInfo);
+        const message = { ...baseDefaultNodeInfo };
         if (object.protocol_version !== undefined &&
             object.protocol_version !== null) {
             message.protocol_version = exports.ProtocolVersion.fromPartial(object.protocol_version);
@@ -420,7 +420,7 @@ exports.DefaultNodeInfoOther = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseDefaultNodeInfoOther);
+        const message = { ...baseDefaultNodeInfoOther };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -438,7 +438,7 @@ exports.DefaultNodeInfoOther = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseDefaultNodeInfoOther);
+        const message = { ...baseDefaultNodeInfoOther };
         if (object.tx_index !== undefined && object.tx_index !== null) {
             message.tx_index = String(object.tx_index);
         }
@@ -461,7 +461,7 @@ exports.DefaultNodeInfoOther = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseDefaultNodeInfoOther);
+        const message = { ...baseDefaultNodeInfoOther };
         if (object.tx_index !== undefined && object.tx_index !== null) {
             message.tx_index = object.tx_index;
         }

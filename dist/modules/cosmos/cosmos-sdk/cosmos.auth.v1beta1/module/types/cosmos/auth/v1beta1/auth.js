@@ -49,7 +49,7 @@ exports.BaseAccount = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseBaseAccount);
+        const message = { ...baseBaseAccount };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -73,7 +73,7 @@ exports.BaseAccount = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseBaseAccount);
+        const message = { ...baseBaseAccount };
         if (object.address !== undefined && object.address !== null) {
             message.address = String(object.address);
         }
@@ -111,7 +111,7 @@ exports.BaseAccount = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseBaseAccount);
+        const message = { ...baseBaseAccount };
         if (object.address !== undefined && object.address !== null) {
             message.address = object.address;
         }
@@ -156,7 +156,7 @@ exports.ModuleAccount = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseModuleAccount);
+        const message = { ...baseModuleAccount };
         message.permissions = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -178,7 +178,7 @@ exports.ModuleAccount = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseModuleAccount);
+        const message = { ...baseModuleAccount };
         message.permissions = [];
         if (object.base_account !== undefined && object.base_account !== null) {
             message.base_account = exports.BaseAccount.fromJSON(object.base_account);
@@ -215,7 +215,7 @@ exports.ModuleAccount = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseModuleAccount);
+        const message = { ...baseModuleAccount };
         message.permissions = [];
         if (object.base_account !== undefined && object.base_account !== null) {
             message.base_account = exports.BaseAccount.fromPartial(object.base_account);
@@ -266,7 +266,7 @@ exports.Params = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseParams);
+        const message = { ...baseParams };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -293,7 +293,7 @@ exports.Params = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseParams);
+        const message = { ...baseParams };
         if (object.max_memo_characters !== undefined &&
             object.max_memo_characters !== null) {
             message.max_memo_characters = Number(object.max_memo_characters);
@@ -345,7 +345,7 @@ exports.Params = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseParams);
+        const message = { ...baseParams };
         if (object.max_memo_characters !== undefined &&
             object.max_memo_characters !== null) {
             message.max_memo_characters = object.max_memo_characters;

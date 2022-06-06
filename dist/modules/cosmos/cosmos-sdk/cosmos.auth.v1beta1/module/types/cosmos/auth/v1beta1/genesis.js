@@ -20,7 +20,7 @@ exports.GenesisState = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         message.accounts = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -39,7 +39,7 @@ exports.GenesisState = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         message.accounts = [];
         if (object.params !== undefined && object.params !== null) {
             message.params = auth_1.Params.fromJSON(object.params);
@@ -67,7 +67,7 @@ exports.GenesisState = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         message.accounts = [];
         if (object.params !== undefined && object.params !== null) {
             message.params = auth_1.Params.fromPartial(object.params);

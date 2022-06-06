@@ -45,7 +45,7 @@ exports.Evidence = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseEvidence);
+        const message = { ...baseEvidence };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -63,7 +63,7 @@ exports.Evidence = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseEvidence);
+        const message = { ...baseEvidence };
         if (object.duplicate_vote_evidence !== undefined &&
             object.duplicate_vote_evidence !== null) {
             message.duplicate_vote_evidence = exports.DuplicateVoteEvidence.fromJSON(object.duplicate_vote_evidence);
@@ -93,7 +93,7 @@ exports.Evidence = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseEvidence);
+        const message = { ...baseEvidence };
         if (object.duplicate_vote_evidence !== undefined &&
             object.duplicate_vote_evidence !== null) {
             message.duplicate_vote_evidence = exports.DuplicateVoteEvidence.fromPartial(object.duplicate_vote_evidence);
@@ -137,7 +137,7 @@ exports.DuplicateVoteEvidence = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseDuplicateVoteEvidence);
+        const message = { ...baseDuplicateVoteEvidence };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -164,7 +164,7 @@ exports.DuplicateVoteEvidence = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseDuplicateVoteEvidence);
+        const message = { ...baseDuplicateVoteEvidence };
         if (object.vote_a !== undefined && object.vote_a !== null) {
             message.vote_a = types_1.Vote.fromJSON(object.vote_a);
         }
@@ -217,7 +217,7 @@ exports.DuplicateVoteEvidence = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseDuplicateVoteEvidence);
+        const message = { ...baseDuplicateVoteEvidence };
         if (object.vote_a !== undefined && object.vote_a !== null) {
             message.vote_a = types_1.Vote.fromPartial(object.vote_a);
         }
@@ -279,7 +279,9 @@ exports.LightClientAttackEvidence = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseLightClientAttackEvidence);
+        const message = {
+            ...baseLightClientAttackEvidence,
+        };
         message.byzantine_validators = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -307,7 +309,9 @@ exports.LightClientAttackEvidence = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseLightClientAttackEvidence);
+        const message = {
+            ...baseLightClientAttackEvidence,
+        };
         message.byzantine_validators = [];
         if (object.conflicting_block !== undefined &&
             object.conflicting_block !== null) {
@@ -367,7 +371,9 @@ exports.LightClientAttackEvidence = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseLightClientAttackEvidence);
+        const message = {
+            ...baseLightClientAttackEvidence,
+        };
         message.byzantine_validators = [];
         if (object.conflicting_block !== undefined &&
             object.conflicting_block !== null) {
@@ -415,7 +421,7 @@ exports.EvidenceList = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseEvidenceList);
+        const message = { ...baseEvidenceList };
         message.evidence = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -431,7 +437,7 @@ exports.EvidenceList = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseEvidenceList);
+        const message = { ...baseEvidenceList };
         message.evidence = [];
         if (object.evidence !== undefined && object.evidence !== null) {
             for (const e of object.evidence) {
@@ -451,7 +457,7 @@ exports.EvidenceList = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseEvidenceList);
+        const message = { ...baseEvidenceList };
         message.evidence = [];
         if (object.evidence !== undefined && object.evidence !== null) {
             for (const e of object.evidence) {

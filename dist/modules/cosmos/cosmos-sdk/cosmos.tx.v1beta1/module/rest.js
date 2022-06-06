@@ -9,26 +9,6 @@
  * ## SOURCE: https://github.com/acacode/swagger-typescript-api ##
  * ---------------------------------------------------------------
  */
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Api = exports.HttpClient = exports.ContentType = exports.V1Beta1SignMode = exports.V1Beta1OrderBy = exports.V1Beta1BroadcastMode = void 0;
 /**
@@ -128,17 +108,24 @@ class HttpClient {
                 this.abortControllers.delete(cancelToken);
             }
         };
-        this.request = (_a) => {
-            var { body, secure, path, type, query, format = "json", baseUrl, cancelToken } = _a, params = __rest(_a, ["body", "secure", "path", "type", "query", "format", "baseUrl", "cancelToken"]);
+        this.request = ({ body, secure, path, type, query, format = "json", baseUrl, cancelToken, ...params }) => {
             const secureParams = (secure && this.securityWorker && this.securityWorker(this.securityData)) || {};
             const requestParams = this.mergeRequestParams(params, secureParams);
             const queryString = query && this.toQueryString(query);
             const payloadFormatter = this.contentFormatters[type || ContentType.Json];
-            return fetch(`${baseUrl || this.baseUrl || ""}${path}${queryString ? `?${queryString}` : ""}`, Object.assign(Object.assign({}, requestParams), { headers: Object.assign(Object.assign({}, (type && type !== ContentType.FormData ? { "Content-Type": type } : {})), (requestParams.headers || {})), signal: cancelToken ? this.createAbortSignal(cancelToken) : void 0, body: typeof body === "undefined" || body === null ? null : payloadFormatter(body) })).then((response) => __awaiter(this, void 0, void 0, function* () {
+            return fetch(`${baseUrl || this.baseUrl || ""}${path}${queryString ? `?${queryString}` : ""}`, {
+                ...requestParams,
+                headers: {
+                    ...(type && type !== ContentType.FormData ? { "Content-Type": type } : {}),
+                    ...(requestParams.headers || {}),
+                },
+                signal: cancelToken ? this.createAbortSignal(cancelToken) : void 0,
+                body: typeof body === "undefined" || body === null ? null : payloadFormatter(body),
+            }).then(async (response) => {
                 const r = response;
                 r.data = null;
                 r.error = null;
-                const data = yield response[format]()
+                const data = await response[format]()
                     .then((data) => {
                     if (r.ok) {
                         r.data = data;
@@ -158,7 +145,7 @@ class HttpClient {
                 if (!response.ok)
                     throw data;
                 return data;
-            }));
+            });
         };
         Object.assign(this, apiConfig);
     }
@@ -182,7 +169,16 @@ class HttpClient {
         return queryString ? `?${queryString}` : "";
     }
     mergeRequestParams(params1, params2) {
-        return Object.assign(Object.assign(Object.assign(Object.assign({}, this.baseApiParams), params1), (params2 || {})), { headers: Object.assign(Object.assign(Object.assign({}, (this.baseApiParams.headers || {})), (params1.headers || {})), ((params2 && params2.headers) || {})) });
+        return {
+            ...this.baseApiParams,
+            ...params1,
+            ...(params2 || {}),
+            headers: {
+                ...(this.baseApiParams.headers || {}),
+                ...(params1.headers || {}),
+                ...((params2 && params2.headers) || {}),
+            },
+        };
     }
 }
 exports.HttpClient = HttpClient;
@@ -201,7 +197,14 @@ class Api extends HttpClient {
          * @summary Simulate simulates executing a transaction for estimating gas usage.
          * @request POST:/cosmos/tx/v1beta1/simulate
          */
-        this.serviceSimulate = (body, params = {}) => this.request(Object.assign({ path: `/cosmos/tx/v1beta1/simulate`, method: "POST", body: body, type: ContentType.Json, format: "json" }, params));
+        this.serviceSimulate = (body, params = {}) => this.request({
+            path: `/cosmos/tx/v1beta1/simulate`,
+            method: "POST",
+            body: body,
+            type: ContentType.Json,
+            format: "json",
+            ...params,
+        });
         /**
          * No description
          *
@@ -210,7 +213,13 @@ class Api extends HttpClient {
          * @summary GetTxsEvent fetches txs by event.
          * @request GET:/cosmos/tx/v1beta1/txs
          */
-        this.serviceGetTxsEvent = (query, params = {}) => this.request(Object.assign({ path: `/cosmos/tx/v1beta1/txs`, method: "GET", query: query, format: "json" }, params));
+        this.serviceGetTxsEvent = (query, params = {}) => this.request({
+            path: `/cosmos/tx/v1beta1/txs`,
+            method: "GET",
+            query: query,
+            format: "json",
+            ...params,
+        });
         /**
          * No description
          *
@@ -219,7 +228,14 @@ class Api extends HttpClient {
          * @summary BroadcastTx broadcast transaction.
          * @request POST:/cosmos/tx/v1beta1/txs
          */
-        this.serviceBroadcastTx = (body, params = {}) => this.request(Object.assign({ path: `/cosmos/tx/v1beta1/txs`, method: "POST", body: body, type: ContentType.Json, format: "json" }, params));
+        this.serviceBroadcastTx = (body, params = {}) => this.request({
+            path: `/cosmos/tx/v1beta1/txs`,
+            method: "POST",
+            body: body,
+            type: ContentType.Json,
+            format: "json",
+            ...params,
+        });
         /**
          * No description
          *
@@ -228,7 +244,12 @@ class Api extends HttpClient {
          * @summary GetTx fetches a tx by hash.
          * @request GET:/cosmos/tx/v1beta1/txs/{hash}
          */
-        this.serviceGetTx = (hash, params = {}) => this.request(Object.assign({ path: `/cosmos/tx/v1beta1/txs/${hash}`, method: "GET", format: "json" }, params));
+        this.serviceGetTx = (hash, params = {}) => this.request({
+            path: `/cosmos/tx/v1beta1/txs/${hash}`,
+            method: "GET",
+            format: "json",
+            ...params,
+        });
     }
 }
 exports.Api = Api;

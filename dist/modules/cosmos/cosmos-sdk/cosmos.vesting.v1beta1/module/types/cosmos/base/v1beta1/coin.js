@@ -18,7 +18,7 @@ exports.Coin = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseCoin);
+        const message = { ...baseCoin };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -36,7 +36,7 @@ exports.Coin = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseCoin);
+        const message = { ...baseCoin };
         if (object.denom !== undefined && object.denom !== null) {
             message.denom = String(object.denom);
         }
@@ -58,7 +58,7 @@ exports.Coin = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseCoin);
+        const message = { ...baseCoin };
         if (object.denom !== undefined && object.denom !== null) {
             message.denom = object.denom;
         }
@@ -88,7 +88,7 @@ exports.DecCoin = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseDecCoin);
+        const message = { ...baseDecCoin };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -106,7 +106,7 @@ exports.DecCoin = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseDecCoin);
+        const message = { ...baseDecCoin };
         if (object.denom !== undefined && object.denom !== null) {
             message.denom = String(object.denom);
         }
@@ -128,7 +128,7 @@ exports.DecCoin = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseDecCoin);
+        const message = { ...baseDecCoin };
         if (object.denom !== undefined && object.denom !== null) {
             message.denom = object.denom;
         }
@@ -155,7 +155,7 @@ exports.IntProto = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseIntProto);
+        const message = { ...baseIntProto };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -170,7 +170,7 @@ exports.IntProto = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseIntProto);
+        const message = { ...baseIntProto };
         if (object.int !== undefined && object.int !== null) {
             message.int = String(object.int);
         }
@@ -185,7 +185,7 @@ exports.IntProto = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseIntProto);
+        const message = { ...baseIntProto };
         if (object.int !== undefined && object.int !== null) {
             message.int = object.int;
         }
@@ -206,7 +206,7 @@ exports.DecProto = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseDecProto);
+        const message = { ...baseDecProto };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -221,7 +221,7 @@ exports.DecProto = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseDecProto);
+        const message = { ...baseDecProto };
         if (object.dec !== undefined && object.dec !== null) {
             message.dec = String(object.dec);
         }
@@ -236,7 +236,7 @@ exports.DecProto = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseDecProto);
+        const message = { ...baseDecProto };
         if (object.dec !== undefined && object.dec !== null) {
             message.dec = object.dec;
         }

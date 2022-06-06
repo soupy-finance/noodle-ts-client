@@ -42,7 +42,7 @@ exports.Duration = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseDuration);
+        const message = { ...baseDuration };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -60,7 +60,7 @@ exports.Duration = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseDuration);
+        const message = { ...baseDuration };
         if (object.seconds !== undefined && object.seconds !== null) {
             message.seconds = Number(object.seconds);
         }
@@ -82,7 +82,7 @@ exports.Duration = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseDuration);
+        const message = { ...baseDuration };
         if (object.seconds !== undefined && object.seconds !== null) {
             message.seconds = object.seconds;
         }

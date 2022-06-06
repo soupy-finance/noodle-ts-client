@@ -26,7 +26,7 @@ exports.GenesisState = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         message.balances = [];
         message.supply = [];
         message.denom_metadata = [];
@@ -53,7 +53,7 @@ exports.GenesisState = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         message.balances = [];
         message.supply = [];
         message.denom_metadata = [];
@@ -105,7 +105,7 @@ exports.GenesisState = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         message.balances = [];
         message.supply = [];
         message.denom_metadata = [];
@@ -147,7 +147,7 @@ exports.Balance = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseBalance);
+        const message = { ...baseBalance };
         message.coins = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -166,7 +166,7 @@ exports.Balance = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseBalance);
+        const message = { ...baseBalance };
         message.coins = [];
         if (object.address !== undefined && object.address !== null) {
             message.address = String(object.address);
@@ -193,7 +193,7 @@ exports.Balance = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseBalance);
+        const message = { ...baseBalance };
         message.coins = [];
         if (object.address !== undefined && object.address !== null) {
             message.address = object.address;

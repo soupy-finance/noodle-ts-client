@@ -18,7 +18,7 @@ exports.DenomTrace = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseDenomTrace);
+        const message = { ...baseDenomTrace };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -36,7 +36,7 @@ exports.DenomTrace = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseDenomTrace);
+        const message = { ...baseDenomTrace };
         if (object.path !== undefined && object.path !== null) {
             message.path = String(object.path);
         }
@@ -58,7 +58,7 @@ exports.DenomTrace = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseDenomTrace);
+        const message = { ...baseDenomTrace };
         if (object.path !== undefined && object.path !== null) {
             message.path = object.path;
         }
@@ -88,7 +88,7 @@ exports.Params = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseParams);
+        const message = { ...baseParams };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -106,7 +106,7 @@ exports.Params = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseParams);
+        const message = { ...baseParams };
         if (object.send_enabled !== undefined && object.send_enabled !== null) {
             message.send_enabled = Boolean(object.send_enabled);
         }
@@ -131,7 +131,7 @@ exports.Params = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseParams);
+        const message = { ...baseParams };
         if (object.send_enabled !== undefined && object.send_enabled !== null) {
             message.send_enabled = object.send_enabled;
         }

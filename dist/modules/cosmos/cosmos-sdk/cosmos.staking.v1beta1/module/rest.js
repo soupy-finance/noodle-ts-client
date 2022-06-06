@@ -9,26 +9,6 @@
  * ## SOURCE: https://github.com/acacode/swagger-typescript-api ##
  * ---------------------------------------------------------------
  */
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Api = exports.HttpClient = exports.ContentType = exports.V1Beta1BondStatus = void 0;
 /**
@@ -94,17 +74,24 @@ class HttpClient {
                 this.abortControllers.delete(cancelToken);
             }
         };
-        this.request = (_a) => {
-            var { body, secure, path, type, query, format = "json", baseUrl, cancelToken } = _a, params = __rest(_a, ["body", "secure", "path", "type", "query", "format", "baseUrl", "cancelToken"]);
+        this.request = ({ body, secure, path, type, query, format = "json", baseUrl, cancelToken, ...params }) => {
             const secureParams = (secure && this.securityWorker && this.securityWorker(this.securityData)) || {};
             const requestParams = this.mergeRequestParams(params, secureParams);
             const queryString = query && this.toQueryString(query);
             const payloadFormatter = this.contentFormatters[type || ContentType.Json];
-            return fetch(`${baseUrl || this.baseUrl || ""}${path}${queryString ? `?${queryString}` : ""}`, Object.assign(Object.assign({}, requestParams), { headers: Object.assign(Object.assign({}, (type && type !== ContentType.FormData ? { "Content-Type": type } : {})), (requestParams.headers || {})), signal: cancelToken ? this.createAbortSignal(cancelToken) : void 0, body: typeof body === "undefined" || body === null ? null : payloadFormatter(body) })).then((response) => __awaiter(this, void 0, void 0, function* () {
+            return fetch(`${baseUrl || this.baseUrl || ""}${path}${queryString ? `?${queryString}` : ""}`, {
+                ...requestParams,
+                headers: {
+                    ...(type && type !== ContentType.FormData ? { "Content-Type": type } : {}),
+                    ...(requestParams.headers || {}),
+                },
+                signal: cancelToken ? this.createAbortSignal(cancelToken) : void 0,
+                body: typeof body === "undefined" || body === null ? null : payloadFormatter(body),
+            }).then(async (response) => {
                 const r = response;
                 r.data = null;
                 r.error = null;
-                const data = yield response[format]()
+                const data = await response[format]()
                     .then((data) => {
                     if (r.ok) {
                         r.data = data;
@@ -124,7 +111,7 @@ class HttpClient {
                 if (!response.ok)
                     throw data;
                 return data;
-            }));
+            });
         };
         Object.assign(this, apiConfig);
     }
@@ -148,7 +135,16 @@ class HttpClient {
         return queryString ? `?${queryString}` : "";
     }
     mergeRequestParams(params1, params2) {
-        return Object.assign(Object.assign(Object.assign(Object.assign({}, this.baseApiParams), params1), (params2 || {})), { headers: Object.assign(Object.assign(Object.assign({}, (this.baseApiParams.headers || {})), (params1.headers || {})), ((params2 && params2.headers) || {})) });
+        return {
+            ...this.baseApiParams,
+            ...params1,
+            ...(params2 || {}),
+            headers: {
+                ...(this.baseApiParams.headers || {}),
+                ...(params1.headers || {}),
+                ...((params2 && params2.headers) || {}),
+            },
+        };
     }
 }
 exports.HttpClient = HttpClient;
@@ -167,7 +163,13 @@ class Api extends HttpClient {
          * @summary DelegatorDelegations queries all delegations of a given delegator address.
          * @request GET:/cosmos/staking/v1beta1/delegations/{delegator_addr}
          */
-        this.queryDelegatorDelegations = (delegator_addr, query, params = {}) => this.request(Object.assign({ path: `/cosmos/staking/v1beta1/delegations/${delegator_addr}`, method: "GET", query: query, format: "json" }, params));
+        this.queryDelegatorDelegations = (delegator_addr, query, params = {}) => this.request({
+            path: `/cosmos/staking/v1beta1/delegations/${delegator_addr}`,
+            method: "GET",
+            query: query,
+            format: "json",
+            ...params,
+        });
         /**
          * No description
          *
@@ -176,7 +178,13 @@ class Api extends HttpClient {
          * @summary Redelegations queries redelegations of given address.
          * @request GET:/cosmos/staking/v1beta1/delegators/{delegator_addr}/redelegations
          */
-        this.queryRedelegations = (delegator_addr, query, params = {}) => this.request(Object.assign({ path: `/cosmos/staking/v1beta1/delegators/${delegator_addr}/redelegations`, method: "GET", query: query, format: "json" }, params));
+        this.queryRedelegations = (delegator_addr, query, params = {}) => this.request({
+            path: `/cosmos/staking/v1beta1/delegators/${delegator_addr}/redelegations`,
+            method: "GET",
+            query: query,
+            format: "json",
+            ...params,
+        });
         /**
        * No description
        *
@@ -186,7 +194,13 @@ class Api extends HttpClient {
       delegator address.
        * @request GET:/cosmos/staking/v1beta1/delegators/{delegator_addr}/unbonding_delegations
        */
-        this.queryDelegatorUnbondingDelegations = (delegator_addr, query, params = {}) => this.request(Object.assign({ path: `/cosmos/staking/v1beta1/delegators/${delegator_addr}/unbonding_delegations`, method: "GET", query: query, format: "json" }, params));
+        this.queryDelegatorUnbondingDelegations = (delegator_addr, query, params = {}) => this.request({
+            path: `/cosmos/staking/v1beta1/delegators/${delegator_addr}/unbonding_delegations`,
+            method: "GET",
+            query: query,
+            format: "json",
+            ...params,
+        });
         /**
        * No description
        *
@@ -196,7 +210,13 @@ class Api extends HttpClient {
       address.
        * @request GET:/cosmos/staking/v1beta1/delegators/{delegator_addr}/validators
        */
-        this.queryDelegatorValidators = (delegator_addr, query, params = {}) => this.request(Object.assign({ path: `/cosmos/staking/v1beta1/delegators/${delegator_addr}/validators`, method: "GET", query: query, format: "json" }, params));
+        this.queryDelegatorValidators = (delegator_addr, query, params = {}) => this.request({
+            path: `/cosmos/staking/v1beta1/delegators/${delegator_addr}/validators`,
+            method: "GET",
+            query: query,
+            format: "json",
+            ...params,
+        });
         /**
        * No description
        *
@@ -206,7 +226,12 @@ class Api extends HttpClient {
       pair.
        * @request GET:/cosmos/staking/v1beta1/delegators/{delegator_addr}/validators/{validator_addr}
        */
-        this.queryDelegatorValidator = (delegator_addr, validator_addr, params = {}) => this.request(Object.assign({ path: `/cosmos/staking/v1beta1/delegators/${delegator_addr}/validators/${validator_addr}`, method: "GET", format: "json" }, params));
+        this.queryDelegatorValidator = (delegator_addr, validator_addr, params = {}) => this.request({
+            path: `/cosmos/staking/v1beta1/delegators/${delegator_addr}/validators/${validator_addr}`,
+            method: "GET",
+            format: "json",
+            ...params,
+        });
         /**
          * No description
          *
@@ -215,7 +240,12 @@ class Api extends HttpClient {
          * @summary HistoricalInfo queries the historical info for given height.
          * @request GET:/cosmos/staking/v1beta1/historical_info/{height}
          */
-        this.queryHistoricalInfo = (height, params = {}) => this.request(Object.assign({ path: `/cosmos/staking/v1beta1/historical_info/${height}`, method: "GET", format: "json" }, params));
+        this.queryHistoricalInfo = (height, params = {}) => this.request({
+            path: `/cosmos/staking/v1beta1/historical_info/${height}`,
+            method: "GET",
+            format: "json",
+            ...params,
+        });
         /**
          * No description
          *
@@ -224,7 +254,12 @@ class Api extends HttpClient {
          * @summary Parameters queries the staking parameters.
          * @request GET:/cosmos/staking/v1beta1/params
          */
-        this.queryParams = (params = {}) => this.request(Object.assign({ path: `/cosmos/staking/v1beta1/params`, method: "GET", format: "json" }, params));
+        this.queryParams = (params = {}) => this.request({
+            path: `/cosmos/staking/v1beta1/params`,
+            method: "GET",
+            format: "json",
+            ...params,
+        });
         /**
          * No description
          *
@@ -233,7 +268,12 @@ class Api extends HttpClient {
          * @summary Pool queries the pool info.
          * @request GET:/cosmos/staking/v1beta1/pool
          */
-        this.queryPool = (params = {}) => this.request(Object.assign({ path: `/cosmos/staking/v1beta1/pool`, method: "GET", format: "json" }, params));
+        this.queryPool = (params = {}) => this.request({
+            path: `/cosmos/staking/v1beta1/pool`,
+            method: "GET",
+            format: "json",
+            ...params,
+        });
         /**
          * No description
          *
@@ -242,7 +282,13 @@ class Api extends HttpClient {
          * @summary Validators queries all validators that match the given status.
          * @request GET:/cosmos/staking/v1beta1/validators
          */
-        this.queryValidators = (query, params = {}) => this.request(Object.assign({ path: `/cosmos/staking/v1beta1/validators`, method: "GET", query: query, format: "json" }, params));
+        this.queryValidators = (query, params = {}) => this.request({
+            path: `/cosmos/staking/v1beta1/validators`,
+            method: "GET",
+            query: query,
+            format: "json",
+            ...params,
+        });
         /**
          * No description
          *
@@ -251,7 +297,12 @@ class Api extends HttpClient {
          * @summary Validator queries validator info for given validator address.
          * @request GET:/cosmos/staking/v1beta1/validators/{validator_addr}
          */
-        this.queryValidator = (validator_addr, params = {}) => this.request(Object.assign({ path: `/cosmos/staking/v1beta1/validators/${validator_addr}`, method: "GET", format: "json" }, params));
+        this.queryValidator = (validator_addr, params = {}) => this.request({
+            path: `/cosmos/staking/v1beta1/validators/${validator_addr}`,
+            method: "GET",
+            format: "json",
+            ...params,
+        });
         /**
          * No description
          *
@@ -260,7 +311,13 @@ class Api extends HttpClient {
          * @summary ValidatorDelegations queries delegate info for given validator.
          * @request GET:/cosmos/staking/v1beta1/validators/{validator_addr}/delegations
          */
-        this.queryValidatorDelegations = (validator_addr, query, params = {}) => this.request(Object.assign({ path: `/cosmos/staking/v1beta1/validators/${validator_addr}/delegations`, method: "GET", query: query, format: "json" }, params));
+        this.queryValidatorDelegations = (validator_addr, query, params = {}) => this.request({
+            path: `/cosmos/staking/v1beta1/validators/${validator_addr}/delegations`,
+            method: "GET",
+            query: query,
+            format: "json",
+            ...params,
+        });
         /**
          * No description
          *
@@ -269,7 +326,12 @@ class Api extends HttpClient {
          * @summary Delegation queries delegate info for given validator delegator pair.
          * @request GET:/cosmos/staking/v1beta1/validators/{validator_addr}/delegations/{delegator_addr}
          */
-        this.queryDelegation = (validator_addr, delegator_addr, params = {}) => this.request(Object.assign({ path: `/cosmos/staking/v1beta1/validators/${validator_addr}/delegations/${delegator_addr}`, method: "GET", format: "json" }, params));
+        this.queryDelegation = (validator_addr, delegator_addr, params = {}) => this.request({
+            path: `/cosmos/staking/v1beta1/validators/${validator_addr}/delegations/${delegator_addr}`,
+            method: "GET",
+            format: "json",
+            ...params,
+        });
         /**
        * No description
        *
@@ -279,7 +341,12 @@ class Api extends HttpClient {
       pair.
        * @request GET:/cosmos/staking/v1beta1/validators/{validator_addr}/delegations/{delegator_addr}/unbonding_delegation
        */
-        this.queryUnbondingDelegation = (validator_addr, delegator_addr, params = {}) => this.request(Object.assign({ path: `/cosmos/staking/v1beta1/validators/${validator_addr}/delegations/${delegator_addr}/unbonding_delegation`, method: "GET", format: "json" }, params));
+        this.queryUnbondingDelegation = (validator_addr, delegator_addr, params = {}) => this.request({
+            path: `/cosmos/staking/v1beta1/validators/${validator_addr}/delegations/${delegator_addr}/unbonding_delegation`,
+            method: "GET",
+            format: "json",
+            ...params,
+        });
         /**
          * No description
          *
@@ -288,7 +355,13 @@ class Api extends HttpClient {
          * @summary ValidatorUnbondingDelegations queries unbonding delegations of a validator.
          * @request GET:/cosmos/staking/v1beta1/validators/{validator_addr}/unbonding_delegations
          */
-        this.queryValidatorUnbondingDelegations = (validator_addr, query, params = {}) => this.request(Object.assign({ path: `/cosmos/staking/v1beta1/validators/${validator_addr}/unbonding_delegations`, method: "GET", query: query, format: "json" }, params));
+        this.queryValidatorUnbondingDelegations = (validator_addr, query, params = {}) => this.request({
+            path: `/cosmos/staking/v1beta1/validators/${validator_addr}/unbonding_delegations`,
+            method: "GET",
+            query: query,
+            format: "json",
+            ...params,
+        });
     }
 }
 exports.Api = Api;

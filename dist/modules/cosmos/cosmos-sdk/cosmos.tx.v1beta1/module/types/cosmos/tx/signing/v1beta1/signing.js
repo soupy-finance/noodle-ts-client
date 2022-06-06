@@ -103,7 +103,7 @@ exports.SignatureDescriptors = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseSignatureDescriptors);
+        const message = { ...baseSignatureDescriptors };
         message.signatures = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -119,7 +119,7 @@ exports.SignatureDescriptors = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseSignatureDescriptors);
+        const message = { ...baseSignatureDescriptors };
         message.signatures = [];
         if (object.signatures !== undefined && object.signatures !== null) {
             for (const e of object.signatures) {
@@ -139,7 +139,7 @@ exports.SignatureDescriptors = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseSignatureDescriptors);
+        const message = { ...baseSignatureDescriptors };
         message.signatures = [];
         if (object.signatures !== undefined && object.signatures !== null) {
             for (const e of object.signatures) {
@@ -166,7 +166,7 @@ exports.SignatureDescriptor = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseSignatureDescriptor);
+        const message = { ...baseSignatureDescriptor };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -187,7 +187,7 @@ exports.SignatureDescriptor = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseSignatureDescriptor);
+        const message = { ...baseSignatureDescriptor };
         if (object.public_key !== undefined && object.public_key !== null) {
             message.public_key = any_1.Any.fromJSON(object.public_key);
         }
@@ -222,7 +222,7 @@ exports.SignatureDescriptor = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseSignatureDescriptor);
+        const message = { ...baseSignatureDescriptor };
         if (object.public_key !== undefined && object.public_key !== null) {
             message.public_key = any_1.Any.fromPartial(object.public_key);
         }
@@ -258,7 +258,9 @@ exports.SignatureDescriptor_Data = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseSignatureDescriptor_Data);
+        const message = {
+            ...baseSignatureDescriptor_Data,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -276,7 +278,9 @@ exports.SignatureDescriptor_Data = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseSignatureDescriptor_Data);
+        const message = {
+            ...baseSignatureDescriptor_Data,
+        };
         if (object.single !== undefined && object.single !== null) {
             message.single = exports.SignatureDescriptor_Data_Single.fromJSON(object.single);
         }
@@ -304,7 +308,9 @@ exports.SignatureDescriptor_Data = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseSignatureDescriptor_Data);
+        const message = {
+            ...baseSignatureDescriptor_Data,
+        };
         if (object.single !== undefined && object.single !== null) {
             message.single = exports.SignatureDescriptor_Data_Single.fromPartial(object.single);
         }
@@ -334,7 +340,9 @@ exports.SignatureDescriptor_Data_Single = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseSignatureDescriptor_Data_Single);
+        const message = {
+            ...baseSignatureDescriptor_Data_Single,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -352,7 +360,9 @@ exports.SignatureDescriptor_Data_Single = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseSignatureDescriptor_Data_Single);
+        const message = {
+            ...baseSignatureDescriptor_Data_Single,
+        };
         if (object.mode !== undefined && object.mode !== null) {
             message.mode = signModeFromJSON(object.mode);
         }
@@ -372,7 +382,9 @@ exports.SignatureDescriptor_Data_Single = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseSignatureDescriptor_Data_Single);
+        const message = {
+            ...baseSignatureDescriptor_Data_Single,
+        };
         if (object.mode !== undefined && object.mode !== null) {
             message.mode = object.mode;
         }
@@ -402,7 +414,9 @@ exports.SignatureDescriptor_Data_Multi = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseSignatureDescriptor_Data_Multi);
+        const message = {
+            ...baseSignatureDescriptor_Data_Multi,
+        };
         message.signatures = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -421,7 +435,9 @@ exports.SignatureDescriptor_Data_Multi = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseSignatureDescriptor_Data_Multi);
+        const message = {
+            ...baseSignatureDescriptor_Data_Multi,
+        };
         message.signatures = [];
         if (object.bitarray !== undefined && object.bitarray !== null) {
             message.bitarray = multisig_1.CompactBitArray.fromJSON(object.bitarray);
@@ -451,7 +467,9 @@ exports.SignatureDescriptor_Data_Multi = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseSignatureDescriptor_Data_Multi);
+        const message = {
+            ...baseSignatureDescriptor_Data_Multi,
+        };
         message.signatures = [];
         if (object.bitarray !== undefined && object.bitarray !== null) {
             message.bitarray = multisig_1.CompactBitArray.fromPartial(object.bitarray);

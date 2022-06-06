@@ -37,7 +37,7 @@ exports.MsgObserveDeposit = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgObserveDeposit);
+        const message = { ...baseMsgObserveDeposit };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -67,7 +67,7 @@ exports.MsgObserveDeposit = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgObserveDeposit);
+        const message = { ...baseMsgObserveDeposit };
         if (object.creator !== undefined && object.creator !== null) {
             message.creator = String(object.creator);
         }
@@ -117,7 +117,7 @@ exports.MsgObserveDeposit = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgObserveDeposit);
+        const message = { ...baseMsgObserveDeposit };
         if (object.creator !== undefined && object.creator !== null) {
             message.creator = object.creator;
         }
@@ -165,7 +165,9 @@ exports.MsgObserveDepositResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgObserveDepositResponse);
+        const message = {
+            ...baseMsgObserveDepositResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -177,7 +179,9 @@ exports.MsgObserveDepositResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseMsgObserveDepositResponse);
+        const message = {
+            ...baseMsgObserveDepositResponse,
+        };
         return message;
     },
     toJSON(_) {
@@ -185,7 +189,9 @@ exports.MsgObserveDepositResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseMsgObserveDepositResponse);
+        const message = {
+            ...baseMsgObserveDepositResponse,
+        };
         return message;
     },
 };
@@ -218,7 +224,7 @@ exports.MsgWithdraw = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgWithdraw);
+        const message = { ...baseMsgWithdraw };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -245,7 +251,7 @@ exports.MsgWithdraw = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgWithdraw);
+        const message = { ...baseMsgWithdraw };
         if (object.creator !== undefined && object.creator !== null) {
             message.creator = String(object.creator);
         }
@@ -288,7 +294,7 @@ exports.MsgWithdraw = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgWithdraw);
+        const message = { ...baseMsgWithdraw };
         if (object.creator !== undefined && object.creator !== null) {
             message.creator = object.creator;
         }
@@ -330,7 +336,7 @@ exports.MsgWithdrawResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgWithdrawResponse);
+        const message = { ...baseMsgWithdrawResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -342,7 +348,7 @@ exports.MsgWithdrawResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseMsgWithdrawResponse);
+        const message = { ...baseMsgWithdrawResponse };
         return message;
     },
     toJSON(_) {
@@ -350,7 +356,7 @@ exports.MsgWithdrawResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseMsgWithdrawResponse);
+        const message = { ...baseMsgWithdrawResponse };
         return message;
     },
 };

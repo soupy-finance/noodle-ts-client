@@ -16,7 +16,7 @@ exports.GenesisState = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -31,7 +31,7 @@ exports.GenesisState = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         if (object.constant_fee !== undefined && object.constant_fee !== null) {
             message.constant_fee = coin_1.Coin.fromJSON(object.constant_fee);
         }
@@ -49,7 +49,7 @@ exports.GenesisState = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseGenesisState);
+        const message = { ...baseGenesisState };
         if (object.constant_fee !== undefined && object.constant_fee !== null) {
             message.constant_fee = coin_1.Coin.fromPartial(object.constant_fee);
         }

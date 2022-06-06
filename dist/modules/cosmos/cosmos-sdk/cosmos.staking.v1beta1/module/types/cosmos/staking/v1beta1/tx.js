@@ -41,7 +41,7 @@ exports.MsgCreateValidator = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgCreateValidator);
+        const message = { ...baseMsgCreateValidator };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -74,7 +74,7 @@ exports.MsgCreateValidator = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgCreateValidator);
+        const message = { ...baseMsgCreateValidator };
         if (object.description !== undefined && object.description !== null) {
             message.description = staking_1.Description.fromJSON(object.description);
         }
@@ -145,7 +145,7 @@ exports.MsgCreateValidator = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgCreateValidator);
+        const message = { ...baseMsgCreateValidator };
         if (object.description !== undefined && object.description !== null) {
             message.description = staking_1.Description.fromPartial(object.description);
         }
@@ -202,7 +202,9 @@ exports.MsgCreateValidatorResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgCreateValidatorResponse);
+        const message = {
+            ...baseMsgCreateValidatorResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -214,7 +216,9 @@ exports.MsgCreateValidatorResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseMsgCreateValidatorResponse);
+        const message = {
+            ...baseMsgCreateValidatorResponse,
+        };
         return message;
     },
     toJSON(_) {
@@ -222,7 +226,9 @@ exports.MsgCreateValidatorResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseMsgCreateValidatorResponse);
+        const message = {
+            ...baseMsgCreateValidatorResponse,
+        };
         return message;
     },
 };
@@ -250,7 +256,7 @@ exports.MsgEditValidator = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgEditValidator);
+        const message = { ...baseMsgEditValidator };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -274,7 +280,7 @@ exports.MsgEditValidator = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgEditValidator);
+        const message = { ...baseMsgEditValidator };
         if (object.description !== undefined && object.description !== null) {
             message.description = staking_1.Description.fromJSON(object.description);
         }
@@ -319,7 +325,7 @@ exports.MsgEditValidator = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgEditValidator);
+        const message = { ...baseMsgEditValidator };
         if (object.description !== undefined && object.description !== null) {
             message.description = staking_1.Description.fromPartial(object.description);
         }
@@ -358,7 +364,9 @@ exports.MsgEditValidatorResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgEditValidatorResponse);
+        const message = {
+            ...baseMsgEditValidatorResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -370,7 +378,9 @@ exports.MsgEditValidatorResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseMsgEditValidatorResponse);
+        const message = {
+            ...baseMsgEditValidatorResponse,
+        };
         return message;
     },
     toJSON(_) {
@@ -378,7 +388,9 @@ exports.MsgEditValidatorResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseMsgEditValidatorResponse);
+        const message = {
+            ...baseMsgEditValidatorResponse,
+        };
         return message;
     },
 };
@@ -402,7 +414,7 @@ exports.MsgDelegate = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgDelegate);
+        const message = { ...baseMsgDelegate };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -423,7 +435,7 @@ exports.MsgDelegate = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgDelegate);
+        const message = { ...baseMsgDelegate };
         if (object.delegator_address !== undefined &&
             object.delegator_address !== null) {
             message.delegator_address = String(object.delegator_address);
@@ -457,7 +469,7 @@ exports.MsgDelegate = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgDelegate);
+        const message = { ...baseMsgDelegate };
         if (object.delegator_address !== undefined &&
             object.delegator_address !== null) {
             message.delegator_address = object.delegator_address;
@@ -489,7 +501,7 @@ exports.MsgDelegateResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgDelegateResponse);
+        const message = { ...baseMsgDelegateResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -501,7 +513,7 @@ exports.MsgDelegateResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseMsgDelegateResponse);
+        const message = { ...baseMsgDelegateResponse };
         return message;
     },
     toJSON(_) {
@@ -509,7 +521,7 @@ exports.MsgDelegateResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseMsgDelegateResponse);
+        const message = { ...baseMsgDelegateResponse };
         return message;
     },
 };
@@ -537,7 +549,7 @@ exports.MsgBeginRedelegate = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgBeginRedelegate);
+        const message = { ...baseMsgBeginRedelegate };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -561,7 +573,7 @@ exports.MsgBeginRedelegate = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgBeginRedelegate);
+        const message = { ...baseMsgBeginRedelegate };
         if (object.delegator_address !== undefined &&
             object.delegator_address !== null) {
             message.delegator_address = String(object.delegator_address);
@@ -604,7 +616,7 @@ exports.MsgBeginRedelegate = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgBeginRedelegate);
+        const message = { ...baseMsgBeginRedelegate };
         if (object.delegator_address !== undefined &&
             object.delegator_address !== null) {
             message.delegator_address = object.delegator_address;
@@ -646,7 +658,9 @@ exports.MsgBeginRedelegateResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgBeginRedelegateResponse);
+        const message = {
+            ...baseMsgBeginRedelegateResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -661,7 +675,9 @@ exports.MsgBeginRedelegateResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgBeginRedelegateResponse);
+        const message = {
+            ...baseMsgBeginRedelegateResponse,
+        };
         if (object.completion_time !== undefined &&
             object.completion_time !== null) {
             message.completion_time = fromJsonTimestamp(object.completion_time);
@@ -681,7 +697,9 @@ exports.MsgBeginRedelegateResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgBeginRedelegateResponse);
+        const message = {
+            ...baseMsgBeginRedelegateResponse,
+        };
         if (object.completion_time !== undefined &&
             object.completion_time !== null) {
             message.completion_time = object.completion_time;
@@ -712,7 +730,7 @@ exports.MsgUndelegate = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgUndelegate);
+        const message = { ...baseMsgUndelegate };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -733,7 +751,7 @@ exports.MsgUndelegate = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgUndelegate);
+        const message = { ...baseMsgUndelegate };
         if (object.delegator_address !== undefined &&
             object.delegator_address !== null) {
             message.delegator_address = String(object.delegator_address);
@@ -767,7 +785,7 @@ exports.MsgUndelegate = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgUndelegate);
+        const message = { ...baseMsgUndelegate };
         if (object.delegator_address !== undefined &&
             object.delegator_address !== null) {
             message.delegator_address = object.delegator_address;
@@ -802,7 +820,7 @@ exports.MsgUndelegateResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgUndelegateResponse);
+        const message = { ...baseMsgUndelegateResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -817,7 +835,7 @@ exports.MsgUndelegateResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgUndelegateResponse);
+        const message = { ...baseMsgUndelegateResponse };
         if (object.completion_time !== undefined &&
             object.completion_time !== null) {
             message.completion_time = fromJsonTimestamp(object.completion_time);
@@ -837,7 +855,7 @@ exports.MsgUndelegateResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgUndelegateResponse);
+        const message = { ...baseMsgUndelegateResponse };
         if (object.completion_time !== undefined &&
             object.completion_time !== null) {
             message.completion_time = object.completion_time;

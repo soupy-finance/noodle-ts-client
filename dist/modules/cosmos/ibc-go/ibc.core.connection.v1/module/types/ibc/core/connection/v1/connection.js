@@ -107,7 +107,7 @@ exports.ConnectionEnd = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseConnectionEnd);
+        const message = { ...baseConnectionEnd };
         message.versions = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -135,7 +135,7 @@ exports.ConnectionEnd = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseConnectionEnd);
+        const message = { ...baseConnectionEnd };
         message.versions = [];
         if (object.client_id !== undefined && object.client_id !== null) {
             message.client_id = String(object.client_id);
@@ -187,7 +187,7 @@ exports.ConnectionEnd = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseConnectionEnd);
+        const message = { ...baseConnectionEnd };
         message.versions = [];
         if (object.client_id !== undefined && object.client_id !== null) {
             message.client_id = object.client_id;
@@ -252,7 +252,7 @@ exports.IdentifiedConnection = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseIdentifiedConnection);
+        const message = { ...baseIdentifiedConnection };
         message.versions = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -283,7 +283,7 @@ exports.IdentifiedConnection = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseIdentifiedConnection);
+        const message = { ...baseIdentifiedConnection };
         message.versions = [];
         if (object.id !== undefined && object.id !== null) {
             message.id = String(object.id);
@@ -342,7 +342,7 @@ exports.IdentifiedConnection = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseIdentifiedConnection);
+        const message = { ...baseIdentifiedConnection };
         message.versions = [];
         if (object.id !== undefined && object.id !== null) {
             message.id = object.id;
@@ -399,7 +399,7 @@ exports.Counterparty = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseCounterparty);
+        const message = { ...baseCounterparty };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -420,7 +420,7 @@ exports.Counterparty = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseCounterparty);
+        const message = { ...baseCounterparty };
         if (object.client_id !== undefined && object.client_id !== null) {
             message.client_id = String(object.client_id);
         }
@@ -453,7 +453,7 @@ exports.Counterparty = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseCounterparty);
+        const message = { ...baseCounterparty };
         if (object.client_id !== undefined && object.client_id !== null) {
             message.client_id = object.client_id;
         }
@@ -486,7 +486,7 @@ exports.ClientPaths = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseClientPaths);
+        const message = { ...baseClientPaths };
         message.paths = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -502,7 +502,7 @@ exports.ClientPaths = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseClientPaths);
+        const message = { ...baseClientPaths };
         message.paths = [];
         if (object.paths !== undefined && object.paths !== null) {
             for (const e of object.paths) {
@@ -522,7 +522,7 @@ exports.ClientPaths = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseClientPaths);
+        const message = { ...baseClientPaths };
         message.paths = [];
         if (object.paths !== undefined && object.paths !== null) {
             for (const e of object.paths) {
@@ -546,7 +546,7 @@ exports.ConnectionPaths = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseConnectionPaths);
+        const message = { ...baseConnectionPaths };
         message.paths = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -565,7 +565,7 @@ exports.ConnectionPaths = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseConnectionPaths);
+        const message = { ...baseConnectionPaths };
         message.paths = [];
         if (object.client_id !== undefined && object.client_id !== null) {
             message.client_id = String(object.client_id);
@@ -592,7 +592,7 @@ exports.ConnectionPaths = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseConnectionPaths);
+        const message = { ...baseConnectionPaths };
         message.paths = [];
         if (object.client_id !== undefined && object.client_id !== null) {
             message.client_id = object.client_id;
@@ -622,7 +622,7 @@ exports.Version = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseVersion);
+        const message = { ...baseVersion };
         message.features = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -641,7 +641,7 @@ exports.Version = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseVersion);
+        const message = { ...baseVersion };
         message.features = [];
         if (object.identifier !== undefined && object.identifier !== null) {
             message.identifier = String(object.identifier);
@@ -668,7 +668,7 @@ exports.Version = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseVersion);
+        const message = { ...baseVersion };
         message.features = [];
         if (object.identifier !== undefined && object.identifier !== null) {
             message.identifier = object.identifier;
@@ -695,7 +695,7 @@ exports.Params = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseParams);
+        const message = { ...baseParams };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -710,7 +710,7 @@ exports.Params = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseParams);
+        const message = { ...baseParams };
         if (object.max_expected_time_per_block !== undefined &&
             object.max_expected_time_per_block !== null) {
             message.max_expected_time_per_block = Number(object.max_expected_time_per_block);
@@ -727,7 +727,7 @@ exports.Params = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseParams);
+        const message = { ...baseParams };
         if (object.max_expected_time_per_block !== undefined &&
             object.max_expected_time_per_block !== null) {
             message.max_expected_time_per_block = object.max_expected_time_per_block;

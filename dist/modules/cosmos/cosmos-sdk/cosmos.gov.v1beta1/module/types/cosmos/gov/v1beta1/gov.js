@@ -180,7 +180,7 @@ exports.WeightedVoteOption = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseWeightedVoteOption);
+        const message = { ...baseWeightedVoteOption };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -198,7 +198,7 @@ exports.WeightedVoteOption = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseWeightedVoteOption);
+        const message = { ...baseWeightedVoteOption };
         if (object.option !== undefined && object.option !== null) {
             message.option = voteOptionFromJSON(object.option);
         }
@@ -221,7 +221,7 @@ exports.WeightedVoteOption = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseWeightedVoteOption);
+        const message = { ...baseWeightedVoteOption };
         if (object.option !== undefined && object.option !== null) {
             message.option = object.option;
         }
@@ -251,7 +251,7 @@ exports.TextProposal = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseTextProposal);
+        const message = { ...baseTextProposal };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -269,7 +269,7 @@ exports.TextProposal = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseTextProposal);
+        const message = { ...baseTextProposal };
         if (object.title !== undefined && object.title !== null) {
             message.title = String(object.title);
         }
@@ -292,7 +292,7 @@ exports.TextProposal = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseTextProposal);
+        const message = { ...baseTextProposal };
         if (object.title !== undefined && object.title !== null) {
             message.title = object.title;
         }
@@ -325,7 +325,7 @@ exports.Deposit = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseDeposit);
+        const message = { ...baseDeposit };
         message.amount = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -347,7 +347,7 @@ exports.Deposit = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseDeposit);
+        const message = { ...baseDeposit };
         message.amount = [];
         if (object.proposal_id !== undefined && object.proposal_id !== null) {
             message.proposal_id = Number(object.proposal_id);
@@ -382,7 +382,7 @@ exports.Deposit = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseDeposit);
+        const message = { ...baseDeposit };
         message.amount = [];
         if (object.proposal_id !== undefined && object.proposal_id !== null) {
             message.proposal_id = object.proposal_id;
@@ -439,7 +439,7 @@ exports.Proposal = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseProposal);
+        const message = { ...baseProposal };
         message.total_deposit = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -479,7 +479,7 @@ exports.Proposal = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseProposal);
+        const message = { ...baseProposal };
         message.total_deposit = [];
         if (object.proposal_id !== undefined && object.proposal_id !== null) {
             message.proposal_id = Number(object.proposal_id);
@@ -581,7 +581,7 @@ exports.Proposal = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseProposal);
+        const message = { ...baseProposal };
         message.total_deposit = [];
         if (object.proposal_id !== undefined && object.proposal_id !== null) {
             message.proposal_id = object.proposal_id;
@@ -668,7 +668,7 @@ exports.TallyResult = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseTallyResult);
+        const message = { ...baseTallyResult };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -692,7 +692,7 @@ exports.TallyResult = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseTallyResult);
+        const message = { ...baseTallyResult };
         if (object.yes !== undefined && object.yes !== null) {
             message.yes = String(object.yes);
         }
@@ -729,7 +729,7 @@ exports.TallyResult = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseTallyResult);
+        const message = { ...baseTallyResult };
         if (object.yes !== undefined && object.yes !== null) {
             message.yes = object.yes;
         }
@@ -777,7 +777,7 @@ exports.Vote = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseVote);
+        const message = { ...baseVote };
         message.options = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -802,7 +802,7 @@ exports.Vote = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseVote);
+        const message = { ...baseVote };
         message.options = [];
         if (object.proposal_id !== undefined && object.proposal_id !== null) {
             message.proposal_id = Number(object.proposal_id);
@@ -845,7 +845,7 @@ exports.Vote = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseVote);
+        const message = { ...baseVote };
         message.options = [];
         if (object.proposal_id !== undefined && object.proposal_id !== null) {
             message.proposal_id = object.proposal_id;
@@ -887,7 +887,7 @@ exports.DepositParams = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseDepositParams);
+        const message = { ...baseDepositParams };
         message.min_deposit = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -906,7 +906,7 @@ exports.DepositParams = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseDepositParams);
+        const message = { ...baseDepositParams };
         message.min_deposit = [];
         if (object.min_deposit !== undefined && object.min_deposit !== null) {
             for (const e of object.min_deposit) {
@@ -937,7 +937,7 @@ exports.DepositParams = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseDepositParams);
+        const message = { ...baseDepositParams };
         message.min_deposit = [];
         if (object.min_deposit !== undefined && object.min_deposit !== null) {
             for (const e of object.min_deposit) {
@@ -965,7 +965,7 @@ exports.VotingParams = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseVotingParams);
+        const message = { ...baseVotingParams };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -980,7 +980,7 @@ exports.VotingParams = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseVotingParams);
+        const message = { ...baseVotingParams };
         if (object.voting_period !== undefined && object.voting_period !== null) {
             message.voting_period = duration_1.Duration.fromJSON(object.voting_period);
         }
@@ -998,7 +998,7 @@ exports.VotingParams = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseVotingParams);
+        const message = { ...baseVotingParams };
         if (object.voting_period !== undefined && object.voting_period !== null) {
             message.voting_period = duration_1.Duration.fromPartial(object.voting_period);
         }
@@ -1025,7 +1025,7 @@ exports.TallyParams = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseTallyParams);
+        const message = { ...baseTallyParams };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -1046,7 +1046,7 @@ exports.TallyParams = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseTallyParams);
+        const message = { ...baseTallyParams };
         if (object.quorum !== undefined && object.quorum !== null) {
             message.quorum = bytesFromBase64(object.quorum);
         }
@@ -1071,7 +1071,7 @@ exports.TallyParams = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseTallyParams);
+        const message = { ...baseTallyParams };
         if (object.quorum !== undefined && object.quorum !== null) {
             message.quorum = object.quorum;
         }

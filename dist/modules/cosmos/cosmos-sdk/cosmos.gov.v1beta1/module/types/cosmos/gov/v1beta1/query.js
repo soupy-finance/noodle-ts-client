@@ -41,7 +41,7 @@ exports.QueryProposalRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryProposalRequest);
+        const message = { ...baseQueryProposalRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -56,7 +56,7 @@ exports.QueryProposalRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryProposalRequest);
+        const message = { ...baseQueryProposalRequest };
         if (object.proposal_id !== undefined && object.proposal_id !== null) {
             message.proposal_id = Number(object.proposal_id);
         }
@@ -72,7 +72,7 @@ exports.QueryProposalRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryProposalRequest);
+        const message = { ...baseQueryProposalRequest };
         if (object.proposal_id !== undefined && object.proposal_id !== null) {
             message.proposal_id = object.proposal_id;
         }
@@ -93,7 +93,7 @@ exports.QueryProposalResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryProposalResponse);
+        const message = { ...baseQueryProposalResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -108,7 +108,7 @@ exports.QueryProposalResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryProposalResponse);
+        const message = { ...baseQueryProposalResponse };
         if (object.proposal !== undefined && object.proposal !== null) {
             message.proposal = gov_1.Proposal.fromJSON(object.proposal);
         }
@@ -126,7 +126,7 @@ exports.QueryProposalResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryProposalResponse);
+        const message = { ...baseQueryProposalResponse };
         if (object.proposal !== undefined && object.proposal !== null) {
             message.proposal = gov_1.Proposal.fromPartial(object.proposal);
         }
@@ -160,7 +160,7 @@ exports.QueryProposalsRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryProposalsRequest);
+        const message = { ...baseQueryProposalsRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -184,7 +184,7 @@ exports.QueryProposalsRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryProposalsRequest);
+        const message = { ...baseQueryProposalsRequest };
         if (object.proposal_status !== undefined &&
             object.proposal_status !== null) {
             message.proposal_status = (0, gov_1.proposalStatusFromJSON)(object.proposal_status);
@@ -225,7 +225,7 @@ exports.QueryProposalsRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryProposalsRequest);
+        const message = { ...baseQueryProposalsRequest };
         if (object.proposal_status !== undefined &&
             object.proposal_status !== null) {
             message.proposal_status = object.proposal_status;
@@ -268,7 +268,7 @@ exports.QueryProposalsResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryProposalsResponse);
+        const message = { ...baseQueryProposalsResponse };
         message.proposals = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -287,7 +287,7 @@ exports.QueryProposalsResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryProposalsResponse);
+        const message = { ...baseQueryProposalsResponse };
         message.proposals = [];
         if (object.proposals !== undefined && object.proposals !== null) {
             for (const e of object.proposals) {
@@ -317,7 +317,7 @@ exports.QueryProposalsResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryProposalsResponse);
+        const message = { ...baseQueryProposalsResponse };
         message.proposals = [];
         if (object.proposals !== undefined && object.proposals !== null) {
             for (const e of object.proposals) {
@@ -347,7 +347,7 @@ exports.QueryVoteRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryVoteRequest);
+        const message = { ...baseQueryVoteRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -365,7 +365,7 @@ exports.QueryVoteRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryVoteRequest);
+        const message = { ...baseQueryVoteRequest };
         if (object.proposal_id !== undefined && object.proposal_id !== null) {
             message.proposal_id = Number(object.proposal_id);
         }
@@ -388,7 +388,7 @@ exports.QueryVoteRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryVoteRequest);
+        const message = { ...baseQueryVoteRequest };
         if (object.proposal_id !== undefined && object.proposal_id !== null) {
             message.proposal_id = object.proposal_id;
         }
@@ -415,7 +415,7 @@ exports.QueryVoteResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryVoteResponse);
+        const message = { ...baseQueryVoteResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -430,7 +430,7 @@ exports.QueryVoteResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryVoteResponse);
+        const message = { ...baseQueryVoteResponse };
         if (object.vote !== undefined && object.vote !== null) {
             message.vote = gov_1.Vote.fromJSON(object.vote);
         }
@@ -446,7 +446,7 @@ exports.QueryVoteResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryVoteResponse);
+        const message = { ...baseQueryVoteResponse };
         if (object.vote !== undefined && object.vote !== null) {
             message.vote = gov_1.Vote.fromPartial(object.vote);
         }
@@ -470,7 +470,7 @@ exports.QueryVotesRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryVotesRequest);
+        const message = { ...baseQueryVotesRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -488,7 +488,7 @@ exports.QueryVotesRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryVotesRequest);
+        const message = { ...baseQueryVotesRequest };
         if (object.proposal_id !== undefined && object.proposal_id !== null) {
             message.proposal_id = Number(object.proposal_id);
         }
@@ -514,7 +514,7 @@ exports.QueryVotesRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryVotesRequest);
+        const message = { ...baseQueryVotesRequest };
         if (object.proposal_id !== undefined && object.proposal_id !== null) {
             message.proposal_id = object.proposal_id;
         }
@@ -544,7 +544,7 @@ exports.QueryVotesResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryVotesResponse);
+        const message = { ...baseQueryVotesResponse };
         message.votes = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -563,7 +563,7 @@ exports.QueryVotesResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryVotesResponse);
+        const message = { ...baseQueryVotesResponse };
         message.votes = [];
         if (object.votes !== undefined && object.votes !== null) {
             for (const e of object.votes) {
@@ -593,7 +593,7 @@ exports.QueryVotesResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryVotesResponse);
+        const message = { ...baseQueryVotesResponse };
         message.votes = [];
         if (object.votes !== undefined && object.votes !== null) {
             for (const e of object.votes) {
@@ -620,7 +620,7 @@ exports.QueryParamsRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryParamsRequest);
+        const message = { ...baseQueryParamsRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -635,7 +635,7 @@ exports.QueryParamsRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryParamsRequest);
+        const message = { ...baseQueryParamsRequest };
         if (object.params_type !== undefined && object.params_type !== null) {
             message.params_type = String(object.params_type);
         }
@@ -651,7 +651,7 @@ exports.QueryParamsRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryParamsRequest);
+        const message = { ...baseQueryParamsRequest };
         if (object.params_type !== undefined && object.params_type !== null) {
             message.params_type = object.params_type;
         }
@@ -678,7 +678,7 @@ exports.QueryParamsResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryParamsResponse);
+        const message = { ...baseQueryParamsResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -699,7 +699,7 @@ exports.QueryParamsResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryParamsResponse);
+        const message = { ...baseQueryParamsResponse };
         if (object.voting_params !== undefined && object.voting_params !== null) {
             message.voting_params = gov_1.VotingParams.fromJSON(object.voting_params);
         }
@@ -737,7 +737,7 @@ exports.QueryParamsResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryParamsResponse);
+        const message = { ...baseQueryParamsResponse };
         if (object.voting_params !== undefined && object.voting_params !== null) {
             message.voting_params = gov_1.VotingParams.fromPartial(object.voting_params);
         }
@@ -773,7 +773,7 @@ exports.QueryDepositRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryDepositRequest);
+        const message = { ...baseQueryDepositRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -791,7 +791,7 @@ exports.QueryDepositRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryDepositRequest);
+        const message = { ...baseQueryDepositRequest };
         if (object.proposal_id !== undefined && object.proposal_id !== null) {
             message.proposal_id = Number(object.proposal_id);
         }
@@ -814,7 +814,7 @@ exports.QueryDepositRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryDepositRequest);
+        const message = { ...baseQueryDepositRequest };
         if (object.proposal_id !== undefined && object.proposal_id !== null) {
             message.proposal_id = object.proposal_id;
         }
@@ -841,7 +841,7 @@ exports.QueryDepositResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryDepositResponse);
+        const message = { ...baseQueryDepositResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -856,7 +856,7 @@ exports.QueryDepositResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryDepositResponse);
+        const message = { ...baseQueryDepositResponse };
         if (object.deposit !== undefined && object.deposit !== null) {
             message.deposit = gov_1.Deposit.fromJSON(object.deposit);
         }
@@ -874,7 +874,7 @@ exports.QueryDepositResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryDepositResponse);
+        const message = { ...baseQueryDepositResponse };
         if (object.deposit !== undefined && object.deposit !== null) {
             message.deposit = gov_1.Deposit.fromPartial(object.deposit);
         }
@@ -898,7 +898,7 @@ exports.QueryDepositsRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryDepositsRequest);
+        const message = { ...baseQueryDepositsRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -916,7 +916,7 @@ exports.QueryDepositsRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryDepositsRequest);
+        const message = { ...baseQueryDepositsRequest };
         if (object.proposal_id !== undefined && object.proposal_id !== null) {
             message.proposal_id = Number(object.proposal_id);
         }
@@ -942,7 +942,7 @@ exports.QueryDepositsRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryDepositsRequest);
+        const message = { ...baseQueryDepositsRequest };
         if (object.proposal_id !== undefined && object.proposal_id !== null) {
             message.proposal_id = object.proposal_id;
         }
@@ -972,7 +972,7 @@ exports.QueryDepositsResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryDepositsResponse);
+        const message = { ...baseQueryDepositsResponse };
         message.deposits = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -991,7 +991,7 @@ exports.QueryDepositsResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryDepositsResponse);
+        const message = { ...baseQueryDepositsResponse };
         message.deposits = [];
         if (object.deposits !== undefined && object.deposits !== null) {
             for (const e of object.deposits) {
@@ -1021,7 +1021,7 @@ exports.QueryDepositsResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryDepositsResponse);
+        const message = { ...baseQueryDepositsResponse };
         message.deposits = [];
         if (object.deposits !== undefined && object.deposits !== null) {
             for (const e of object.deposits) {
@@ -1048,7 +1048,9 @@ exports.QueryTallyResultRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryTallyResultRequest);
+        const message = {
+            ...baseQueryTallyResultRequest,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -1063,7 +1065,9 @@ exports.QueryTallyResultRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryTallyResultRequest);
+        const message = {
+            ...baseQueryTallyResultRequest,
+        };
         if (object.proposal_id !== undefined && object.proposal_id !== null) {
             message.proposal_id = Number(object.proposal_id);
         }
@@ -1079,7 +1083,9 @@ exports.QueryTallyResultRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryTallyResultRequest);
+        const message = {
+            ...baseQueryTallyResultRequest,
+        };
         if (object.proposal_id !== undefined && object.proposal_id !== null) {
             message.proposal_id = object.proposal_id;
         }
@@ -1100,7 +1106,9 @@ exports.QueryTallyResultResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryTallyResultResponse);
+        const message = {
+            ...baseQueryTallyResultResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -1115,7 +1123,9 @@ exports.QueryTallyResultResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryTallyResultResponse);
+        const message = {
+            ...baseQueryTallyResultResponse,
+        };
         if (object.tally !== undefined && object.tally !== null) {
             message.tally = gov_1.TallyResult.fromJSON(object.tally);
         }
@@ -1133,7 +1143,9 @@ exports.QueryTallyResultResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryTallyResultResponse);
+        const message = {
+            ...baseQueryTallyResultResponse,
+        };
         if (object.tally !== undefined && object.tally !== null) {
             message.tally = gov_1.TallyResult.fromPartial(object.tally);
         }

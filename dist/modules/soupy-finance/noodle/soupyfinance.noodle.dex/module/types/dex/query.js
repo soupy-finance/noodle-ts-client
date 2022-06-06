@@ -13,7 +13,7 @@ exports.QueryParamsRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryParamsRequest);
+        const message = { ...baseQueryParamsRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -25,7 +25,7 @@ exports.QueryParamsRequest = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseQueryParamsRequest);
+        const message = { ...baseQueryParamsRequest };
         return message;
     },
     toJSON(_) {
@@ -33,7 +33,7 @@ exports.QueryParamsRequest = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseQueryParamsRequest);
+        const message = { ...baseQueryParamsRequest };
         return message;
     },
 };
@@ -48,7 +48,7 @@ exports.QueryParamsResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryParamsResponse);
+        const message = { ...baseQueryParamsResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -63,7 +63,7 @@ exports.QueryParamsResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryParamsResponse);
+        const message = { ...baseQueryParamsResponse };
         if (object.params !== undefined && object.params !== null) {
             message.params = params_1.Params.fromJSON(object.params);
         }
@@ -79,7 +79,7 @@ exports.QueryParamsResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryParamsResponse);
+        const message = { ...baseQueryParamsResponse };
         if (object.params !== undefined && object.params !== null) {
             message.params = params_1.Params.fromPartial(object.params);
         }
@@ -103,7 +103,7 @@ exports.QueryBookRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryBookRequest);
+        const message = { ...baseQueryBookRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -121,7 +121,7 @@ exports.QueryBookRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryBookRequest);
+        const message = { ...baseQueryBookRequest };
         if (object.market !== undefined && object.market !== null) {
             message.market = String(object.market);
         }
@@ -143,7 +143,7 @@ exports.QueryBookRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryBookRequest);
+        const message = { ...baseQueryBookRequest };
         if (object.market !== undefined && object.market !== null) {
             message.market = object.market;
         }
@@ -173,7 +173,7 @@ exports.QueryBookResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryBookResponse);
+        const message = { ...baseQueryBookResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -191,7 +191,7 @@ exports.QueryBookResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryBookResponse);
+        const message = { ...baseQueryBookResponse };
         if (object.pure !== undefined && object.pure !== null) {
             message.pure = String(object.pure);
         }
@@ -213,7 +213,7 @@ exports.QueryBookResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryBookResponse);
+        const message = { ...baseQueryBookResponse };
         if (object.pure !== undefined && object.pure !== null) {
             message.pure = object.pure;
         }
@@ -240,7 +240,7 @@ exports.QueryBooksRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryBooksRequest);
+        const message = { ...baseQueryBooksRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -255,7 +255,7 @@ exports.QueryBooksRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryBooksRequest);
+        const message = { ...baseQueryBooksRequest };
         if (object.market !== undefined && object.market !== null) {
             message.market = String(object.market);
         }
@@ -270,7 +270,7 @@ exports.QueryBooksRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryBooksRequest);
+        const message = { ...baseQueryBooksRequest };
         if (object.market !== undefined && object.market !== null) {
             message.market = object.market;
         }
@@ -297,7 +297,7 @@ exports.QueryBooksResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryBooksResponse);
+        const message = { ...baseQueryBooksResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -318,7 +318,7 @@ exports.QueryBooksResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryBooksResponse);
+        const message = { ...baseQueryBooksResponse };
         if (object.bids !== undefined && object.bids !== null) {
             message.bids = String(object.bids);
         }
@@ -347,7 +347,7 @@ exports.QueryBooksResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryBooksResponse);
+        const message = { ...baseQueryBooksResponse };
         if (object.bids !== undefined && object.bids !== null) {
             message.bids = object.bids;
         }

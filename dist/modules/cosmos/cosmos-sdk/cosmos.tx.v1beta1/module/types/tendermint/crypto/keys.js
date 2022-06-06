@@ -18,7 +18,7 @@ exports.PublicKey = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, basePublicKey);
+        const message = { ...basePublicKey };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -36,7 +36,7 @@ exports.PublicKey = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, basePublicKey);
+        const message = { ...basePublicKey };
         if (object.ed25519 !== undefined && object.ed25519 !== null) {
             message.ed25519 = bytesFromBase64(object.ed25519);
         }
@@ -60,7 +60,7 @@ exports.PublicKey = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, basePublicKey);
+        const message = { ...basePublicKey };
         if (object.ed25519 !== undefined && object.ed25519 !== null) {
             message.ed25519 = object.ed25519;
         }

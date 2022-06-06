@@ -15,7 +15,7 @@ exports.MultiSignature = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMultiSignature);
+        const message = { ...baseMultiSignature };
         message.signatures = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -31,7 +31,7 @@ exports.MultiSignature = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMultiSignature);
+        const message = { ...baseMultiSignature };
         message.signatures = [];
         if (object.signatures !== undefined && object.signatures !== null) {
             for (const e of object.signatures) {
@@ -51,7 +51,7 @@ exports.MultiSignature = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMultiSignature);
+        const message = { ...baseMultiSignature };
         message.signatures = [];
         if (object.signatures !== undefined && object.signatures !== null) {
             for (const e of object.signatures) {
@@ -75,7 +75,7 @@ exports.CompactBitArray = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseCompactBitArray);
+        const message = { ...baseCompactBitArray };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -93,7 +93,7 @@ exports.CompactBitArray = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseCompactBitArray);
+        const message = { ...baseCompactBitArray };
         if (object.extra_bits_stored !== undefined &&
             object.extra_bits_stored !== null) {
             message.extra_bits_stored = Number(object.extra_bits_stored);
@@ -115,7 +115,7 @@ exports.CompactBitArray = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseCompactBitArray);
+        const message = { ...baseCompactBitArray };
         if (object.extra_bits_stored !== undefined &&
             object.extra_bits_stored !== null) {
             message.extra_bits_stored = object.extra_bits_stored;

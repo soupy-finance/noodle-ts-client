@@ -17,7 +17,7 @@ exports.QueryEvidenceRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryEvidenceRequest);
+        const message = { ...baseQueryEvidenceRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -32,7 +32,7 @@ exports.QueryEvidenceRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryEvidenceRequest);
+        const message = { ...baseQueryEvidenceRequest };
         if (object.evidence_hash !== undefined && object.evidence_hash !== null) {
             message.evidence_hash = bytesFromBase64(object.evidence_hash);
         }
@@ -47,7 +47,7 @@ exports.QueryEvidenceRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryEvidenceRequest);
+        const message = { ...baseQueryEvidenceRequest };
         if (object.evidence_hash !== undefined && object.evidence_hash !== null) {
             message.evidence_hash = object.evidence_hash;
         }
@@ -68,7 +68,7 @@ exports.QueryEvidenceResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryEvidenceResponse);
+        const message = { ...baseQueryEvidenceResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -83,7 +83,7 @@ exports.QueryEvidenceResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryEvidenceResponse);
+        const message = { ...baseQueryEvidenceResponse };
         if (object.evidence !== undefined && object.evidence !== null) {
             message.evidence = any_1.Any.fromJSON(object.evidence);
         }
@@ -101,7 +101,7 @@ exports.QueryEvidenceResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryEvidenceResponse);
+        const message = { ...baseQueryEvidenceResponse };
         if (object.evidence !== undefined && object.evidence !== null) {
             message.evidence = any_1.Any.fromPartial(object.evidence);
         }
@@ -122,7 +122,9 @@ exports.QueryAllEvidenceRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryAllEvidenceRequest);
+        const message = {
+            ...baseQueryAllEvidenceRequest,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -137,7 +139,9 @@ exports.QueryAllEvidenceRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryAllEvidenceRequest);
+        const message = {
+            ...baseQueryAllEvidenceRequest,
+        };
         if (object.pagination !== undefined && object.pagination !== null) {
             message.pagination = pagination_1.PageRequest.fromJSON(object.pagination);
         }
@@ -155,7 +159,9 @@ exports.QueryAllEvidenceRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryAllEvidenceRequest);
+        const message = {
+            ...baseQueryAllEvidenceRequest,
+        };
         if (object.pagination !== undefined && object.pagination !== null) {
             message.pagination = pagination_1.PageRequest.fromPartial(object.pagination);
         }
@@ -179,7 +185,9 @@ exports.QueryAllEvidenceResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryAllEvidenceResponse);
+        const message = {
+            ...baseQueryAllEvidenceResponse,
+        };
         message.evidence = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -198,7 +206,9 @@ exports.QueryAllEvidenceResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryAllEvidenceResponse);
+        const message = {
+            ...baseQueryAllEvidenceResponse,
+        };
         message.evidence = [];
         if (object.evidence !== undefined && object.evidence !== null) {
             for (const e of object.evidence) {
@@ -228,7 +238,9 @@ exports.QueryAllEvidenceResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryAllEvidenceResponse);
+        const message = {
+            ...baseQueryAllEvidenceResponse,
+        };
         message.evidence = [];
         if (object.evidence !== undefined && object.evidence !== null) {
             for (const e of object.evidence) {

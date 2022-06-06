@@ -124,7 +124,7 @@ exports.GetTxsEventRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGetTxsEventRequest);
+        const message = { ...baseGetTxsEventRequest };
         message.events = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -146,7 +146,7 @@ exports.GetTxsEventRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseGetTxsEventRequest);
+        const message = { ...baseGetTxsEventRequest };
         message.events = [];
         if (object.events !== undefined && object.events !== null) {
             for (const e of object.events) {
@@ -184,7 +184,7 @@ exports.GetTxsEventRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseGetTxsEventRequest);
+        const message = { ...baseGetTxsEventRequest };
         message.events = [];
         if (object.events !== undefined && object.events !== null) {
             for (const e of object.events) {
@@ -223,7 +223,7 @@ exports.GetTxsEventResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGetTxsEventResponse);
+        const message = { ...baseGetTxsEventResponse };
         message.txs = [];
         message.tx_responses = [];
         while (reader.pos < end) {
@@ -246,7 +246,7 @@ exports.GetTxsEventResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseGetTxsEventResponse);
+        const message = { ...baseGetTxsEventResponse };
         message.txs = [];
         message.tx_responses = [];
         if (object.txs !== undefined && object.txs !== null) {
@@ -288,7 +288,7 @@ exports.GetTxsEventResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseGetTxsEventResponse);
+        const message = { ...baseGetTxsEventResponse };
         message.txs = [];
         message.tx_responses = [];
         if (object.txs !== undefined && object.txs !== null) {
@@ -324,7 +324,7 @@ exports.BroadcastTxRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseBroadcastTxRequest);
+        const message = { ...baseBroadcastTxRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -342,7 +342,7 @@ exports.BroadcastTxRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseBroadcastTxRequest);
+        const message = { ...baseBroadcastTxRequest };
         if (object.tx_bytes !== undefined && object.tx_bytes !== null) {
             message.tx_bytes = bytesFromBase64(object.tx_bytes);
         }
@@ -363,7 +363,7 @@ exports.BroadcastTxRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseBroadcastTxRequest);
+        const message = { ...baseBroadcastTxRequest };
         if (object.tx_bytes !== undefined && object.tx_bytes !== null) {
             message.tx_bytes = object.tx_bytes;
         }
@@ -390,7 +390,7 @@ exports.BroadcastTxResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseBroadcastTxResponse);
+        const message = { ...baseBroadcastTxResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -405,7 +405,7 @@ exports.BroadcastTxResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseBroadcastTxResponse);
+        const message = { ...baseBroadcastTxResponse };
         if (object.tx_response !== undefined && object.tx_response !== null) {
             message.tx_response = abci_1.TxResponse.fromJSON(object.tx_response);
         }
@@ -423,7 +423,7 @@ exports.BroadcastTxResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseBroadcastTxResponse);
+        const message = { ...baseBroadcastTxResponse };
         if (object.tx_response !== undefined && object.tx_response !== null) {
             message.tx_response = abci_1.TxResponse.fromPartial(object.tx_response);
         }
@@ -447,7 +447,7 @@ exports.SimulateRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseSimulateRequest);
+        const message = { ...baseSimulateRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -465,7 +465,7 @@ exports.SimulateRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseSimulateRequest);
+        const message = { ...baseSimulateRequest };
         if (object.tx !== undefined && object.tx !== null) {
             message.tx = tx_1.Tx.fromJSON(object.tx);
         }
@@ -486,7 +486,7 @@ exports.SimulateRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseSimulateRequest);
+        const message = { ...baseSimulateRequest };
         if (object.tx !== undefined && object.tx !== null) {
             message.tx = tx_1.Tx.fromPartial(object.tx);
         }
@@ -516,7 +516,7 @@ exports.SimulateResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseSimulateResponse);
+        const message = { ...baseSimulateResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -534,7 +534,7 @@ exports.SimulateResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseSimulateResponse);
+        const message = { ...baseSimulateResponse };
         if (object.gas_info !== undefined && object.gas_info !== null) {
             message.gas_info = abci_1.GasInfo.fromJSON(object.gas_info);
         }
@@ -560,7 +560,7 @@ exports.SimulateResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseSimulateResponse);
+        const message = { ...baseSimulateResponse };
         if (object.gas_info !== undefined && object.gas_info !== null) {
             message.gas_info = abci_1.GasInfo.fromPartial(object.gas_info);
         }
@@ -587,7 +587,7 @@ exports.GetTxRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGetTxRequest);
+        const message = { ...baseGetTxRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -602,7 +602,7 @@ exports.GetTxRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseGetTxRequest);
+        const message = { ...baseGetTxRequest };
         if (object.hash !== undefined && object.hash !== null) {
             message.hash = String(object.hash);
         }
@@ -617,7 +617,7 @@ exports.GetTxRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseGetTxRequest);
+        const message = { ...baseGetTxRequest };
         if (object.hash !== undefined && object.hash !== null) {
             message.hash = object.hash;
         }
@@ -641,7 +641,7 @@ exports.GetTxResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseGetTxResponse);
+        const message = { ...baseGetTxResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -659,7 +659,7 @@ exports.GetTxResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseGetTxResponse);
+        const message = { ...baseGetTxResponse };
         if (object.tx !== undefined && object.tx !== null) {
             message.tx = tx_1.Tx.fromJSON(object.tx);
         }
@@ -685,7 +685,7 @@ exports.GetTxResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseGetTxResponse);
+        const message = { ...baseGetTxResponse };
         if (object.tx !== undefined && object.tx !== null) {
             message.tx = tx_1.Tx.fromPartial(object.tx);
         }

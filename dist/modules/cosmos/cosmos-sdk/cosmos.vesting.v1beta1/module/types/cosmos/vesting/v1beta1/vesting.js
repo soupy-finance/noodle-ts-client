@@ -53,7 +53,7 @@ exports.BaseVestingAccount = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseBaseVestingAccount);
+        const message = { ...baseBaseVestingAccount };
         message.original_vesting = [];
         message.delegated_free = [];
         message.delegated_vesting = [];
@@ -83,7 +83,7 @@ exports.BaseVestingAccount = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseBaseVestingAccount);
+        const message = { ...baseBaseVestingAccount };
         message.original_vesting = [];
         message.delegated_free = [];
         message.delegated_vesting = [];
@@ -146,7 +146,7 @@ exports.BaseVestingAccount = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseBaseVestingAccount);
+        const message = { ...baseBaseVestingAccount };
         message.original_vesting = [];
         message.delegated_free = [];
         message.delegated_vesting = [];
@@ -196,7 +196,9 @@ exports.ContinuousVestingAccount = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseContinuousVestingAccount);
+        const message = {
+            ...baseContinuousVestingAccount,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -214,7 +216,9 @@ exports.ContinuousVestingAccount = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseContinuousVestingAccount);
+        const message = {
+            ...baseContinuousVestingAccount,
+        };
         if (object.base_vesting_account !== undefined &&
             object.base_vesting_account !== null) {
             message.base_vesting_account = exports.BaseVestingAccount.fromJSON(object.base_vesting_account);
@@ -240,7 +244,9 @@ exports.ContinuousVestingAccount = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseContinuousVestingAccount);
+        const message = {
+            ...baseContinuousVestingAccount,
+        };
         if (object.base_vesting_account !== undefined &&
             object.base_vesting_account !== null) {
             message.base_vesting_account = exports.BaseVestingAccount.fromPartial(object.base_vesting_account);
@@ -268,7 +274,7 @@ exports.DelayedVestingAccount = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseDelayedVestingAccount);
+        const message = { ...baseDelayedVestingAccount };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -283,7 +289,7 @@ exports.DelayedVestingAccount = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseDelayedVestingAccount);
+        const message = { ...baseDelayedVestingAccount };
         if (object.base_vesting_account !== undefined &&
             object.base_vesting_account !== null) {
             message.base_vesting_account = exports.BaseVestingAccount.fromJSON(object.base_vesting_account);
@@ -302,7 +308,7 @@ exports.DelayedVestingAccount = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseDelayedVestingAccount);
+        const message = { ...baseDelayedVestingAccount };
         if (object.base_vesting_account !== undefined &&
             object.base_vesting_account !== null) {
             message.base_vesting_account = exports.BaseVestingAccount.fromPartial(object.base_vesting_account);
@@ -327,7 +333,7 @@ exports.Period = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, basePeriod);
+        const message = { ...basePeriod };
         message.amount = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -346,7 +352,7 @@ exports.Period = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, basePeriod);
+        const message = { ...basePeriod };
         message.amount = [];
         if (object.length !== undefined && object.length !== null) {
             message.length = Number(object.length);
@@ -373,7 +379,7 @@ exports.Period = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, basePeriod);
+        const message = { ...basePeriod };
         message.amount = [];
         if (object.length !== undefined && object.length !== null) {
             message.length = object.length;
@@ -406,7 +412,7 @@ exports.PeriodicVestingAccount = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, basePeriodicVestingAccount);
+        const message = { ...basePeriodicVestingAccount };
         message.vesting_periods = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -428,7 +434,7 @@ exports.PeriodicVestingAccount = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, basePeriodicVestingAccount);
+        const message = { ...basePeriodicVestingAccount };
         message.vesting_periods = [];
         if (object.base_vesting_account !== undefined &&
             object.base_vesting_account !== null) {
@@ -467,7 +473,7 @@ exports.PeriodicVestingAccount = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, basePeriodicVestingAccount);
+        const message = { ...basePeriodicVestingAccount };
         message.vesting_periods = [];
         if (object.base_vesting_account !== undefined &&
             object.base_vesting_account !== null) {
@@ -502,7 +508,7 @@ exports.PermanentLockedAccount = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, basePermanentLockedAccount);
+        const message = { ...basePermanentLockedAccount };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -517,7 +523,7 @@ exports.PermanentLockedAccount = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, basePermanentLockedAccount);
+        const message = { ...basePermanentLockedAccount };
         if (object.base_vesting_account !== undefined &&
             object.base_vesting_account !== null) {
             message.base_vesting_account = exports.BaseVestingAccount.fromJSON(object.base_vesting_account);
@@ -536,7 +542,7 @@ exports.PermanentLockedAccount = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, basePermanentLockedAccount);
+        const message = { ...basePermanentLockedAccount };
         if (object.base_vesting_account !== undefined &&
             object.base_vesting_account !== null) {
             message.base_vesting_account = exports.BaseVestingAccount.fromPartial(object.base_vesting_account);

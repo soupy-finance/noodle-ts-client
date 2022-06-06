@@ -23,7 +23,7 @@ exports.MsgSend = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgSend);
+        const message = { ...baseMsgSend };
         message.amount = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -45,7 +45,7 @@ exports.MsgSend = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgSend);
+        const message = { ...baseMsgSend };
         message.amount = [];
         if (object.from_address !== undefined && object.from_address !== null) {
             message.from_address = String(object.from_address);
@@ -80,7 +80,7 @@ exports.MsgSend = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgSend);
+        const message = { ...baseMsgSend };
         message.amount = [];
         if (object.from_address !== undefined && object.from_address !== null) {
             message.from_address = object.from_address;
@@ -110,7 +110,7 @@ exports.MsgSendResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgSendResponse);
+        const message = { ...baseMsgSendResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -122,7 +122,7 @@ exports.MsgSendResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseMsgSendResponse);
+        const message = { ...baseMsgSendResponse };
         return message;
     },
     toJSON(_) {
@@ -130,7 +130,7 @@ exports.MsgSendResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseMsgSendResponse);
+        const message = { ...baseMsgSendResponse };
         return message;
     },
 };
@@ -148,7 +148,7 @@ exports.MsgMultiSend = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgMultiSend);
+        const message = { ...baseMsgMultiSend };
         message.inputs = [];
         message.outputs = [];
         while (reader.pos < end) {
@@ -168,7 +168,7 @@ exports.MsgMultiSend = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgMultiSend);
+        const message = { ...baseMsgMultiSend };
         message.inputs = [];
         message.outputs = [];
         if (object.inputs !== undefined && object.inputs !== null) {
@@ -200,7 +200,7 @@ exports.MsgMultiSend = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgMultiSend);
+        const message = { ...baseMsgMultiSend };
         message.inputs = [];
         message.outputs = [];
         if (object.inputs !== undefined && object.inputs !== null) {
@@ -224,7 +224,7 @@ exports.MsgMultiSendResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgMultiSendResponse);
+        const message = { ...baseMsgMultiSendResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -236,7 +236,7 @@ exports.MsgMultiSendResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseMsgMultiSendResponse);
+        const message = { ...baseMsgMultiSendResponse };
         return message;
     },
     toJSON(_) {
@@ -244,7 +244,7 @@ exports.MsgMultiSendResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseMsgMultiSendResponse);
+        const message = { ...baseMsgMultiSendResponse };
         return message;
     },
 };

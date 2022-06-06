@@ -14,7 +14,7 @@ exports.QueryParamsRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryParamsRequest);
+        const message = { ...baseQueryParamsRequest };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -26,7 +26,7 @@ exports.QueryParamsRequest = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseQueryParamsRequest);
+        const message = { ...baseQueryParamsRequest };
         return message;
     },
     toJSON(_) {
@@ -34,7 +34,7 @@ exports.QueryParamsRequest = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseQueryParamsRequest);
+        const message = { ...baseQueryParamsRequest };
         return message;
     },
 };
@@ -49,7 +49,7 @@ exports.QueryParamsResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQueryParamsResponse);
+        const message = { ...baseQueryParamsResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -64,7 +64,7 @@ exports.QueryParamsResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQueryParamsResponse);
+        const message = { ...baseQueryParamsResponse };
         if (object.params !== undefined && object.params !== null) {
             message.params = slashing_1.Params.fromJSON(object.params);
         }
@@ -80,7 +80,7 @@ exports.QueryParamsResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQueryParamsResponse);
+        const message = { ...baseQueryParamsResponse };
         if (object.params !== undefined && object.params !== null) {
             message.params = slashing_1.Params.fromPartial(object.params);
         }
@@ -101,7 +101,9 @@ exports.QuerySigningInfoRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQuerySigningInfoRequest);
+        const message = {
+            ...baseQuerySigningInfoRequest,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -116,7 +118,9 @@ exports.QuerySigningInfoRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQuerySigningInfoRequest);
+        const message = {
+            ...baseQuerySigningInfoRequest,
+        };
         if (object.cons_address !== undefined && object.cons_address !== null) {
             message.cons_address = String(object.cons_address);
         }
@@ -132,7 +136,9 @@ exports.QuerySigningInfoRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQuerySigningInfoRequest);
+        const message = {
+            ...baseQuerySigningInfoRequest,
+        };
         if (object.cons_address !== undefined && object.cons_address !== null) {
             message.cons_address = object.cons_address;
         }
@@ -153,7 +159,9 @@ exports.QuerySigningInfoResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQuerySigningInfoResponse);
+        const message = {
+            ...baseQuerySigningInfoResponse,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -168,7 +176,9 @@ exports.QuerySigningInfoResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQuerySigningInfoResponse);
+        const message = {
+            ...baseQuerySigningInfoResponse,
+        };
         if (object.val_signing_info !== undefined &&
             object.val_signing_info !== null) {
             message.val_signing_info = slashing_1.ValidatorSigningInfo.fromJSON(object.val_signing_info);
@@ -187,7 +197,9 @@ exports.QuerySigningInfoResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQuerySigningInfoResponse);
+        const message = {
+            ...baseQuerySigningInfoResponse,
+        };
         if (object.val_signing_info !== undefined &&
             object.val_signing_info !== null) {
             message.val_signing_info = slashing_1.ValidatorSigningInfo.fromPartial(object.val_signing_info);
@@ -209,7 +221,9 @@ exports.QuerySigningInfosRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQuerySigningInfosRequest);
+        const message = {
+            ...baseQuerySigningInfosRequest,
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -224,7 +238,9 @@ exports.QuerySigningInfosRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQuerySigningInfosRequest);
+        const message = {
+            ...baseQuerySigningInfosRequest,
+        };
         if (object.pagination !== undefined && object.pagination !== null) {
             message.pagination = pagination_1.PageRequest.fromJSON(object.pagination);
         }
@@ -242,7 +258,9 @@ exports.QuerySigningInfosRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQuerySigningInfosRequest);
+        const message = {
+            ...baseQuerySigningInfosRequest,
+        };
         if (object.pagination !== undefined && object.pagination !== null) {
             message.pagination = pagination_1.PageRequest.fromPartial(object.pagination);
         }
@@ -266,7 +284,9 @@ exports.QuerySigningInfosResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseQuerySigningInfosResponse);
+        const message = {
+            ...baseQuerySigningInfosResponse,
+        };
         message.info = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -285,7 +305,9 @@ exports.QuerySigningInfosResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseQuerySigningInfosResponse);
+        const message = {
+            ...baseQuerySigningInfosResponse,
+        };
         message.info = [];
         if (object.info !== undefined && object.info !== null) {
             for (const e of object.info) {
@@ -315,7 +337,9 @@ exports.QuerySigningInfosResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseQuerySigningInfosResponse);
+        const message = {
+            ...baseQuerySigningInfosResponse,
+        };
         message.info = [];
         if (object.info !== undefined && object.info !== null) {
             for (const e of object.info) {

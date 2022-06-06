@@ -15,7 +15,7 @@ exports.MsgUnjail = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgUnjail);
+        const message = { ...baseMsgUnjail };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -30,7 +30,7 @@ exports.MsgUnjail = {
         return message;
     },
     fromJSON(object) {
-        const message = Object.assign({}, baseMsgUnjail);
+        const message = { ...baseMsgUnjail };
         if (object.validator_addr !== undefined && object.validator_addr !== null) {
             message.validator_addr = String(object.validator_addr);
         }
@@ -46,7 +46,7 @@ exports.MsgUnjail = {
         return obj;
     },
     fromPartial(object) {
-        const message = Object.assign({}, baseMsgUnjail);
+        const message = { ...baseMsgUnjail };
         if (object.validator_addr !== undefined && object.validator_addr !== null) {
             message.validator_addr = object.validator_addr;
         }
@@ -64,7 +64,7 @@ exports.MsgUnjailResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = Object.assign({}, baseMsgUnjailResponse);
+        const message = { ...baseMsgUnjailResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -76,7 +76,7 @@ exports.MsgUnjailResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = Object.assign({}, baseMsgUnjailResponse);
+        const message = { ...baseMsgUnjailResponse };
         return message;
     },
     toJSON(_) {
@@ -84,7 +84,7 @@ exports.MsgUnjailResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = Object.assign({}, baseMsgUnjailResponse);
+        const message = { ...baseMsgUnjailResponse };
         return message;
     },
 };
