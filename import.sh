@@ -1,7 +1,9 @@
 shopt -s globstar
-rm -rf modules
-mkdir modules
-cp --parents ../vue/src/store/generated/*/*/*/module/**/*.ts modules
-mv vue modules/
-mv modules/vue/src/store/generated/* modules
-rm -rf modules/vue
+rm -rf src/modules
+mkdir src/modules
+cp --parents ../vue/src/store/generated/*/*/*/module/**/*.ts src/modules
+mv src/vue src/modules/
+mv src/modules/vue/src/store/generated/* src/modules
+rm -rf src/modules/vue
+
+rm src/index.ts
