@@ -12,8 +12,13 @@ export async function getOracleParams() {
 	return await modules.oracle.query.queryParams();
 }
 
+export async function getBalance(accAddress: string, denom: string) {
+	return await modules.bank.query.queryBalance(accAddress, { denom }); 
+}
+
 export default {
 	getBridgeParams,
 	getDexParams,
 	getOracleParams,
+	getBalance,
 };
