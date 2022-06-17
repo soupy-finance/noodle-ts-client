@@ -13,7 +13,7 @@ var restAddr;
 var rpcAddr;
 var wallet;
 var socket;
-exports.modules = {
+const modules = {
     bank: {
         tx: null,
         query: null,
@@ -39,13 +39,14 @@ exports.modules = {
         queryGen: module_4.queryClient,
     },
 };
+exports.modules = modules;
 async function setRestAddr(_restAddr) {
     if (_restAddr.length == 0)
         throw new Error("Invalid rest address");
     if (restAddr == _restAddr)
         return;
-    for (let moduleName in exports.modules) {
-        let module = exports.modules[moduleName];
+    for (let moduleName in modules) {
+        let module = modules[moduleName];
         module.query = await module.queryGen({ addr: _restAddr });
     }
     restAddr = _restAddr;
@@ -57,8 +58,8 @@ async function setRpcAddr(_rpcAddr) {
     if (rpcAddr == _rpcAddr)
         return;
     if (wallet) {
-        for (let moduleName in exports.modules) {
-            let module = exports.modules[moduleName];
+        for (let moduleName in modules) {
+            let module = modules[moduleName];
             module.tx = await module.txGen(wallet, { addr: _rpcAddr });
         }
     }
@@ -71,8 +72,8 @@ async function setWallet(_wallet) {
     if (wallet == _wallet)
         return;
     if (_wallet && rpcAddr) {
-        for (let moduleName in exports.modules) {
-            let module = exports.modules[moduleName];
+        for (let moduleName in modules) {
+            let module = modules[moduleName];
             module.tx = await module.txGen(wallet, { addr: rpcAddr });
         }
     }
