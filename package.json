@@ -16,7 +16,9 @@
     "@cosmjs/stargate": "^0.28.4",
     "@cosmjs/tendermint-rpc": "^0.28.4",
     "buffer": "^6.0.3",
-    "core-js": "^3.22.8"
+    "core-js": "^3.22.8",
+    "isomorphic-ws": "^4.0.1",
+    "ws": "^8.8.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^22.0.0",
