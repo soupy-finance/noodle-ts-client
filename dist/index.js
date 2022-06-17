@@ -3,50 +3,25 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createOrder = exports.handleEvents = exports.setEventsAddr = exports.setWallet = exports.setRpcAddr = exports.setRestAddr = exports.modules = void 0;
+exports.tx = exports.query = exports.handleEvents = exports.setEventsAddr = exports.setWallet = exports.setRpcAddr = exports.setRestAddr = exports.modules = void 0;
+const modules_1 = __importDefault(require("./modules"));
+exports.modules = modules_1.default;
 const ws_1 = __importDefault(require("./ws"));
-const module_1 = require("./modules/cosmos/cosmos-sdk/cosmos.bank.v1beta1/module");
-const module_2 = require("./modules/soupy-finance/noodle/soupyfinance.noodle.bridge/module");
-const module_3 = require("./modules/soupy-finance/noodle/soupyfinance.noodle.dex/module");
-const module_4 = require("./modules/soupy-finance/noodle/soupyfinance.noodle.oracle/module");
+const query_1 = __importDefault(require("./query"));
+exports.query = query_1.default;
+const tx_1 = __importDefault(require("./tx"));
+exports.tx = tx_1.default;
 var restAddr;
 var rpcAddr;
 var wallet;
 var socket;
-const modules = {
-    bank: {
-        tx: null,
-        query: null,
-        txGen: module_1.txClient,
-        queryGen: module_1.queryClient,
-    },
-    bridge: {
-        tx: null,
-        query: null,
-        txGen: module_2.txClient,
-        queryGen: module_2.queryClient,
-    },
-    dex: {
-        tx: null,
-        query: null,
-        txGen: module_3.txClient,
-        queryGen: module_3.queryClient,
-    },
-    oracle: {
-        tx: null,
-        query: null,
-        txGen: module_4.txClient,
-        queryGen: module_4.queryClient,
-    },
-};
-exports.modules = modules;
 async function setRestAddr(_restAddr) {
     if (_restAddr.length == 0)
         throw new Error("Invalid rest address");
     if (restAddr == _restAddr)
         return;
-    for (let moduleName in modules) {
-        let module = modules[moduleName];
+    for (let moduleName in modules_1.default) {
+        let module = modules_1.default[moduleName];
         module.query = await module.queryGen({ addr: _restAddr });
     }
     restAddr = _restAddr;
@@ -58,8 +33,8 @@ async function setRpcAddr(_rpcAddr) {
     if (rpcAddr == _rpcAddr)
         return;
     if (wallet) {
-        for (let moduleName in modules) {
-            let module = modules[moduleName];
+        for (let moduleName in modules_1.default) {
+            let module = modules_1.default[moduleName];
             module.tx = await module.txGen(wallet, { addr: _rpcAddr });
         }
     }
@@ -72,8 +47,8 @@ async function setWallet(_wallet) {
     if (wallet == _wallet)
         return;
     if (_wallet && rpcAddr) {
-        for (let moduleName in modules) {
-            let module = modules[moduleName];
+        for (let moduleName in modules_1.default) {
+            let module = modules_1.default[moduleName];
             module.tx = await module.txGen(wallet, { addr: rpcAddr });
         }
     }
@@ -89,6 +64,3 @@ function handleEvents(query, handler) {
     socket.registerEventsListener(query, handler);
 }
 exports.handleEvents = handleEvents;
-function createOrder(market, price, quantity, type = "limit", flags = "") {
-}
-exports.createOrder = createOrder;
