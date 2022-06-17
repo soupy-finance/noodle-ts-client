@@ -16,9 +16,14 @@ export async function getBalance(accAddress: string, denom: string) {
 	return await modules.bank.query.queryBalance(accAddress, { denom }); 
 }
 
+export async function getBooks(market: string) {
+	return await modules.dex.query.queryBooks(market); 
+}
+
 export default {
 	getBridgeParams,
 	getDexParams,
 	getOracleParams,
 	getBalance,
+	getBooks,
 };
