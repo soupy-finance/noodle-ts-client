@@ -1,4 +1,4 @@
-import Socket from "./ws";
+import { BrowserSocket, NodeSocket } from "./ws";
 
 interface EventsResult {
 	data: any;
@@ -7,9 +7,9 @@ interface EventsResult {
 
 type ParsedEvents = {[eventType: string]: {[attrKey: string]: string}[]} 
 
-var socket: Socket;
+var socket: BrowserSocket | NodeSocket;
 
-function handleEvents(query: string, handler: Function) {
+function addEventsListener(query: string, handler: Function) {
 	socket.registerEventsListener(query, (res) => {
 		let events = parseEvents(res);
 		handler(events, res.data);
@@ -40,5 +40,5 @@ function parseEvents(res: EventsResult): ParsedEvents {
 
 export default {
 	socket,
-	handleEvents,
+	addEventsListener,
 };

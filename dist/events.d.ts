@@ -1,7 +1,7 @@
-import Socket from "./ws";
-declare function handleEvents(query: string, handler: Function): void;
+import { BrowserSocket, NodeSocket } from "./ws";
+declare function addEventsListener(query: string, handler: Function): void;
 declare const _default: {
-    socket: Socket;
-    handleEvents: typeof handleEvents;
+    socket: BrowserSocket | NodeSocket;
+    addEventsListener: typeof addEventsListener;
 };
 export default _default;

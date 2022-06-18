@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var socket;
-function handleEvents(query, handler) {
+function addEventsListener(query, handler) {
     socket.registerEventsListener(query, (res) => {
         let events = parseEvents(res);
         handler(events, res.data);
@@ -25,5 +25,5 @@ function parseEvents(res) {
 }
 exports.default = {
     socket,
-    handleEvents,
+    addEventsListener,
 };
