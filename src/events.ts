@@ -5,18 +5,18 @@ interface EventsResult {
 	events: {[key: string]: string[]};
 }
 
+export type EventsSocket = BrowserSocket | NodeSocket;
 type ParsedEvents = {[eventType: string]: {[attrKey: string]: string}[]} 
 
-var socket: BrowserSocket | NodeSocket;
 
-function addEventsListener(query: string, handler: Function) {
+export function addEventsListener(socket: EventsSocket, query: string, handler: Function) {
 	socket.registerEventsListener(query, (res) => {
 		let events = parseEvents(res);
 		handler(events, res.data);
 	});
 }
 
-function parseEvents(res: EventsResult): ParsedEvents {
+export function parseEvents(res: EventsResult): ParsedEvents {
 	let events = {};
 
 	for (let key in res.events) {
@@ -37,8 +37,3 @@ function parseEvents(res: EventsResult): ParsedEvents {
 
 	return events;
 }
-
-export default {
-	socket,
-	addEventsListener,
-};

@@ -1,7 +1,16 @@
 import { BrowserSocket, NodeSocket } from "./ws";
-declare function addEventsListener(query: string, handler: Function): void;
-declare const _default: {
-    socket: BrowserSocket | NodeSocket;
-    addEventsListener: typeof addEventsListener;
+interface EventsResult {
+    data: any;
+    events: {
+        [key: string]: string[];
+    };
+}
+export declare type EventsSocket = BrowserSocket | NodeSocket;
+declare type ParsedEvents = {
+    [eventType: string]: {
+        [attrKey: string]: string;
+    }[];
 };
-export default _default;
+export declare function addEventsListener(socket: EventsSocket, query: string, handler: Function): void;
+export declare function parseEvents(res: EventsResult): ParsedEvents;
+export {};

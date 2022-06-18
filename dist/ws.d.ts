@@ -10,7 +10,7 @@ export declare class BrowserSocket {
     eventsHandlers: Function[];
     constructor(addr: string, keepAlive?: boolean, hbInterval?: number);
     setSocket(socket: WebSocket): void;
-    send(msg: Object): void;
+    send(msg: any): void;
     reconnect(): void;
     terminate(): void;
     heartbeat(): void;

@@ -50,7 +50,7 @@ export class BrowserSocket {
 		});
 	}
 
-	send(msg: Object) {
+	send(msg: any) {
 		var msgStr = JSON.stringify(msg);
 
 		if (this.readyState == 1)

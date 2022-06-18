@@ -3,11 +3,12 @@ import modules from "./modules";
 import query from "./query";
 import Socket from "./ws";
 import tx from "./tx";
-import events from "./events";
+import { EventsSocket, addEventsListener } from "./events";
 
 var restAddr: string;
 var rpcAddr: string;
 var wallet: OfflineSigner;
+var socket: EventsSocket; 
 
 async function setRestAddr(_restAddr: string) {
 	if (_restAddr.length == 0)
@@ -59,8 +60,8 @@ async function setWallet(_wallet: OfflineSigner) {
 }
 
 async function setWsAddr(addr: string) {
-	if (!events.socket)
-		events.socket = new Socket(addr);
+	if (!socket)
+		socket = new Socket(addr);
 }
 
 export {
@@ -71,5 +72,4 @@ export {
 	setWsAddr,
 	query,
 	tx,
-	events,
 };
