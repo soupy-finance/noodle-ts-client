@@ -25,8 +25,8 @@ class BrowserSocket {
             if (this.keepAlive)
                 this.reconnect();
         });
-        this.socket.addEventListener("message", (msgStr) => {
-            var msg = JSON.parse(msgStr);
+        this.socket.addEventListener("message", (msgWrapper) => {
+            var msg = JSON.parse(msgWrapper.data);
             switch (msg.id) {
                 case 0:
                     if (msg.result) {
