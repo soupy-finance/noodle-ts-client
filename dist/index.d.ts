@@ -6,5 +6,4 @@ import events from "./events";
 declare function setRestAddr(_restAddr: string): Promise<void>;
 declare function setRpcAddr(_rpcAddr: string): Promise<void>;
 declare function setWallet(_wallet: OfflineSigner): Promise<void>;
-declare function setWsAddr(addr: string): Promise<void>;
-export { modules, setRestAddr, setRpcAddr, setWallet, setWsAddr, query, tx, events, };
+export { modules, setRestAddr, setRpcAddr, setWallet, query, tx, events, };

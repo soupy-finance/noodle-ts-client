@@ -3,12 +3,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.events = exports.tx = exports.query = exports.setWsAddr = exports.setWallet = exports.setRpcAddr = exports.setRestAddr = exports.modules = void 0;
+exports.events = exports.tx = exports.query = exports.setWallet = exports.setRpcAddr = exports.setRestAddr = exports.modules = void 0;
 const modules_1 = __importDefault(require("./modules"));
 exports.modules = modules_1.default;
 const query_1 = __importDefault(require("./query"));
 exports.query = query_1.default;
-const ws_1 = __importDefault(require("./ws"));
 const tx_1 = __importDefault(require("./tx"));
 exports.tx = tx_1.default;
 const events_1 = __importDefault(require("./events"));
@@ -16,7 +15,6 @@ exports.events = events_1.default;
 var restAddr;
 var rpcAddr;
 var wallet;
-var socket;
 async function setRestAddr(_restAddr) {
     if (_restAddr.length == 0)
         throw new Error("Invalid rest address");
@@ -57,8 +55,3 @@ async function setWallet(_wallet) {
     wallet = _wallet;
 }
 exports.setWallet = setWallet;
-async function setWsAddr(addr) {
-    if (!socket)
-        socket = new ws_1.default(addr);
-}
-exports.setWsAddr = setWsAddr;

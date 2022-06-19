@@ -1,14 +1,12 @@
 import { OfflineSigner } from "@cosmjs/proto-signing";
 import modules from "./modules";
 import query from "./query";
-import Socket from "./ws";
 import tx from "./tx";
-import events, { EventsSocket } from "./events";
+import events from "./events";
 
 var restAddr: string;
 var rpcAddr: string;
 var wallet: OfflineSigner;
-var socket: EventsSocket; 
 
 async function setRestAddr(_restAddr: string) {
 	if (_restAddr.length == 0)
@@ -59,17 +57,11 @@ async function setWallet(_wallet: OfflineSigner) {
 	wallet = _wallet;
 }
 
-async function setWsAddr(addr: string) {
-	if (!socket)
-		socket = new Socket(addr);
-}
-
 export {
 	modules,
 	setRestAddr,
 	setRpcAddr,
 	setWallet,
-	setWsAddr,
 	query,
 	tx,
 	events,

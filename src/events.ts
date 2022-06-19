@@ -1,15 +1,21 @@
-import { BrowserSocket, NodeSocket } from "./ws";
+import Socket, { BrowserSocket, NodeSocket } from "./ws";
 
 interface EventsResult {
 	data: any;
 	events: {[key: string]: string[]};
 }
 
-export type EventsSocket = BrowserSocket | NodeSocket;
+type EventsSocket = BrowserSocket | NodeSocket;
 type ParsedEvents = {[eventType: string]: {[attrKey: string]: string}[]} 
 
+var socket: EventsSocket; 
 
-function addEventsListener(socket: EventsSocket, query: string, handler: Function) {
+async function setWsAddr(addr: string) {
+	if (!socket)
+		socket = new Socket(addr);
+}
+
+function addEventsListener(query: string, handler: Function) {
 	socket.registerEventsListener(query, (res) => {
 		let events = parseEvents(res);
 		handler(events, res.data);
@@ -39,5 +45,6 @@ export function parseEvents(res: EventsResult): ParsedEvents {
 }
 
 export default {
+	setWsAddr,
 	addEventsListener,
 };

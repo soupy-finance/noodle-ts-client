@@ -1,7 +1,16 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.parseEvents = void 0;
-function addEventsListener(socket, query, handler) {
+const ws_1 = __importDefault(require("./ws"));
+var socket;
+async function setWsAddr(addr) {
+    if (!socket)
+        socket = new ws_1.default(addr);
+}
+function addEventsListener(query, handler) {
     socket.registerEventsListener(query, (res) => {
         let events = parseEvents(res);
         handler(events, res.data);
@@ -25,5 +34,6 @@ function parseEvents(res) {
 }
 exports.parseEvents = parseEvents;
 exports.default = {
+    setWsAddr,
     addEventsListener,
 };
