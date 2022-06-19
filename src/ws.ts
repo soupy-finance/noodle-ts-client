@@ -30,6 +30,8 @@ export class BrowserSocket {
 		this.socket.addEventListener("close", () => {
 			if (this.keepAlive)
 				this.reconnect();
+			else
+				clearTimeout(this.hbTimeout);
 		});
 
 		this.socket.addEventListener("message", (msgWrapper: {data: string}) => {
@@ -124,6 +126,8 @@ export class NodeSocket {
 		this.socket.onclose = () => {
 			if (this.keepAlive)
 				this.reconnect();
+			else
+				clearTimeout(this.hbTimeout);
 		}
 
 		this.socket.onmessage = (msgStr) => {

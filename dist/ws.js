@@ -24,6 +24,8 @@ class BrowserSocket {
         this.socket.addEventListener("close", () => {
             if (this.keepAlive)
                 this.reconnect();
+            else
+                clearTimeout(this.hbTimeout);
         });
         this.socket.addEventListener("message", (msgWrapper) => {
             var msg = JSON.parse(msgWrapper.data);
@@ -96,6 +98,8 @@ class NodeSocket {
         this.socket.onclose = () => {
             if (this.keepAlive)
                 this.reconnect();
+            else
+                clearTimeout(this.hbTimeout);
         };
         this.socket.onmessage = (msgStr) => {
             var msg = JSON.parse(msgStr);
