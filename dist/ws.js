@@ -31,7 +31,7 @@ class BrowserSocket {
                 case 0:
                     if (msg.result) {
                         clearTimeout(this.hbTimeout);
-                        this.hbTimeout = setTimeout(this.heartbeat, this.hbInterval);
+                        this.hbTimeout = setTimeout(() => this.heartbeat(), this.hbInterval);
                     }
                     else
                         this.terminate();
@@ -103,7 +103,7 @@ class NodeSocket {
                 case 0:
                     if (msg.result) {
                         clearTimeout(this.hbTimeout);
-                        this.hbTimeout = setTimeout(this.heartbeat, this.hbInterval);
+                        this.hbTimeout = setTimeout(() => this.heartbeat(), this.hbInterval);
                     }
                     else
                         this.terminate();
