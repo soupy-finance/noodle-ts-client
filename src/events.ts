@@ -9,7 +9,7 @@ export type EventsSocket = BrowserSocket | NodeSocket;
 type ParsedEvents = {[eventType: string]: {[attrKey: string]: string}[]} 
 
 
-export function addEventsListener(socket: EventsSocket, query: string, handler: Function) {
+function addEventsListener(socket: EventsSocket, query: string, handler: Function) {
 	socket.registerEventsListener(query, (res) => {
 		let events = parseEvents(res);
 		handler(events, res.data);
@@ -37,3 +37,7 @@ export function parseEvents(res: EventsResult): ParsedEvents {
 
 	return events;
 }
+
+export default {
+	addEventsListener,
+};

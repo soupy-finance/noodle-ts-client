@@ -3,7 +3,7 @@ import modules from "./modules";
 import query from "./query";
 import Socket from "./ws";
 import tx from "./tx";
-import { EventsSocket, addEventsListener } from "./events";
+import events, { EventsSocket } from "./events";
 
 var restAddr: string;
 var rpcAddr: string;
@@ -72,4 +72,5 @@ export {
 	setWsAddr,
 	query,
 	tx,
+	events,
 };

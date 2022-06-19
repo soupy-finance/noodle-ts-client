@@ -11,6 +11,9 @@ declare type ParsedEvents = {
         [attrKey: string]: string;
     }[];
 };
-export declare function addEventsListener(socket: EventsSocket, query: string, handler: Function): void;
+declare function addEventsListener(socket: EventsSocket, query: string, handler: Function): void;
 export declare function parseEvents(res: EventsResult): ParsedEvents;
-export {};
+declare const _default: {
+    addEventsListener: typeof addEventsListener;
+};
+export default _default;
