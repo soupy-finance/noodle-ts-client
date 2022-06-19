@@ -36,7 +36,7 @@ class BrowserSocket {
                     else
                         this.terminate();
                 default:
-                    if (this.eventsHandlers[msg.id])
+                    if (this.eventsHandlers[msg.id] && msg.result && msg.result.events)
                         this.eventsHandlers[msg.id](msg.result);
             }
         });
@@ -108,7 +108,7 @@ class NodeSocket {
                     else
                         this.terminate();
                 default:
-                    if (this.eventsHandlers[msg.id])
+                    if (this.eventsHandlers[msg.id] && msg.result && msg.result.events)
                         this.eventsHandlers[msg.id](msg.result);
             }
         };
