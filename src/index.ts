@@ -3,6 +3,7 @@ import modules from "./modules";
 import query from "./query";
 import tx from "./tx";
 import events from "./events";
+import * as types from "./types";
 
 async function setRestAddr(_restAddr: string) {
 	if (_restAddr.length == 0)
@@ -43,4 +44,5 @@ export {
 	query,
 	tx,
 	events,
+	types,
 };

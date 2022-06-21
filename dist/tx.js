@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const modules_1 = __importDefault(require("./modules"));
+const types_1 = require("./types");
 const props = {
     rpcAddr: null,
 };
@@ -29,17 +30,17 @@ async function setWallet(_wallet) {
         account.address = null;
     account.wallet = _wallet;
 }
-async function createOrder(market, price, quantity, side, orderType = "limit", flags = []) {
+async function createOrder(market, price, quantity, side, orderType = types_1.OrderType.Limit, flags = {}) {
     if (!account.wallet)
         return;
     let msg = modules_1.default.dex.tx.msgCreateOrder({
         creator: account.address,
         market,
-        price,
-        quantity,
+        price: price.toString(),
+        quantity: quantity.toString(),
         side,
         orderType,
-        flags,
+        flags: Object.keys(flags),
     });
     modules_1.default.dex.tx.signAndBroadcast([msg]);
 }
