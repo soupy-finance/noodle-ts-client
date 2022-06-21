@@ -29,8 +29,18 @@ async function setWallet(_wallet) {
         account.address = null;
     account.wallet = _wallet;
 }
-async function createOrder(market, price, quantity, type = "limit", flags = "") {
-    let msg = modules_1.default.dex.tx.msgCreateOrder({});
+async function createOrder(market, price, quantity, side, orderType = "limit", flags = []) {
+    if (!account.wallet)
+        return;
+    let msg = modules_1.default.dex.tx.msgCreateOrder({
+        creator: account.address,
+        market,
+        price,
+        quantity,
+        side,
+        orderType,
+        flags,
+    });
     modules_1.default.dex.tx.signAndBroadcast([msg]);
 }
 exports.default = {

@@ -7,7 +7,7 @@ interface Account {
     address?: string;
 }
 declare function setWallet(_wallet: OfflineSigner): Promise<void>;
-declare function createOrder(market: string, price: number, quantity: number, type?: string, flags?: string): Promise<void>;
+declare function createOrder(market: string, price: number, quantity: number, side: boolean, orderType?: string, flags?: string[]): Promise<void>;
 declare const _default: {
     props: Props;
     account: Account;

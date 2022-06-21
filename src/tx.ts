@@ -1,4 +1,4 @@
-import { OfflineSigner } from "@cosmjs/proto-signing";
+import { OfflineSigner, EncodeObject } from "@cosmjs/proto-signing";
 import modules from "./modules";
 
 interface Props {
@@ -18,7 +18,6 @@ const account: Account = {
 	wallet: null,
 	address: null,
 };
-
 
 async function setWallet(_wallet: OfflineSigner) {
 	if (_wallet == null)
@@ -43,9 +42,18 @@ async function setWallet(_wallet: OfflineSigner) {
 	account.wallet = _wallet;
 }
 
-async function createOrder(market: string, price: number, quantity: number, type: string="limit", flags: string="") {
-	let msg = modules.dex.tx.msgCreateOrder({
+async function createOrder(market: string, price: number, quantity: number, side: boolean, orderType: string="limit", flags: string[]=[]) {
+	if (!account.wallet)
+		return;
 
+	let msg: EncodeObject = modules.dex.tx.msgCreateOrder({
+		creator: account.address,
+		market,
+		price,
+		quantity,
+		side,
+		orderType,
+		flags,
 	});
 	modules.dex.tx.signAndBroadcast([msg]);
 }
