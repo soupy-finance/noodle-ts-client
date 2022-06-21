@@ -1,9 +1,13 @@
-export declare function getBridgeParams(): Promise<any>;
-export declare function getDexParams(): Promise<any>;
-export declare function getOracleParams(): Promise<any>;
-export declare function getBalance(accAddress: string, denom: string): Promise<any>;
-export declare function getBooks(market: string): Promise<any>;
+interface Props {
+    restAddr?: string;
+}
+declare function getBridgeParams(): Promise<any>;
+declare function getDexParams(): Promise<any>;
+declare function getOracleParams(): Promise<any>;
+declare function getBalance(accAddress: string, denom: string): Promise<any>;
+declare function getBooks(market: string): Promise<any>;
 declare const _default: {
+    props: Props;
     getBridgeParams: typeof getBridgeParams;
     getDexParams: typeof getDexParams;
     getOracleParams: typeof getOracleParams;

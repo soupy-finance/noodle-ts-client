@@ -1,5 +1,17 @@
-declare function createOrder(market: string, price: number, quantity: number, type?: string, flags?: string): void;
+import { OfflineSigner } from "@cosmjs/proto-signing";
+interface Props {
+    rpcAddr?: string;
+}
+interface Account {
+    wallet?: OfflineSigner;
+    address?: string;
+}
+declare function setWallet(_wallet: OfflineSigner): Promise<void>;
+declare function createOrder(market: string, price: number, quantity: number, type?: string, flags?: string): Promise<void>;
 declare const _default: {
+    props: Props;
+    account: Account;
+    setWallet: typeof setWallet;
     createOrder: typeof createOrder;
 };
 export default _default;
