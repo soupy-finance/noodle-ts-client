@@ -12,6 +12,7 @@ class BrowserSocket {
         this.keepAlive = keepAlive;
         this.hbInterval = hbInterval;
         this.eventsHandlers = [];
+        this.eventsHandlersQueries = [];
         this.setSocket(new isomorphic_ws_1.default(addr));
         this.heartbeat();
     }
@@ -69,7 +70,14 @@ class BrowserSocket {
     }
     registerEventsListener(query, handler) {
         this.eventsHandlers.push(handler);
+        this.eventsHandlersQueries.push(query);
         this.send({ "jsonrpc": "2.0", "method": "subscribe", "id": this.eventsHandlers.length, "params": { "query": query } });
+        return this.eventsHandlers.length;
+    }
+    removeEventsListener(handlerId) {
+        let query = this.eventsHandlersQueries[handlerId - 1];
+        this.eventsHandlers[handlerId - 1] = null;
+        this.send({ "jsonrpc": "2.0", "method": "unsubscribe", "id": handlerId, "params": { "query": query } });
     }
     get readyState() {
         if (this.socket)
@@ -86,6 +94,7 @@ class NodeSocket {
         this.keepAlive = keepAlive;
         this.hbInterval = hbInterval;
         this.eventsHandlers = [];
+        this.eventsHandlersQueries = [];
         this.setSocket(new isomorphic_ws_1.default(addr));
         this.heartbeat();
     }
@@ -112,8 +121,8 @@ class NodeSocket {
                     else
                         this.terminate();
                 default:
-                    if (this.eventsHandlers[msg.id] && msg.result && msg.result.events)
-                        this.eventsHandlers[msg.id](msg.result);
+                    if (this.eventsHandlers[msg.id - 1] && msg.result && msg.result.events)
+                        this.eventsHandlers[msg.id - 1](msg.result);
             }
         };
     }
@@ -143,7 +152,14 @@ class NodeSocket {
     }
     registerEventsListener(query, handler) {
         this.eventsHandlers.push(handler);
+        this.eventsHandlersQueries.push(query);
         this.send({ "jsonrpc": "2.0", "method": "subscribe", "id": this.eventsHandlers.length, "params": { "query": query } });
+        return this.eventsHandlers.length;
+    }
+    removeEventsListener(handlerId) {
+        let query = this.eventsHandlersQueries[handlerId - 1];
+        this.eventsHandlers[handlerId - 1] = null;
+        this.send({ "jsonrpc": "2.0", "method": "unsubscribe", "id": handlerId, "params": { "query": query } });
     }
     get readyState() {
         if (this.socket)

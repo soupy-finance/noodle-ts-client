@@ -26,7 +26,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.types = exports.events = exports.tx = exports.query = exports.setRpcAddr = exports.setRestAddr = exports.modules = void 0;
+exports.types = exports.events = exports.tx = exports.query = exports.setWsAddr = exports.setRpcAddr = exports.setRestAddr = exports.modules = void 0;
 const modules_1 = __importDefault(require("./modules"));
 exports.modules = modules_1.default;
 const query_1 = __importDefault(require("./query"));
@@ -63,3 +63,11 @@ async function setRpcAddr(_rpcAddr) {
     tx_1.default.props.rpcAddr = _rpcAddr;
 }
 exports.setRpcAddr = setRpcAddr;
+async function setWsAddr(_wsAddr) {
+    if (_wsAddr.length == 0)
+        throw new Error("Invalid websocket address");
+    if (events_1.default.props.wsAddr == _wsAddr)
+        return;
+    events_1.default.initSocket(_wsAddr);
+}
+exports.setWsAddr = setWsAddr;

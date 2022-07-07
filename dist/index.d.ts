@@ -5,4 +5,5 @@ import events from "./events";
 import * as types from "./types";
 declare function setRestAddr(_restAddr: string): Promise<void>;
 declare function setRpcAddr(_rpcAddr: string): Promise<void>;
-export { modules, setRestAddr, setRpcAddr, query, tx, events, types, };
+declare function setWsAddr(_wsAddr: string): Promise<void>;
+export { modules, setRestAddr, setRpcAddr, setWsAddr, query, tx, events, types, };

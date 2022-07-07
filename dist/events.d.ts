@@ -1,3 +1,6 @@
+interface Props {
+    wsAddr?: string;
+}
 interface EventsResult {
     data: any;
     events: {
@@ -9,11 +12,12 @@ declare type ParsedEvents = {
         [attrKey: string]: string;
     }[];
 };
-declare function setWsAddr(addr: string): Promise<void>;
-declare function addEventsListener(query: string, handler: Function): void;
+declare function initSocket(addr: string): Promise<void>;
+declare function addEventsListener(query: string, handler: Function): number;
 export declare function parseEvents(res: EventsResult): ParsedEvents;
 declare const _default: {
-    setWsAddr: typeof setWsAddr;
+    props: Props;
+    initSocket: typeof initSocket;
     addEventsListener: typeof addEventsListener;
 };
 export default _default;

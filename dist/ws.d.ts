@@ -8,13 +8,15 @@ export declare class BrowserSocket {
     hbInterval: number;
     hbTimeout: NodeJS.Timeout;
     eventsHandlers: Function[];
+    eventsHandlersQueries: string[];
     constructor(addr: string, keepAlive?: boolean, hbInterval?: number);
     setSocket(socket: WebSocket): void;
     send(msg: any): void;
     reconnect(): void;
     terminate(): void;
     heartbeat(): void;
-    registerEventsListener(query: string, handler: Function): void;
+    registerEventsListener(query: string, handler: Function): number;
+    removeEventsListener(handlerId: number): void;
     get readyState(): number;
 }
 export declare class NodeSocket {
@@ -25,13 +27,15 @@ export declare class NodeSocket {
     hbInterval: number;
     hbTimeout: NodeJS.Timeout;
     eventsHandlers: Function[];
+    eventsHandlersQueries: string[];
     constructor(addr: string, keepAlive?: boolean, hbInterval?: number);
     setSocket(socket: WebSocket): void;
     send(msg: Object): void;
     reconnect(): void;
     terminate(): void;
     heartbeat(): void;
-    registerEventsListener(query: string, handler: Function): void;
+    registerEventsListener(query: string, handler: Function): number;
+    removeEventsListener(handlerId: number): void;
     get readyState(): number;
 }
 declare var Socket: any;
