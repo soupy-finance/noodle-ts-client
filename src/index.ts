@@ -37,10 +37,22 @@ async function setRpcAddr(_rpcAddr: string) {
 	tx.props.rpcAddr = _rpcAddr;
 }
 
+async function setWsAddr(_wsAddr: string) {
+	if (_wsAddr.length == 0)
+		throw new Error("Invalid websocket address");
+
+	if (events.props.wsAddr == _wsAddr)
+		return;
+
+
+	events.initSocket(_wsAddr);
+}
+
 export {
 	modules,
 	setRestAddr,
 	setRpcAddr,
+	setWsAddr,
 	query,
 	tx,
 	events,

@@ -8,6 +8,7 @@ export class BrowserSocket {
 	hbInterval: number;
 	hbTimeout: NodeJS.Timeout;
 	eventsHandlers: Function[];
+	eventsHandlersQueries: string[];
 	
 	constructor(addr: string, keepAlive: boolean=true, hbInterval: number=10e3) {
 		this.addr = addr;
@@ -15,6 +16,7 @@ export class BrowserSocket {
 		this.keepAlive = keepAlive;
 		this.hbInterval = hbInterval;
 		this.eventsHandlers = [];
+		this.eventsHandlersQueries = [];
 		this.setSocket(new WebSocket(addr));
 		this.heartbeat();
 	}
@@ -82,9 +84,17 @@ export class BrowserSocket {
 		this.hbTimeout = setTimeout(this.terminate, this.hbInterval);
 	}
 
-	registerEventsListener(query: string, handler: Function) {
+	registerEventsListener(query: string, handler: Function): number {
 		this.eventsHandlers.push(handler);
+		this.eventsHandlersQueries.push(query);
 		this.send({ "jsonrpc": "2.0", "method": "subscribe", "id": this.eventsHandlers.length, "params": { "query": query } });
+		return this.eventsHandlers.length;
+	}
+
+	removeEventsListener(handlerId: number) {
+		let query = this.eventsHandlersQueries[handlerId - 1];
+		this.eventsHandlers[handlerId - 1] = null;
+		this.send({ "jsonrpc": "2.0", "method": "unsubscribe", "id": handlerId, "params": { "query": query } });
 	}
 
 	get readyState(): number {
@@ -104,6 +114,7 @@ export class NodeSocket {
 	hbInterval: number;
 	hbTimeout: NodeJS.Timeout;
 	eventsHandlers: Function[];
+	eventsHandlersQueries: string[];
 	
 	constructor(addr: string, keepAlive: boolean=true, hbInterval: number=10e3) {
 		this.addr = addr;
@@ -111,6 +122,7 @@ export class NodeSocket {
 		this.keepAlive = keepAlive;
 		this.hbInterval = hbInterval;
 		this.eventsHandlers = [];
+		this.eventsHandlersQueries = [];
 		this.setSocket(new WebSocket(addr));
 		this.heartbeat();
 	}
@@ -142,8 +154,8 @@ export class NodeSocket {
 					else
 						this.terminate();
 				default:
-					if (this.eventsHandlers[msg.id] && msg.result && msg.result.events)
-						this.eventsHandlers[msg.id](msg.result);
+					if (this.eventsHandlers[msg.id - 1] && msg.result && msg.result.events)
+						this.eventsHandlers[msg.id - 1](msg.result);
 			}
 		}
 	}
@@ -180,7 +192,15 @@ export class NodeSocket {
 
 	registerEventsListener(query: string, handler: Function) {
 		this.eventsHandlers.push(handler);
+		this.eventsHandlersQueries.push(query);
 		this.send({ "jsonrpc": "2.0", "method": "subscribe", "id": this.eventsHandlers.length, "params": { "query": query } });
+		return this.eventsHandlers.length;
+	}
+
+	removeEventsListener(handlerId: number) {
+		let query = this.eventsHandlersQueries[handlerId - 1];
+		this.eventsHandlers[handlerId - 1] = null;
+		this.send({ "jsonrpc": "2.0", "method": "unsubscribe", "id": handlerId, "params": { "query": query } });
 	}
 
 	get readyState(): number {

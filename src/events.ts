@@ -1,5 +1,9 @@
 import Socket, { BrowserSocket, NodeSocket } from "./ws";
 
+interface Props {
+	wsAddr?: string;
+}
+
 interface EventsResult {
 	data: any;
 	events: {[key: string]: string[]};
@@ -8,18 +12,36 @@ interface EventsResult {
 type EventsSocket = BrowserSocket | NodeSocket;
 type ParsedEvents = {[eventType: string]: {[attrKey: string]: string}[]} 
 
+const props: Props = {
+	wsAddr: null,
+};
+
 var socket: EventsSocket; 
 
-async function setWsAddr(addr: string) {
+async function initSocket(addr: string) {
+	props.wsAddr = addr;
+
 	if (!socket)
-		socket = new Socket(addr);
+		socket = new Socket(props.wsAddr);
+	else {
+		socket.addr = addr;
+		socket.eventsHandlers = [];
+		socket.terminate();
+
+		if (!socket.keepAlive)
+			socket = new Socket(props.wsAddr);
+	}
 }
 
-function addEventsListener(query: string, handler: Function) {
-	socket.registerEventsListener(query, (res) => {
+function addEventsListener(query: string, handler: Function): number {
+	return socket.registerEventsListener(query, (res) => {
 		let events = parseEvents(res);
 		handler(events, res.data);
 	});
+}
+
+function removeEventsListener(handlerId: number) {
+	socket.removeEventsListener(handlerId);
 }
 
 export function parseEvents(res: EventsResult): ParsedEvents {
@@ -45,6 +67,7 @@ export function parseEvents(res: EventsResult): ParsedEvents {
 }
 
 export default {
-	setWsAddr,
+	props,
+	initSocket,
 	addEventsListener,
 };
