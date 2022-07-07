@@ -11,6 +11,9 @@ declare class BaseSocket {
     eventsHandlersQueries: string[];
     constructor(addr: string, keepAlive?: boolean, hbInterval?: number);
     setSocket(socket: WebSocket): void;
+    handleOpen(): void;
+    handleClose(): void;
+    handleMessage(msg: any): void;
     send(msg: any): void;
     reconnect(): void;
     terminate(): void;

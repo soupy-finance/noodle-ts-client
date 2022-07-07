@@ -17,6 +17,30 @@ class BaseSocket {
         this.heartbeat();
     }
     setSocket(socket) { }
+    handleOpen() {
+        for (let msg of this.sendQueue)
+            this.socket.send(msg);
+    }
+    handleClose() {
+        if (this.keepAlive)
+            this.reconnect();
+        else
+            clearTimeout(this.hbTimeout);
+    }
+    handleMessage(msg) {
+        switch (msg.id) {
+            case 0:
+                if (msg.result) {
+                    clearTimeout(this.hbTimeout);
+                    this.hbTimeout = setTimeout(() => this.heartbeat(), this.hbInterval);
+                }
+                else
+                    this.terminate();
+            default:
+                if (this.eventsHandlers[msg.id - 1] && msg.result && msg.result.events)
+                    this.eventsHandlers[msg.id - 1](msg.result);
+        }
+    }
     send(msg) {
         var msgStr = JSON.stringify(msg);
         if (this.readyState == 1)
@@ -41,7 +65,6 @@ class BaseSocket {
         this.eventsHandlers.push(handler);
         this.eventsHandlersQueries.push(query);
         this.send({ "jsonrpc": "2.0", "method": "subscribe", "id": this.eventsHandlers.length, "params": { "query": query } });
-        console.log(this.eventsHandlers);
         return this.eventsHandlers.length;
     }
     removeEventsListener(handlerId) {
@@ -60,29 +83,14 @@ class BrowserSocket extends BaseSocket {
     setSocket(socket) {
         this.socket = socket;
         this.socket.addEventListener("open", () => {
-            for (let msg of this.sendQueue)
-                this.socket.send(msg);
+            this.handleOpen();
         });
         this.socket.addEventListener("close", () => {
-            if (this.keepAlive)
-                this.reconnect();
-            else
-                clearTimeout(this.hbTimeout);
+            this.handleClose();
         });
         this.socket.addEventListener("message", (msgWrapper) => {
             var msg = JSON.parse(msgWrapper.data);
-            switch (msg.id) {
-                case 0:
-                    if (msg.result) {
-                        clearTimeout(this.hbTimeout);
-                        this.hbTimeout = setTimeout(() => this.heartbeat(), this.hbInterval);
-                    }
-                    else
-                        this.terminate();
-                default:
-                    if (this.eventsHandlers[msg.id] && msg.result && msg.result.events)
-                        this.eventsHandlers[msg.id](msg.result);
-            }
+            this.handleMessage(msg);
         });
     }
     terminate() {
@@ -96,29 +104,14 @@ class NodeSocket extends BaseSocket {
     setSocket(socket) {
         this.socket = socket;
         this.socket.onopen = () => {
-            for (let msg of this.sendQueue)
-                this.socket.send(msg);
+            this.handleOpen();
         };
         this.socket.onclose = () => {
-            if (this.keepAlive)
-                this.reconnect();
-            else
-                clearTimeout(this.hbTimeout);
+            this.handleClose();
         };
         this.socket.onmessage = (msgStr) => {
             var msg = JSON.parse(msgStr);
-            switch (msg.id) {
-                case 0:
-                    if (msg.result) {
-                        clearTimeout(this.hbTimeout);
-                        this.hbTimeout = setTimeout(() => this.heartbeat(), this.hbInterval);
-                    }
-                    else
-                        this.terminate();
-                default:
-                    if (this.eventsHandlers[msg.id - 1] && msg.result && msg.result.events)
-                        this.eventsHandlers[msg.id - 1](msg.result);
-            }
+            this.handleMessage(msg);
         };
     }
     terminate() {
