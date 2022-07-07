@@ -6,6 +6,7 @@ declare function getDexParams(): Promise<any>;
 declare function getOracleParams(): Promise<any>;
 declare function getBalance(accAddress: string, denom: string): Promise<any>;
 declare function getBooks(market: string): Promise<any>;
+declare function getOpenOrders(addr: string): Promise<any>;
 declare const _default: {
     props: Props;
     getBridgeParams: typeof getBridgeParams;
@@ -13,5 +14,6 @@ declare const _default: {
     getOracleParams: typeof getOracleParams;
     getBalance: typeof getBalance;
     getBooks: typeof getBooks;
+    getOpenOrders: typeof getOpenOrders;
 };
 export default _default;

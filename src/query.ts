@@ -28,6 +28,10 @@ async function getBooks(market: string) {
 	return await modules.dex.query.queryBooks(market); 
 }
 
+async function getOpenOrders(addr: string) {
+	return await modules.dex.query.queryOpenOrders(addr); 
+}
+
 export default {
 	props,
 	getBridgeParams,
@@ -35,4 +39,5 @@ export default {
 	getOracleParams,
 	getBalance,
 	getBooks,
+	getOpenOrders,
 };
