@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NodeSocket = exports.BrowserSocket = void 0;
 const isomorphic_ws_1 = __importDefault(require("isomorphic-ws"));
-class BrowserSocket {
+class BaseSocket {
     constructor(addr, keepAlive = true, hbInterval = 10e3) {
         this.addr = addr;
         this.sendQueue = [];
@@ -16,6 +16,47 @@ class BrowserSocket {
         this.setSocket(new isomorphic_ws_1.default(addr));
         this.heartbeat();
     }
+    setSocket(socket) { }
+    send(msg) {
+        var msgStr = JSON.stringify(msg);
+        if (this.readyState == 1)
+            this.socket.send(msgStr);
+        else if (this.readyState == 0)
+            this.sendQueue.push(msgStr);
+    }
+    reconnect() {
+        if (this.readyState < 2)
+            return;
+        clearTimeout(this.hbTimeout);
+        this.setSocket(new isomorphic_ws_1.default(this.addr));
+        this.heartbeat();
+    }
+    terminate() { }
+    heartbeat() {
+        clearTimeout(this.hbTimeout);
+        this.send({ "jsonrpc": "2.0", "method": "health", "id": 0 });
+        this.hbTimeout = setTimeout(this.terminate, this.hbInterval);
+    }
+    registerEventsListener(query, handler) {
+        this.eventsHandlers.push(handler);
+        this.eventsHandlersQueries.push(query);
+        this.send({ "jsonrpc": "2.0", "method": "subscribe", "id": this.eventsHandlers.length, "params": { "query": query } });
+        console.log(this.eventsHandlers);
+        return this.eventsHandlers.length;
+    }
+    removeEventsListener(handlerId) {
+        let query = this.eventsHandlersQueries[handlerId - 1];
+        this.eventsHandlers[handlerId - 1] = null;
+        this.send({ "jsonrpc": "2.0", "method": "unsubscribe", "id": handlerId, "params": { "query": query } });
+    }
+    get readyState() {
+        if (this.socket)
+            return this.socket.readyState;
+        else
+            return 3;
+    }
+}
+class BrowserSocket extends BaseSocket {
     setSocket(socket) {
         this.socket = socket;
         this.socket.addEventListener("open", () => {
@@ -44,60 +85,14 @@ class BrowserSocket {
             }
         });
     }
-    send(msg) {
-        var msgStr = JSON.stringify(msg);
-        if (this.readyState == 1)
-            this.socket.send(msgStr);
-        else if (this.readyState == 0)
-            this.sendQueue.push(msgStr);
-    }
-    reconnect() {
-        if (this.readyState < 2)
-            return;
-        clearTimeout(this.hbTimeout);
-        this.setSocket(new isomorphic_ws_1.default(this.addr));
-        this.heartbeat();
-    }
     terminate() {
         clearTimeout(this.hbTimeout);
         this.sendQueue = [];
         this.socket.close();
     }
-    heartbeat() {
-        clearTimeout(this.hbTimeout);
-        this.send({ "jsonrpc": "2.0", "method": "health", "id": 0 });
-        this.hbTimeout = setTimeout(this.terminate, this.hbInterval);
-    }
-    registerEventsListener(query, handler) {
-        this.eventsHandlers.push(handler);
-        this.eventsHandlersQueries.push(query);
-        this.send({ "jsonrpc": "2.0", "method": "subscribe", "id": this.eventsHandlers.length, "params": { "query": query } });
-        return this.eventsHandlers.length;
-    }
-    removeEventsListener(handlerId) {
-        let query = this.eventsHandlersQueries[handlerId - 1];
-        this.eventsHandlers[handlerId - 1] = null;
-        this.send({ "jsonrpc": "2.0", "method": "unsubscribe", "id": handlerId, "params": { "query": query } });
-    }
-    get readyState() {
-        if (this.socket)
-            return this.socket.readyState;
-        else
-            return 3;
-    }
 }
 exports.BrowserSocket = BrowserSocket;
-class NodeSocket {
-    constructor(addr, keepAlive = true, hbInterval = 10e3) {
-        this.addr = addr;
-        this.sendQueue = [];
-        this.keepAlive = keepAlive;
-        this.hbInterval = hbInterval;
-        this.eventsHandlers = [];
-        this.eventsHandlersQueries = [];
-        this.setSocket(new isomorphic_ws_1.default(addr));
-        this.heartbeat();
-    }
+class NodeSocket extends BaseSocket {
     setSocket(socket) {
         this.socket = socket;
         this.socket.onopen = () => {
@@ -126,46 +121,10 @@ class NodeSocket {
             }
         };
     }
-    send(msg) {
-        var msgStr = JSON.stringify(msg);
-        if (this.readyState == 1)
-            this.socket.send(msgStr);
-        else if (this.readyState == 0)
-            this.sendQueue.push(msgStr);
-    }
-    reconnect() {
-        if (this.readyState < 2)
-            return;
-        clearTimeout(this.hbTimeout);
-        this.setSocket(new isomorphic_ws_1.default(this.addr));
-        this.heartbeat();
-    }
     terminate() {
         clearTimeout(this.hbTimeout);
         this.sendQueue = [];
         this.socket.terminate();
-    }
-    heartbeat() {
-        clearTimeout(this.hbTimeout);
-        this.send({ "jsonrpc": "2.0", "method": "health", "id": 0 });
-        this.hbTimeout = setTimeout(this.terminate, this.hbInterval);
-    }
-    registerEventsListener(query, handler) {
-        this.eventsHandlers.push(handler);
-        this.eventsHandlersQueries.push(query);
-        this.send({ "jsonrpc": "2.0", "method": "subscribe", "id": this.eventsHandlers.length, "params": { "query": query } });
-        return this.eventsHandlers.length;
-    }
-    removeEventsListener(handlerId) {
-        let query = this.eventsHandlersQueries[handlerId - 1];
-        this.eventsHandlers[handlerId - 1] = null;
-        this.send({ "jsonrpc": "2.0", "method": "unsubscribe", "id": handlerId, "params": { "query": query } });
-    }
-    get readyState() {
-        if (this.socket)
-            return this.socket.readyState;
-        else
-            return 3;
     }
 }
 exports.NodeSocket = NodeSocket;
