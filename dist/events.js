@@ -51,4 +51,5 @@ exports.default = {
     props,
     initSocket,
     addEventsListener,
+    removeEventsListener,
 };

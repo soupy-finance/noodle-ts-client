@@ -70,4 +70,5 @@ export default {
 	props,
 	initSocket,
 	addEventsListener,
+	removeEventsListener,
 };
