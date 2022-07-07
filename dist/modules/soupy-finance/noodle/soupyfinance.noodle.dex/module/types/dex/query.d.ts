@@ -25,6 +25,12 @@ export interface QueryBooksResponse {
     asks: string;
     amm: string;
 }
+export interface QueryOpenOrdersRequest {
+    account: string;
+}
+export interface QueryOpenOrdersResponse {
+    orders: string;
+}
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: Writer): Writer;
     decode(input: Reader | Uint8Array, length?: number): QueryParamsRequest;
@@ -67,6 +73,20 @@ export declare const QueryBooksResponse: {
     toJSON(message: QueryBooksResponse): unknown;
     fromPartial(object: DeepPartial<QueryBooksResponse>): QueryBooksResponse;
 };
+export declare const QueryOpenOrdersRequest: {
+    encode(message: QueryOpenOrdersRequest, writer?: Writer): Writer;
+    decode(input: Reader | Uint8Array, length?: number): QueryOpenOrdersRequest;
+    fromJSON(object: any): QueryOpenOrdersRequest;
+    toJSON(message: QueryOpenOrdersRequest): unknown;
+    fromPartial(object: DeepPartial<QueryOpenOrdersRequest>): QueryOpenOrdersRequest;
+};
+export declare const QueryOpenOrdersResponse: {
+    encode(message: QueryOpenOrdersResponse, writer?: Writer): Writer;
+    decode(input: Reader | Uint8Array, length?: number): QueryOpenOrdersResponse;
+    fromJSON(object: any): QueryOpenOrdersResponse;
+    toJSON(message: QueryOpenOrdersResponse): unknown;
+    fromPartial(object: DeepPartial<QueryOpenOrdersResponse>): QueryOpenOrdersResponse;
+};
 /** Query defines the gRPC querier service. */
 export interface Query {
     /** Parameters queries the parameters of the module. */
@@ -75,6 +95,8 @@ export interface Query {
     Book(request: QueryBookRequest): Promise<QueryBookResponse>;
     /** Queries a list of Books items. */
     Books(request: QueryBooksRequest): Promise<QueryBooksResponse>;
+    /** Queries a list of OpenOrders items. */
+    OpenOrders(request: QueryOpenOrdersRequest): Promise<QueryOpenOrdersResponse>;
 }
 export declare class QueryClientImpl implements Query {
     private readonly rpc;
@@ -82,6 +104,7 @@ export declare class QueryClientImpl implements Query {
     Params(request: QueryParamsRequest): Promise<QueryParamsResponse>;
     Book(request: QueryBookRequest): Promise<QueryBookResponse>;
     Books(request: QueryBooksRequest): Promise<QueryBooksResponse>;
+    OpenOrders(request: QueryOpenOrdersRequest): Promise<QueryOpenOrdersResponse>;
 }
 interface Rpc {
     request(service: string, method: string, data: Uint8Array): Promise<Uint8Array>;

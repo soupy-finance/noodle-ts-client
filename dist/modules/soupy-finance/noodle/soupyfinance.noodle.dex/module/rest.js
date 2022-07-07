@@ -172,6 +172,20 @@ class Api extends HttpClient {
          * No description
          *
          * @tags Query
+         * @name QueryOpenOrders
+         * @summary Queries a list of OpenOrders items.
+         * @request GET:/soupy-finance/noodle/dex/open_orders/{account}
+         */
+        this.queryOpenOrders = (account, params = {}) => this.request({
+            path: `/soupy-finance/noodle/dex/open_orders/${account}`,
+            method: "GET",
+            format: "json",
+            ...params,
+        });
+        /**
+         * No description
+         *
+         * @tags Query
          * @name QueryParams
          * @summary Parameters queries the parameters of the module.
          * @request GET:/soupy-finance/noodle/dex/params

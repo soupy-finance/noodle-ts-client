@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.QueryClientImpl = exports.QueryBooksResponse = exports.QueryBooksRequest = exports.QueryBookResponse = exports.QueryBookRequest = exports.QueryParamsResponse = exports.QueryParamsRequest = exports.protobufPackage = void 0;
+exports.QueryClientImpl = exports.QueryOpenOrdersResponse = exports.QueryOpenOrdersRequest = exports.QueryBooksResponse = exports.QueryBooksRequest = exports.QueryBookResponse = exports.QueryBookRequest = exports.QueryParamsResponse = exports.QueryParamsRequest = exports.protobufPackage = void 0;
 /* eslint-disable */
 const minimal_1 = require("protobufjs/minimal");
 const params_1 = require("../dex/params");
@@ -369,6 +369,114 @@ exports.QueryBooksResponse = {
         return message;
     },
 };
+const baseQueryOpenOrdersRequest = { account: "" };
+exports.QueryOpenOrdersRequest = {
+    encode(message, writer = minimal_1.Writer.create()) {
+        if (message.account !== "") {
+            writer.uint32(10).string(message.account);
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseQueryOpenOrdersRequest };
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.account = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        const message = { ...baseQueryOpenOrdersRequest };
+        if (object.account !== undefined && object.account !== null) {
+            message.account = String(object.account);
+        }
+        else {
+            message.account = "";
+        }
+        return message;
+    },
+    toJSON(message) {
+        const obj = {};
+        message.account !== undefined && (obj.account = message.account);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = { ...baseQueryOpenOrdersRequest };
+        if (object.account !== undefined && object.account !== null) {
+            message.account = object.account;
+        }
+        else {
+            message.account = "";
+        }
+        return message;
+    },
+};
+const baseQueryOpenOrdersResponse = { orders: "" };
+exports.QueryOpenOrdersResponse = {
+    encode(message, writer = minimal_1.Writer.create()) {
+        if (message.orders !== "") {
+            writer.uint32(10).string(message.orders);
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof Uint8Array ? new minimal_1.Reader(input) : input;
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = {
+            ...baseQueryOpenOrdersResponse,
+        };
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.orders = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        const message = {
+            ...baseQueryOpenOrdersResponse,
+        };
+        if (object.orders !== undefined && object.orders !== null) {
+            message.orders = String(object.orders);
+        }
+        else {
+            message.orders = "";
+        }
+        return message;
+    },
+    toJSON(message) {
+        const obj = {};
+        message.orders !== undefined && (obj.orders = message.orders);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = {
+            ...baseQueryOpenOrdersResponse,
+        };
+        if (object.orders !== undefined && object.orders !== null) {
+            message.orders = object.orders;
+        }
+        else {
+            message.orders = "";
+        }
+        return message;
+    },
+};
 class QueryClientImpl {
     constructor(rpc) {
         this.rpc = rpc;
@@ -387,6 +495,11 @@ class QueryClientImpl {
         const data = exports.QueryBooksRequest.encode(request).finish();
         const promise = this.rpc.request("soupyfinance.noodle.dex.Query", "Books", data);
         return promise.then((data) => exports.QueryBooksResponse.decode(new minimal_1.Reader(data)));
+    }
+    OpenOrders(request) {
+        const data = exports.QueryOpenOrdersRequest.encode(request).finish();
+        const promise = this.rpc.request("soupyfinance.noodle.dex.Query", "OpenOrders", data);
+        return promise.then((data) => exports.QueryOpenOrdersResponse.decode(new minimal_1.Reader(data)));
     }
 }
 exports.QueryClientImpl = QueryClientImpl;

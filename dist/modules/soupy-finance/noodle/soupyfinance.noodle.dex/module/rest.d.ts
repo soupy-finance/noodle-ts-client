@@ -14,6 +14,9 @@ export interface DexQueryBooksResponse {
     asks?: string;
     amm?: string;
 }
+export interface DexQueryOpenOrdersResponse {
+    orders?: string;
+}
 /**
  * QueryParamsResponse is response type for the Query/Params RPC method.
  */
@@ -106,6 +109,15 @@ export declare class Api<SecurityDataType extends unknown> extends HttpClient<Se
      * @request GET:/soupy-finance/noodle/dex/books/{market}
      */
     queryBooks: (market: string, params?: RequestParams) => Promise<HttpResponse<DexQueryBooksResponse, RpcStatus>>;
+    /**
+     * No description
+     *
+     * @tags Query
+     * @name QueryOpenOrders
+     * @summary Queries a list of OpenOrders items.
+     * @request GET:/soupy-finance/noodle/dex/open_orders/{account}
+     */
+    queryOpenOrders: (account: string, params?: RequestParams) => Promise<HttpResponse<DexQueryOpenOrdersResponse, RpcStatus>>;
     /**
      * No description
      *
