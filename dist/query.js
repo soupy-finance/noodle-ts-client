@@ -16,6 +16,9 @@ async function getDexParams() {
 async function getOracleParams() {
     return await modules_1.default.oracle.query.queryParams();
 }
+async function getAllBalances(accAddress) {
+    return await modules_1.default.bank.query.queryAllBalances(accAddress);
+}
 async function getBalance(accAddress, denom) {
     return await modules_1.default.bank.query.queryBalance(accAddress, { denom });
 }

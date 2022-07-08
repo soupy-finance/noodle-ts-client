@@ -20,6 +20,10 @@ async function getOracleParams() {
 	return await modules.oracle.query.queryParams();
 }
 
+async function getAllBalances(accAddress: string) {
+	return await modules.bank.query.queryAllBalances(accAddress); 
+}
+
 async function getBalance(accAddress: string, denom: string) {
 	return await modules.bank.query.queryBalance(accAddress, { denom }); 
 }
