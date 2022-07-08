@@ -1,4 +1,5 @@
 import { OfflineSigner, EncodeObject } from "@cosmjs/proto-signing";
+import type { DeliverTxResponse } from "@cosmjs/stargate";
 import modules from "./modules";
 import { OrderFlags, OrderType } from "./types";
 
@@ -43,7 +44,14 @@ async function setWallet(_wallet: OfflineSigner) {
 	account.wallet = _wallet;
 }
 
-async function createOrder(market: string, price: number, quantity: number, side: boolean, orderType: OrderType=OrderType.Limit, flags: OrderFlags={}) {
+async function createOrder(
+	market: string, 
+	price: number, 
+	quantity: number, 
+	side: boolean, 
+	orderType: OrderType=OrderType.Limit, 
+	flags: OrderFlags={}
+): Promise<DeliverTxResponse> {
 	if (!account.wallet)
 		return;
 
@@ -56,7 +64,7 @@ async function createOrder(market: string, price: number, quantity: number, side
 		orderType,
 		flags: Object.keys(flags),
 	});
-	modules.dex.tx.signAndBroadcast([msg]);
+	return modules.dex.tx.signAndBroadcast([msg]);
 }
 
 export default {

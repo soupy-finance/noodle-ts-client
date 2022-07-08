@@ -42,7 +42,7 @@ async function createOrder(market, price, quantity, side, orderType = types_1.Or
         orderType,
         flags: Object.keys(flags),
     });
-    modules_1.default.dex.tx.signAndBroadcast([msg]);
+    return modules_1.default.dex.tx.signAndBroadcast([msg]);
 }
 exports.default = {
     props,
