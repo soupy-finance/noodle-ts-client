@@ -34,6 +34,7 @@ exports.default = {
     getDexParams,
     getOracleParams,
     getBalance,
+    getAllBalances,
     getBooks,
     getOpenOrders,
 };

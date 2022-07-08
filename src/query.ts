@@ -42,6 +42,7 @@ export default {
 	getDexParams,
 	getOracleParams,
 	getBalance,
+	getAllBalances,
 	getBooks,
 	getOpenOrders,
 };
