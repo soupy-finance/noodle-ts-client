@@ -67,9 +67,29 @@ async function createOrder(
 	return modules.dex.tx.signAndBroadcast([msg]);
 }
 
+async function cancelOrder(
+	market: string, 
+	side: boolean, 
+	price: number, 
+	id: string,
+): Promise<DeliverTxResponse> {
+	if (!account.wallet)
+		return;
+
+	let msg: EncodeObject = modules.dex.tx.msgCancelorder({
+		creator: account.address,
+		market,
+		side,
+		price: price.toString(),
+		id: id,
+	});
+	return modules.dex.tx.signAndBroadcast([msg]);
+}
+
 export default {
 	props,
 	account,
 	setWallet,
 	createOrder,
+	cancelOrder,
 }

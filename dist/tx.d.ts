@@ -10,10 +10,12 @@ interface Account {
 }
 declare function setWallet(_wallet: OfflineSigner): Promise<void>;
 declare function createOrder(market: string, price: number, quantity: number, side: boolean, orderType?: OrderType, flags?: OrderFlags): Promise<DeliverTxResponse>;
+declare function cancelOrder(market: string, side: boolean, price: number, id: string): Promise<DeliverTxResponse>;
 declare const _default: {
     props: Props;
     account: Account;
     setWallet: typeof setWallet;
     createOrder: typeof createOrder;
+    cancelOrder: typeof cancelOrder;
 };
 export default _default;

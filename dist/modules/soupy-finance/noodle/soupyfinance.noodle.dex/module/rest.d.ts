@@ -1,3 +1,4 @@
+export declare type DexMsgCancelOrderResponse = object;
 export declare type DexMsgCreateOrderResponse = object;
 /**
  * Params defines the parameters for the module.

@@ -11,6 +11,15 @@ export interface MsgCreateOrder {
 }
 export interface MsgCreateOrderResponse {
 }
+export interface MsgCancelOrder {
+    creator: string;
+    market: string;
+    side: boolean;
+    price: string;
+    id: string;
+}
+export interface MsgCancelOrderResponse {
+}
 export declare const MsgCreateOrder: {
     encode(message: MsgCreateOrder, writer?: Writer): Writer;
     decode(input: Reader | Uint8Array, length?: number): MsgCreateOrder;
@@ -25,15 +34,31 @@ export declare const MsgCreateOrderResponse: {
     toJSON(_: MsgCreateOrderResponse): unknown;
     fromPartial(_: DeepPartial<MsgCreateOrderResponse>): MsgCreateOrderResponse;
 };
+export declare const MsgCancelOrder: {
+    encode(message: MsgCancelOrder, writer?: Writer): Writer;
+    decode(input: Reader | Uint8Array, length?: number): MsgCancelOrder;
+    fromJSON(object: any): MsgCancelOrder;
+    toJSON(message: MsgCancelOrder): unknown;
+    fromPartial(object: DeepPartial<MsgCancelOrder>): MsgCancelOrder;
+};
+export declare const MsgCancelOrderResponse: {
+    encode(_: MsgCancelOrderResponse, writer?: Writer): Writer;
+    decode(input: Reader | Uint8Array, length?: number): MsgCancelOrderResponse;
+    fromJSON(_: any): MsgCancelOrderResponse;
+    toJSON(_: MsgCancelOrderResponse): unknown;
+    fromPartial(_: DeepPartial<MsgCancelOrderResponse>): MsgCancelOrderResponse;
+};
 /** Msg defines the Msg service. */
 export interface Msg {
-    /** this line is used by starport scaffolding # proto/tx/rpc */
     CreateOrder(request: MsgCreateOrder): Promise<MsgCreateOrderResponse>;
+    /** this line is used by starport scaffolding # proto/tx/rpc */
+    CancelOrder(request: MsgCancelOrder): Promise<MsgCancelOrderResponse>;
 }
 export declare class MsgClientImpl implements Msg {
     private readonly rpc;
     constructor(rpc: Rpc);
     CreateOrder(request: MsgCreateOrder): Promise<MsgCreateOrderResponse>;
+    CancelOrder(request: MsgCancelOrder): Promise<MsgCancelOrderResponse>;
 }
 interface Rpc {
     request(service: string, method: string, data: Uint8Array): Promise<Uint8Array>;

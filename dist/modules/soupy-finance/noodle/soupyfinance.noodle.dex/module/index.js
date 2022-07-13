@@ -6,8 +6,10 @@ const stargate_1 = require("@cosmjs/stargate");
 const proto_signing_1 = require("@cosmjs/proto-signing");
 const rest_1 = require("./rest");
 const tx_1 = require("./types/dex/tx");
+const tx_2 = require("./types/dex/tx");
 const types = [
     ["/soupyfinance.noodle.dex.MsgCreateOrder", tx_1.MsgCreateOrder],
+    ["/soupyfinance.noodle.dex.MsgCancelOrder", tx_2.MsgCancelOrder],
 ];
 exports.MissingWalletError = new Error("wallet is required");
 exports.registry = new proto_signing_1.Registry(types);
@@ -29,6 +31,7 @@ const txClient = async (wallet, { addr: addr } = { addr: "http://localhost:26657
     return {
         signAndBroadcast: (msgs, { fee, memo } = { fee: defaultFee, memo: "" }) => client.signAndBroadcast(address, msgs, fee, memo),
         msgCreateOrder: (data) => ({ typeUrl: "/soupyfinance.noodle.dex.MsgCreateOrder", value: tx_1.MsgCreateOrder.fromPartial(data) }),
+        msgCancelOrder: (data) => ({ typeUrl: "/soupyfinance.noodle.dex.MsgCancelOrder", value: tx_2.MsgCancelOrder.fromPartial(data) }),
     };
 };
 exports.txClient = txClient;

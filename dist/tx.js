@@ -44,9 +44,22 @@ async function createOrder(market, price, quantity, side, orderType = types_1.Or
     });
     return modules_1.default.dex.tx.signAndBroadcast([msg]);
 }
+async function cancelOrder(market, side, price, id) {
+    if (!account.wallet)
+        return;
+    let msg = modules_1.default.dex.tx.msgCancelorder({
+        creator: account.address,
+        market,
+        side,
+        price: price.toString(),
+        id: id,
+    });
+    return modules_1.default.dex.tx.signAndBroadcast([msg]);
+}
 exports.default = {
     props,
     account,
     setWallet,
     createOrder,
+    cancelOrder,
 };
