@@ -76,7 +76,7 @@ async function cancelOrder(
 	if (!account.wallet)
 		return;
 
-	let msg: EncodeObject = modules.dex.tx.msgCancelorder({
+	let msg: EncodeObject = modules.dex.tx.msgCancelOrder({
 		creator: account.address,
 		market,
 		side,

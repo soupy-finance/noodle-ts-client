@@ -47,7 +47,7 @@ async function createOrder(market, price, quantity, side, orderType = types_1.Or
 async function cancelOrder(market, side, price, id) {
     if (!account.wallet)
         return;
-    let msg = modules_1.default.dex.tx.msgCancelorder({
+    let msg = modules_1.default.dex.tx.msgCancelOrder({
         creator: account.address,
         market,
         side,
