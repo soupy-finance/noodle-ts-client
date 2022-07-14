@@ -1,5 +1,5 @@
 {
-  "name": "noodle-ts-client",
+  "name": "@soupy-finance/noodle-ts-client",
   "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
@@ -8,7 +8,8 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dast",
+    "prepublish": "tsc"
   },
   "dependencies": {
     "@cosmjs/launchpad": "^0.27.1",
